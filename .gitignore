@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build and tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated experiment artifacts
+experiments/results/
+*.pt
+*.pth
+*.npz
+*.npy
+
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/
