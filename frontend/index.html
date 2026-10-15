@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Landing Control · Rocket RL Viewer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0e14'/%3E%3Cpath d='M16 5l4 9v9h-8v-9z' fill='%23ffb347'/%3E%3Cpath d='M6 27h20' stroke='%2345e0a0' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l5 11v9h-10v-9z" fill="currentColor"/><path d="M11 24l-3 4M21 24l3 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <div class="brand-text"><b>LANDING CONTROL</b><span>PPO rocket-landing viewer</span></div>
+  </div>
+  <div class="run-pick">
+    <label for="runSelect">RUN</label>
+    <select id="runSelect" aria-label="Training run"></select>
+    <span id="liveBadge" class="badge badge-idle" title="">—</span>
+  </div>
+  <div class="progress" id="progressWrap" title="Training progress">
+    <div class="progress-bar"><i id="progressFill"></i></div>
+    <span id="progressText" class="mono">—</span>
+  </div>
+  <div class="conn" id="conn"><i class="dot"></i><span id="connText">connecting</span></div>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+
+<main class="grid">
+  <section class="card replay" aria-label="Replay">
+    <div class="card-head">
+      <h2>Replay</h2>
+      <div class="chips">
+        <span class="chip" id="chipCkpt">checkpoint —</span>
+        <span class="chip" id="chipSeed">seed —</span>
+        <span class="chip chip-ghost" id="chipBase" hidden>baseline —</span>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <canvas id="view" aria-label="Rocket landing replay"></canvas>
+      <div class="hud mono" id="hud">T+ 00.00s · frame 0/0</div>
+      <div class="legend-hud mono" id="legendHud" hidden><i class="sw sw-rocket"></i>policy <i class="sw sw-ghost"></i>baseline</div>
+      <div class="overlay" id="overlay" hidden><div class="overlay-box"><div class="spinner"></div><b id="overlayTitle">Loading</b><span id="overlayText"></span></div></div>
+      <div class="outcome" id="outcome" hidden><b id="outcomeTitle"></b><span id="outcomeSub" class="mono"></span></div>
+    </div>
+    <div class="controls">
+      <div class="row">
+        <button class="btn icon" id="btnPlay" title="Play / pause (space)" aria-label="Play or pause"></button>
+        <button class="btn icon" id="btnBack" title="Step back (←)" aria-label="Step back">&#9664;&#9646;</button>
+        <button class="btn icon" id="btnFwd" title="Step forward (→)" aria-label="Step forward">&#9646;&#9654;</button>
+        <input type="range" id="scrub" min="0" max="0" step="0.01" value="0" aria-label="Scrub timeline">
+        <span class="mono time" id="timeLabel">0.00 / 0.00 s</span>
+      </div>
+      <div class="row wrap">
+        <div class="seg" id="speedSeg" role="group" aria-label="Playback speed">
+          <button data-speed="0.25">0.25x</button><button data-speed="0.5">0.5x</button><button data-speed="1" class="on">1x</button><button data-speed="2">2x</button><button data-speed="4">4x</button>
+        </div>
+        <div class="field"><label for="seedInput">SEED</label><input type="number" id="seedInput" value="0" step="1" min="0"><button class="btn" id="btnSeed" title="Random seed (N)">New seed</button></div>
+        <div class="field"><label for="ckptSelect">CKPT</label><select id="ckptSelect"></select></div>
+        <label class="toggle" title="Ghost-play the heuristic baseline on the same seed"><input type="checkbox" id="cmpToggle"><span class="track"><i></i></span>Compare with baseline</label>
+      </div>
+    </div>
+  </section>
+
+  <aside class="side">
+    <section class="card telemetry" aria-label="Telemetry">
+      <div class="card-head"><h2>Telemetry</h2><span class="action-chip mono" id="actionChip">—</span></div>
+      <div class="tele-grid" id="teleGrid"></div>
+      <div class="fuel"><span class="lbl">FUEL</span><div class="fuel-bar"><i id="fuelFill"></i></div><span class="mono val" id="fuelVal">—</span></div>
+      <div class="rew">
+        <div><span class="lbl">REWARD</span><b class="mono" id="rewVal">—</b></div>
+        <div><span class="lbl">CUMULATIVE</span><b class="mono" id="cumVal">—</b></div>
+        <div><span class="lbl">OUTCOME</span><b class="mono" id="outVal">—</b></div>
+      </div>
+    </section>
+
+    <section class="card training" aria-label="Training">
+      <div class="card-head"><h2>Training</h2><span class="chip" id="chipRun">—</span></div>
+      <div class="stats" id="stats"></div>
+      <div class="chart-block"><div class="chart-title">Eval outcome rates <span id="legendRates" class="legend"></span></div><canvas id="chRates" class="chart" height="150"></canvas></div>
+      <div class="chart-block"><div class="chart-title">Episode reward <span id="legendReward" class="legend"></span></div><canvas id="chReward" class="chart" height="140"></canvas></div>
+      <div class="chart-pair">
+        <div class="chart-block"><div class="chart-title">Entropy</div><canvas id="chEnt" class="chart" height="110"></canvas></div>
+        <div class="chart-block"><div class="chart-title">Value loss</div><canvas id="chVal" class="chart" height="110"></canvas></div>
+      </div>
+    </section>
+  </aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
