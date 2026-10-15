@@ -120,6 +120,11 @@ v2 makes crash terminal depend on impact softness, giving a gradient from "crash
   hover-then-soft-crash behaviour.
 - With gamma < 1 shaping is not exactly neutral (see v1 limitations); v2 does not fix that.
 
+### Result
+
+With the chosen PPO settings (gamma 0.999, ent_coef 0.03, 5M steps, seeds 0-5) v2 was not
+better than v1; see `docs/experiments.md`. v1 remains the reward used for reported results.
+
 ## Adding a new version
 
 1. Add a function `_reward_v2(prev_state, state, action, outcome, cfg)` returning the

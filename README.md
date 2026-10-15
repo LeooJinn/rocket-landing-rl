@@ -116,7 +116,7 @@ rocket-landing-rl/
 - [x] Add action validation, fuel use, landing checks, crash checks, and timeout handling.
 - [x] Implement and test the reward function.
 - [x] Add a baseline controller for validating the environment.
-- [ ] Train the first PyTorch policy.
+- [x] Train the first PyTorch policy.
 - [ ] Add evaluation on held-out starting states.
 - [ ] Record episode trajectories and metrics.
 - [ ] Build the HTML/CSS/JavaScript replay viewer.
@@ -142,13 +142,24 @@ The project will describe the method as reinforcement learning with reward shapi
 The Python project, the deterministic 2D environment (physics, fuel, landing/crash/timeout
 handling, action validation), reward v1, and a hand-written heuristic baseline controller are
 implemented and tested. The baseline lands safely in about 99% of 100 evaluation episodes
-(see `docs/environment.md`). PyTorch training, held-out evaluation tooling, trajectory
-recording and the browser replay viewer are not built yet.
+(see `docs/environment.md`).
+
+A from-scratch PyTorch PPO agent (`policy.py`, `ppo.py`, `train.py`) trains on reward v1.
+For the reference run (`experiments/configs/ppo_v1_tuned.json`, seed 1, 5M env steps,
+about 9 minutes on one CPU thread) the final policy lands in 95/100 episodes on seeds not used for
+training (best validation checkpoint: 100/100), against 99/100 for the heuristic baseline.
+It touches down more gently but is slower and uses more fuel. Training is not reliable
+across seeds: of six seeds with the same config, two kept a good final policy and one never
+learned. See `docs/experiments.md`. Held-out evaluation tooling, trajectory recording and
+the browser replay viewer are not built yet.
 
 ## Quickstart
 
 ```bash
-uv sync                      # install dependencies
+uv sync --extra torch        # install dependencies (PyTorch needed for training and its tests)
 uv run pytest                # run the test suite
 uv run python scripts/evaluate_baseline.py --episodes 100 --seed 0   # baseline eval
+uv run python -m rocket_landing.train --config experiments/configs/ppo_v1_tuned.json --seed 1
+uv run python scripts/evaluate_policy.py --checkpoint experiments/results/ppo_v1_tuned_s1/final.pt \
+    --episodes 100 --seed 0 --compare-baseline
 ```
