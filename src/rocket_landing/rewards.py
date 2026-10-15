@@ -12,7 +12,7 @@ from typing import Callable
 
 from rocket_landing.state import Action, Outcome, RocketState
 
-REWARD_VERSIONS: tuple[str, ...] = ("v1",)
+REWARD_VERSIONS: tuple[str, ...] = ("v1", "v2")
 
 
 @dataclass(frozen=True)
@@ -102,7 +102,50 @@ def _reward_v1(
     }
 
 
-_DISPATCH: dict[str, Callable[..., dict[str, float]]] = {"v1": _reward_v1}
+@dataclass(frozen=True)
+class RewardV2Config(RewardV1Config):
+    """v1 weights plus the crash-softness bonus. Defaults define reward v2."""
+
+    crash_softness_bonus: float = 50.0
+    # Normalised touchdown excess at (and beyond) which a crash gets no bonus.
+    excess_zero: float = 5.0
+
+
+def _excess(state: RocketState, cfg: RewardV1Config) -> float:
+    """Worst normalised violation of the safe-landing limits (<= 1 means within limits)."""
+    return max(
+        abs(state.x) / cfg.pad_half_width,
+        abs(state.vx) / cfg.safe_vx,
+        abs(state.vy) / cfg.safe_vy,
+        abs(state.angle) / cfg.safe_angle,
+        abs(state.angular_velocity) / cfg.safe_angular_velocity,
+    )
+
+
+def _crash_softness(state: RocketState, cfg: RewardV2Config) -> float:
+    """1 for a touchdown at the safe limits (excess <= 1), 0 at excess >= excess_zero."""
+    softness = (cfg.excess_zero - _excess(state, cfg)) / (cfg.excess_zero - 1.0)
+    return max(0.0, min(1.0, softness))
+
+
+def _reward_v2(
+    prev_state: RocketState,
+    state: RocketState,
+    action: Action,
+    outcome: Outcome,
+    cfg: RewardV2Config,
+) -> dict[str, float]:
+    terms = _reward_v1(prev_state, state, action, outcome, cfg)
+    terms["crash_softness"] = (
+        cfg.crash_softness_bonus * _crash_softness(state, cfg)
+        if outcome is Outcome.CRASHED
+        else 0.0
+    )
+    return terms
+
+
+_DISPATCH: dict[str, Callable[..., dict[str, float]]] = {"v1": _reward_v1, "v2": _reward_v2}
+_CONFIGS: dict[str, type[RewardV1Config]] = {"v1": RewardV1Config, "v2": RewardV2Config}
 
 
 def compute_reward(
@@ -116,10 +159,15 @@ def compute_reward(
 ) -> RewardBreakdown:
     if version not in _DISPATCH:
         raise ValueError(f"unknown reward version {version!r}; known: {REWARD_VERSIONS}")
+    cfg_type = _CONFIGS[version]
+    if config is None:
+        config = cfg_type()
+    elif type(config) is not cfg_type:
+        raise TypeError(
+            f"reward {version} needs {cfg_type.__name__}, got {type(config).__name__}"
+        )
     terms = {
         k: float(v)
-        for k, v in _DISPATCH[version](
-            prev_state, state, action, outcome, config or RewardV1Config()
-        ).items()
+        for k, v in _DISPATCH[version](prev_state, state, action, outcome, config).items()
     }
     return RewardBreakdown(total=float(sum(terms.values())), terms=terms)

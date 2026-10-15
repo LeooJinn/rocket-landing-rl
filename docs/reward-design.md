@@ -62,6 +62,64 @@ landing. Shaping also does not change which policies are optimal beyond the term
 - Fuel penalty is small; a policy may burn fuel freely if it improves landing odds. That is intended.
 - Weights are untuned against trained agents; revisit after the first training runs.
 
+## Reward v2
+
+v2 is v1 with exactly one change: a CRASHED touchdown earns a softness bonus, reported as
+its own term `crash_softness` (0.0 on every non-crash step) so `terminal` stays comparable
+to v1. Terms are the v1 keys plus `crash_softness`; all other terms and weights are
+identical. Config: frozen `RewardV2Config` (subclass of `RewardV1Config`) adds
+`crash_softness_bonus = 50.0` and `excess_zero = 5.0`. Run with `reward_version="v2"`;
+see `experiments/configs/ppo_v2.json`.
+
+| Term | Formula | Default |
+|---|---|---|
+| v1 terms | unchanged | see Reward v1 |
+| `crash_softness` | CRASHED only: `50 * softness` | 0 to +50 |
+
+On the touchdown `state`:
+
+```
+excess   = max(|x|/10, |vx|/1, |vy|/2, |angle|/0.2, |omega|/0.5)
+softness = clip((5 - excess) / (5 - 1), 0, 1)
+```
+
+So `excess <= 1` (within every safe limit) gives the full +50, `excess >= 5` gives 0, linear
+between. The CRASHED return from terminal + bonus is in [-100, -50]; a free-fall crash
+(vy = -44, excess 22) gets the full -100.
+
+### Motivation
+
+PPO training with v1 repeatedly converged to "free-fall and crash immediately" (~85 steps,
+~0 fuel, return ~-96.5). The CRASHED terminal is a flat -100, so a fast crash after falling
+collects net positive distance shaping and avoids fuel/time cost; any careful-but-failed
+approach scores worse than suicide. The only signal for impact softness was the small speed
+term in the potential. A second attractor (hover until fuel runs out, then crash, ~800
+steps, return ~-115) comes from discounting: with gamma < 1 the banked shaping and the
+far-off timeout/crash penalty are discounted, so delaying failure looks cheap.
+
+v2 makes crash terminal depend on impact softness, giving a gradient from "crash hard" toward
+"almost landed" so careful approaches beat free-fall.
+
+### Invariants (tested in `tests/test_rewards_v2.py`)
+
+- v2 equals v1 on every non-crash step (in progress, landed, out of bounds, timeout).
+- Worst crash (-100) is unchanged; best crash terminal is -50, equal to the timeout terminal,
+  so hovering to timeout is never preferred over a near-landing.
+- Every v2 crash is strictly below every safe landing's terminal (>= +100); the gap is >= 150.
+
+### New risks
+
+- The agent may settle for a soft crash near the pad (-50) instead of landing. Landing still
+  dominates by >= 150 (best crash -50 vs >= +100), but a sparse-reward learner may find the
+  soft-crash plateau first and stay there.
+- The bonus uses the max over normalised errors, so improving a non-worst component gives no
+  gradient; only the worst offender matters.
+- Softness is evaluated at touchdown only; it says nothing about how the agent got there.
+- Soft crash (-50) ties with timeout (-50) at the terminal; time/fuel costs and the
+  discounted timeout keep a crash preferable only if it actually happens earlier. Watch for
+  hover-then-soft-crash behaviour.
+- With gamma < 1 shaping is not exactly neutral (see v1 limitations); v2 does not fix that.
+
 ## Adding a new version
 
 1. Add a function `_reward_v2(prev_state, state, action, outcome, cfg)` returning the
