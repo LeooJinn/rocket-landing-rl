@@ -1,0 +1,19 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Install (CPU-only torch keeps the download small)
+        run: |
+          uv sync --extra plots
+          uv pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Run tests
+        run: uv run --no-sync pytest -q
