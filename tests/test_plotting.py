@@ -1,8 +1,8 @@
 import json
 
-import matplotlib
 import pytest
 
+matplotlib = pytest.importorskip("matplotlib", reason="needs the 'plots' extra: uv sync --extra plots")
 matplotlib.use("Agg")
 
 from rocket_landing import plotting as P  # noqa: E402
