@@ -19,10 +19,17 @@
     "norm_adv": true,
     "target_kl": null
   },
-  "policy": {"hidden_sizes": [64, 64], "activation": "tanh"},
+  "policy": {
+    "hidden_sizes": [
+      64,
+      64
+    ],
+    "activation": "tanh"
+  },
   "checkpoint_every": 50,
   "eval_every": 10,
   "eval_episodes": 50,
   "eval_seed_start": 20000,
-  "torch_threads": 1
+  "torch_threads": 1,
+  "obs_norm": "running"
 }
