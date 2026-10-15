@@ -1,0 +1,9 @@
+{
+  "total_timesteps": 512,
+  "num_envs": 2,
+  "num_steps": 64,
+  "ppo": {"update_epochs": 2, "num_minibatches": 2},
+  "eval_every": 1,
+  "eval_episodes": 2,
+  "checkpoint_every": 1
+}

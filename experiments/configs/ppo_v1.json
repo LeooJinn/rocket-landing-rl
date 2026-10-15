@@ -1,0 +1,28 @@
+{
+  "total_timesteps": 2000000,
+  "num_envs": 16,
+  "num_steps": 256,
+  "reward_version": "v1",
+  "reward_scale": 0.01,
+  "ppo": {
+    "learning_rate": 0.0003,
+    "anneal_lr": true,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_coef": 0.2,
+    "clip_vloss": true,
+    "ent_coef": 0.01,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "update_epochs": 10,
+    "num_minibatches": 8,
+    "norm_adv": true,
+    "target_kl": null
+  },
+  "policy": {"hidden_sizes": [64, 64], "activation": "tanh"},
+  "checkpoint_every": 50,
+  "eval_every": 10,
+  "eval_episodes": 50,
+  "eval_seed_start": 20000,
+  "torch_threads": 1
+}
