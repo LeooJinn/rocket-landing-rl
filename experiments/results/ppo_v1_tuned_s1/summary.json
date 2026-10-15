@@ -1,0 +1,25 @@
+{
+  "seed": 1,
+  "num_updates": 1220,
+  "total_env_steps": 4997120,
+  "episodes": 18470,
+  "wallclock_s": 536.6067636013031,
+  "steps_per_s": 9312.443166690207,
+  "last_eval": {
+    "update": 1220,
+    "global_step": 4997120,
+    "success_rate": 0.98,
+    "crash_rate": 0.02,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 99.80504291999128,
+    "mean_fuel_used": 0.5870299999999832,
+    "mean_steps": 422.4
+  },
+  "best_eval": {
+    "update": 1070,
+    "success_rate": 1.0,
+    "mean_reward": 105.87801292270466
+  },
+  "run_dir": "experiments/results/ppo_v1_tuned_s1"
+}

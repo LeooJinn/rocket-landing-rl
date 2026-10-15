@@ -12,7 +12,7 @@ venv/
 htmlcov/
 
 # Generated experiment artifacts
-experiments/results/
+experiments/results/*
 *.pt
 *.pth
 *.npz
@@ -22,3 +22,9 @@ experiments/results/
 .DS_Store
 .vscode/
 .idea/
+
+# Keep one small reference run (final config, seed 1): metrics + best/final checkpoints.
+!experiments/results/ppo_v1_tuned_s1/
+experiments/results/ppo_v1_tuned_s1/checkpoints/
+!experiments/results/ppo_v1_tuned_s1/best.pt
+!experiments/results/ppo_v1_tuned_s1/final.pt
