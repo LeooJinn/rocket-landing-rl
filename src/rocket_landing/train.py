@@ -33,7 +33,7 @@ from rocket_landing.environment import RocketLandingEnv
 from rocket_landing.policy import (
     ActorCritic,
     PolicyController,
-    RunningMeanStd,
+    make_obs_normalizer,
     save_checkpoint,
 )
 from rocket_landing.ppo import PPOConfig, compute_gae, ppo_update
@@ -47,6 +47,7 @@ DEFAULT_CONFIG: dict = {
     "num_steps": 256,
     "reward_version": "v1",
     "reward_scale": 0.01,
+    "obs_norm": "running",  # "running" (RunningMeanStd, updated in training) or "fixed" scales
     "ppo": {
         "learning_rate": 3e-4,
         "anneal_lr": True,
@@ -158,7 +159,7 @@ def train(config: dict, seed: int, run_dir: str | Path, device: str = "cpu") -> 
         activation=cfg["policy"]["activation"],
     ).to(dev)
     optimizer = torch.optim.Adam(model.parameters(), lr=ppo_cfg.learning_rate, eps=1e-5)
-    obs_norm = RunningMeanStd(shape=(OBS_DIM,))
+    obs_norm = make_obs_normalizer(cfg["obs_norm"], shape=(OBS_DIM,))
 
     envs = [RocketLandingEnv(reward_version=version) for _ in range(n_envs)]
     raw_obs = np.stack(

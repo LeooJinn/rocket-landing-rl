@@ -60,6 +60,54 @@ class RunningMeanStd:
         return obj
 
 
+# Fixed physical observation scales, order [x, y, vx, vy, angle, angular_velocity, fuel].
+# Chosen from the ranges in docs/environment.md: x is in [-100, 100] before going out of
+# bounds (start +-40), y in [0, 200] (start 80-120), vx/vy are a few m/s to tens of m/s
+# (start |v| <= 10, landing needs <= 1-2), tilt matters at ~0.2 rad (start +-0.2),
+# angular velocity matters at ~0.5 rad/s, fuel is already a [0, 1] fraction.
+FIXED_OBS_SCALES = (50.0, 100.0, 10.0, 10.0, 0.3, 0.5, 1.0)
+
+
+class FixedScaleNormalizer:
+    """Stateless normaliser: clip(x / scale, -clip, clip). ``update`` is a no-op."""
+
+    kind = "fixed"
+
+    def __init__(self, scales: tuple[float, ...] = FIXED_OBS_SCALES, clip: float = 10.0):
+        self.scales = np.asarray(scales, dtype=np.float64)
+        self.clip = float(clip)
+
+    def update(self, x: np.ndarray) -> None:
+        """Fixed scales are never updated."""
+
+    def normalize(self, x: np.ndarray) -> np.ndarray:
+        z = np.asarray(x, dtype=np.float64) / self.scales
+        return np.clip(z, -self.clip, self.clip).astype(np.float32)
+
+    def state_dict(self) -> dict[str, Any]:
+        return {"type": "fixed", "scales": self.scales.tolist(), "clip": self.clip}
+
+    @classmethod
+    def from_state_dict(cls, d: dict[str, Any]) -> FixedScaleNormalizer:
+        return cls(tuple(d["scales"]), clip=d["clip"])
+
+
+def make_obs_normalizer(kind: str, shape: tuple[int, ...] = (7,)):
+    """Build a normaliser from the ``obs_norm`` config value (``running`` or ``fixed``)."""
+    if kind == "running":
+        return RunningMeanStd(shape=shape)
+    if kind == "fixed":
+        return FixedScaleNormalizer()
+    raise ValueError(f"unknown obs_norm {kind!r}; expected 'running' or 'fixed'")
+
+
+def obs_normalizer_from_state_dict(d: dict[str, Any]):
+    """Rebuild a normaliser; dicts without a ``type`` key are legacy running stats."""
+    if d.get("type") == "fixed":
+        return FixedScaleNormalizer.from_state_dict(d)
+    return RunningMeanStd.from_state_dict(d)
+
+
 def _mlp(sizes: list[int], activation: type[nn.Module], out_gain: float) -> nn.Sequential:
     """MLP with orthogonal init: sqrt(2) on hidden layers, ``out_gain`` on the head."""
     layers: list[nn.Module] = []
@@ -126,7 +174,7 @@ class ActorCritic(nn.Module):
 def save_checkpoint(
     path: str | Path,
     model: ActorCritic,
-    obs_norm: RunningMeanStd,
+    obs_norm: RunningMeanStd | FixedScaleNormalizer,
     config: dict,
     extra: dict | None = None,
 ) -> None:
@@ -152,7 +200,7 @@ def load_checkpoint(
     model = ActorCritic(**payload["policy_kwargs"]).to(device)
     model.load_state_dict(payload["model_state"])
     model.eval()
-    return model, RunningMeanStd.from_state_dict(payload["obs_norm"]), payload
+    return model, obs_normalizer_from_state_dict(payload["obs_norm"]), payload
 
 
 class PolicyController:
