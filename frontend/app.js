@@ -8,6 +8,9 @@ const $ = (id) => document.getElementById(id);
 const qs = new URLSearchParams(location.search);
 const FIXTURE = qs.get('fixture') === '1';
 const FIXLIVE = FIXTURE && qs.get('live') === '1';
+const STATIC_FORCED = qs.get('static') === '1', STATIC_OFF = qs.get('static') === '0';
+let STATIC = false; // set at boot: ?static=1, or /api unreachable but ./demo/ exists
+let MANIFEST = null;
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -30,10 +33,21 @@ async function getJSON(url) {
   if (!r.ok) throw new HttpError(r.status, r.status + ' ' + r.statusText);
   try { return await r.json(); } catch (e) { throw new HttpError(500, 'invalid JSON'); }
 }
+const DEMO = 'demo/'; // relative on purpose: works under a GitHub Pages sub-path
+async function demo(name) { return fixCache['d:' + name] || (fixCache['d:' + name] = await getJSON(DEMO + name + '.json')); }
+const clone = (o) => JSON.parse(JSON.stringify(o));
+async function detectStatic() {
+  if (STATIC_OFF || FIXTURE) return;
+  if (!STATIC_FORCED) {
+    try { const r = await fetch('/api/runs', { cache: 'no-store' }); if (r.ok && /json/.test(r.headers.get('content-type') || '')) return; } catch (e) { /* unreachable */ }
+  }
+  try { MANIFEST = await getJSON(DEMO + 'manifest.json'); STATIC = true; } catch (e) { /* no demo data: stay in live mode and show its normal errors */ }
+}
 async function fix(name) { return fixCache[name] || (fixCache[name] = await getJSON('fixtures/' + name + '.json')); }
 function fixRevealed() { return FIXLIVE ? clamp(24 + Math.floor((performance.now() - t0) / 2500), 24, 60) : 60; }
 const api = {
   async runs() {
+    if (STATIC) return clone(await demo('runs'));
     if (!FIXTURE) return getJSON('/api/runs');
     const runs = JSON.parse(JSON.stringify(await fix('runs')));
     const n = fixRevealed();
@@ -42,18 +56,24 @@ const api = {
     return runs;
   },
   async metrics(run) {
+    if (STATIC) return clone(await demo('metrics_' + run));
     if (!FIXTURE) return getJSON('/api/runs/' + encodeURIComponent(run) + '/metrics');
     if (run !== 'ppo_v2_seed1') return { train: [], eval: [], config: null };
     const m = await fix('metrics'), n = fixRevealed();
     return { train: m.train.filter(r => r.update <= n), eval: m.eval.filter(r => r.update <= n), config: m.config };
   },
   async checkpoints(run) {
+    if (STATIC) return clone(await demo('checkpoints_' + run));
     if (!FIXTURE) return getJSON('/api/runs/' + encodeURIComponent(run) + '/checkpoints');
     if (run !== 'ppo_v2_seed1') throw new HttpError(404, 'no checkpoints');
     const n = fixRevealed();
     return (await fix('checkpoints')).map(c => c.id === 'latest' || c.id === 'best' || c.id === 'ckpt_00060' ? Object.assign({}, c, { update: n }) : c).filter(c => c.id !== 'ckpt_00060' || n >= 60).filter(c => c.update == null || c.update <= n);
   },
   async episode(run, ck, seed) {
+    if (STATIC) {
+      if (!MANIFEST.seeds.includes(+seed)) throw new HttpError(404, 'seed ' + seed + ' is not in the recorded demo');
+      return clone(await demo('episode_' + run + '__' + ck + '__' + seed));
+    }
     if (!FIXTURE) return getJSON('/api/runs/' + encodeURIComponent(run) + '/episode?seed=' + seed + '&checkpoint=' + encodeURIComponent(ck));
     if (run !== 'ppo_v2_seed1') throw new HttpError(404, 'no checkpoint');
     const n = fixRevealed();
@@ -64,6 +84,7 @@ const api = {
     return ep;
   },
   async baseline(seed) {
+    if (STATIC) return clone(await demo('baseline_' + seed));
     if (!FIXTURE) return getJSON('/api/baseline/episode?seed=' + seed);
     return JSON.parse(JSON.stringify(await fix('baseline')));
   },
@@ -74,7 +95,7 @@ const S = {
   runs: [], run: null, userPickedRun: false,
   metrics: null, metricsSig: '', checkpoints: [], ck: 'latest', seed: 0,
   ep: null, pending: null, base: null, compare: false,
-  playing: !REDUCED, speed: 1, f: 0, endHold: 0,
+  tp: null, playing: !REDUCED, speed: 1, f: 0, endHold: 0,
   lastLatestUpdate: undefined, stepSamples: [],
   connOK: null, lastOK: 0, epWaiting: false, epToken: 0, epError: null,
   cam: null, trail: [], particles: [], lastTeleIdx: -1, hoverX: {},
@@ -83,6 +104,7 @@ const S = {
 /* ---------- connection / banner ---------- */
 function setConn(ok, msg) {
   const el = $('conn'); S.connOK = ok;
+  if (STATIC) { el.className = 'conn fx'; $('connText').textContent = 'recorded demo · not live'; return; }
   if (FIXTURE) { el.className = 'conn fx'; $('connText').textContent = FIXLIVE ? 'fixture · simulated live' : 'fixture data'; return; }
   el.className = 'conn ' + (ok ? 'ok' : 'bad');
   $('connText').textContent = ok ? 'API online' : (msg || 'backend unreachable');
@@ -93,6 +115,7 @@ function setConn(ok, msg) {
 
 /* ---------- runs ---------- */
 function liveState(r) {
+  if (STATIC && r) return { cls: 'badge-done', txt: 'RECORDED', title: 'A recorded training run - not live' };
   if (!r) return { cls: 'badge-idle', txt: '—', title: '' };
   if (r.finished) return { cls: 'badge-done', txt: 'FINISHED', title: 'Training run finished' };
   const age = Date.now() / 1000 - r.mtime;
@@ -211,7 +234,8 @@ async function fetchEpisode(immediate) {
     if (S.compare) fetchBaseline();
   } catch (e) {
     if (tok !== S.epToken) return;
-    if (e.status === 404) { S.epError = 'waiting'; if (!S.ep) showOverlay('Waiting for first checkpoint', 'No policy is available for this selection yet.', false, true); }
+    if (e.status === 404 && STATIC) { S.epError = e.message; if (!S.ep) showOverlay('Not in the recorded demo', e.message, true); }
+    else if (e.status === 404) { S.epError = 'waiting'; if (!S.ep) showOverlay('Waiting for first checkpoint', 'No policy is available for this selection yet.', false, true); }
     else if (e.status === 0) { /* conn handled by runs poll */ if (!S.ep) showOverlay('Backend unreachable', 'Waiting for the API...', true); }
     else { S.epError = e.message; if (!S.ep) showOverlay('Could not load episode', e.message, true); }
   } finally { if (tok === S.epToken) S.epWaiting = false; }
@@ -227,7 +251,7 @@ async function fetchBaseline() {
 }
 function setEpisode(ep) {
   S.ep = ep; S.pending = null; S.f = 0; S.endHold = 0; S.trail = []; S.particles = []; S.cam = null; S.lastTeleIdx = -1;
-  if (isNum(ep.meta.seed) && ep.meta.seed !== S.seed) { S.seed = ep.meta.seed; $('seedInput').value = S.seed; if (S.compare) fetchBaseline(); }
+  if (isNum(ep.meta.seed) && ep.meta.seed !== S.seed) { S.seed = ep.meta.seed; $('seedInput').value = S.seed; $('seedSelect').value = S.seed; if (S.compare) fetchBaseline(); }
   const sc = $('scrub'); sc.max = ep.frames.length - 1; sc.value = 0;
   $('outcome').hidden = true;
   renderChips(); renderTelemetry(true); renderTraining();
@@ -509,7 +533,8 @@ function frame(ts) {
     if (S.f < n) { S.f = Math.min(n, S.f + dt / ep.meta.dt * S.speed); S.endHold = 0; }
     else {
       S.endHold += dt;
-      if (S.endHold > 1.6) { if (S.pending) swapPending(); else { S.f = 0; S.trail = []; S.particles = []; S.endHold = 0; S.cam = null; $('outcome').hidden = true; } }
+      if (S.endHold > 1.6 && S.tp) { advanceTraining(); }
+      else if (S.endHold > 1.6) { if (S.pending) swapPending(); else { S.f = 0; S.trail = []; S.particles = []; S.endHold = 0; S.cam = null; $('outcome').hidden = true; } }
     }
     $('scrub').value = S.f;
   }
@@ -644,7 +669,7 @@ function seek(f, snap) {
   S.lastTeleIdx = -1; $('scrub').value = S.f; if (snap) S.cam = null;
 }
 function newSeed(val) {
-  S.seed = val; $('seedInput').value = val; S.base = null;
+  S.seed = val; $('seedInput').value = val; $('seedSelect').value = val; S.base = null;
   fetchEpisode(true); if (S.compare) fetchBaseline();
 }
 function wire() {
@@ -658,9 +683,14 @@ function wire() {
     const b = e.target.closest('button'); if (!b) return; S.speed = +b.dataset.speed;
     for (const x of $('speedSeg').children) x.classList.toggle('on', x === b);
   });
-  $('btnSeed').onclick = () => newSeed(Math.floor(Math.random() * 100000));
+  $('btnSeed').onclick = () => {
+    if (STATIC) { const sd = MANIFEST.seeds; stopTrainingReplay(); newSeed(sd[(sd.indexOf(S.seed) + 1) % sd.length]); }
+    else newSeed(Math.floor(Math.random() * 100000));
+  };
+  $('seedSelect').addEventListener('change', (e) => { stopTrainingReplay(); newSeed(+e.target.value); });
+  $('btnTrain').onclick = () => startTrainingReplay();
   $('seedInput').addEventListener('change', (e) => { const v = Math.max(0, Math.floor(+e.target.value || 0)); newSeed(v); });
-  $('ckptSelect').addEventListener('change', (e) => { S.ck = e.target.value; S.lastLatestUpdate = undefined; fetchEpisode(true); });
+  $('ckptSelect').addEventListener('change', (e) => { stopTrainingReplay(); S.ck = e.target.value; S.lastLatestUpdate = undefined; fetchEpisode(true); });
   $('cmpToggle').addEventListener('change', (e) => { S.compare = e.target.checked; if (S.compare) fetchBaseline(); else { S.base = null; renderChips(); } renderChips(); });
   $('runSelect').addEventListener('change', (e) => selectRun(e.target.value, true));
   document.addEventListener('keydown', (e) => {
@@ -675,11 +705,60 @@ function wire() {
   window.__viewer = S; // handy for debugging in devtools
 }
 
+/* ---------- static (recorded) mode ---------- */
+function staticStages() {
+  return S.checkpoints.filter(c => c.id !== 'latest' && c.id !== 'best').slice().sort((a, b) => (a.update || 0) - (b.update || 0));
+}
+function renderTpBar() {
+  const bar = $('tpBar');
+  if (!S.tp) { bar.hidden = true; return; }
+  const st = S.tp.stages, i = S.tp.i, c = st[i], tot = (st[st.length - 1].update || 1);
+  bar.hidden = false;
+  bar.innerHTML = '<span><b>RECORDED TRAINING RUN - NOT LIVE.</b> Replaying saved checkpoints of ' + S.run + ' on seed ' + S.seed + '.</span>' +
+    '<span>stage <b>' + (i + 1) + '/' + st.length + '</b> · ' + c.id + ' · update ' + c.update + ' (' + Math.round(100 * (c.update || 0) / tot) + '% of training)</span>' +
+    '<button class="tpstop" id="tpStop">stop</button>';
+  $('tpStop').onclick = stopTrainingReplay;
+}
+function gotoStage(i) {
+  const c = S.tp.stages[i]; S.tp.i = i; S.ck = c.id; $('ckptSelect').value = c.id;
+  fetchEpisode(true); renderTpBar();
+}
+function startTrainingReplay() {
+  const stages = staticStages(); if (!stages.length) return;
+  S.tp = { stages, i: 0 }; setPlaying(true);
+  if (S.speed < 4) $('speedSeg').querySelector('[data-speed="4"]').click(); // early checkpoints flail for ~40 s at 1x
+  gotoStage(0);
+}
+function stopTrainingReplay() { if (S.tp) { S.tp = null; renderTpBar(); } }
+function advanceTraining() {
+  const tp = S.tp; if (!tp) return;
+  S.endHold = 0;
+  if (tp.i + 1 < tp.stages.length) gotoStage(tp.i + 1);
+  else { S.tp = null; renderTpBar(); }  // finished: keep the final policy on screen
+}
+function setupStatic() {
+  const m = MANIFEST, n = m.seeds.length;
+  $('seedInput').hidden = true; $('seedSelect').hidden = false;
+  $('seedSelect').innerHTML = m.seeds.map(s => '<option value="' + s + '">' + s + '</option>').join('');
+  S.seed = m.seeds[0]; $('seedSelect').value = S.seed; $('seedInput').value = S.seed;
+  $('btnSeed').textContent = 'Next seed'; $('btnSeed').title = 'Next exported seed (N)';
+  $('btnTrain').hidden = false;
+  const note = $('staticNote'); note.hidden = false;
+  note.textContent = 'Recorded demo: this page plays back saved rollouts of a finished training run (' + m.run + '), not a live model. ' +
+    'Only ' + n + ' seeds (' + m.seeds[0] + '-' + m.seeds[n - 1] + ') and ' + m.checkpoints.length + ' checkpoints (' + m.checkpoints.map(c => c.id).join(', ') + ') were pre-computed, so seed and checkpoint choices are limited to those. ' +
+    'Training curves are thinned to ' + m.train_rows_exported + ' of ' + m.train_rows_total + ' updates.';
+  const b = $('banner'); b.hidden = false; b.className = 'banner info';
+  b.textContent = 'This is a recorded training run, not live. Use "Replay training progress" to watch the policy go from crashing to landing across saved checkpoints.';
+}
+
 /* ---------- boot ---------- */
 buildTele(); wire(); setPlaying(S.playing); renderChips(); renderTelemetry(true); renderTraining();
 showOverlay('Connecting', FIXTURE ? 'loading fixtures' : 'contacting /api/runs');
-pollRuns();
-setInterval(pollRuns, 2000);
+detectStatic().then(() => {
+  if (STATIC) { setupStatic(); showOverlay('Loading recorded demo', 'demo/'); }
+  pollRuns();
+  setInterval(() => { if (!(STATIC && S.lastOK)) pollRuns(); }, 2000);
+});
 setInterval(() => { if (S.run && S.ck === 'latest' && S.checkpoints.length && !document.hidden) fetchEpisode(false); }, 5000);
 requestAnimationFrame(frame);
 })();

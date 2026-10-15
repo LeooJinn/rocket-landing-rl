@@ -37,6 +37,7 @@
         <span class="chip chip-ghost" id="chipBase" hidden>baseline —</span>
       </div>
     </div>
+    <div class="tpbar mono" id="tpBar" hidden></div>
     <div class="stage" id="stage">
       <canvas id="view" aria-label="Rocket landing replay"></canvas>
       <div class="hud mono" id="hud">T+ 00.00s · frame 0/0</div>
@@ -45,6 +46,7 @@
       <div class="outcome" id="outcome" hidden><b id="outcomeTitle"></b><span id="outcomeSub" class="mono"></span></div>
     </div>
     <div class="controls">
+      <p class="staticnote" id="staticNote" hidden></p>
       <div class="row">
         <button class="btn icon" id="btnPlay" title="Play / pause (space)" aria-label="Play or pause"></button>
         <button class="btn icon" id="btnBack" title="Step back (←)" aria-label="Step back">&#9664;&#9646;</button>
@@ -56,8 +58,9 @@
         <div class="seg" id="speedSeg" role="group" aria-label="Playback speed">
           <button data-speed="0.25">0.25x</button><button data-speed="0.5">0.5x</button><button data-speed="1" class="on">1x</button><button data-speed="2">2x</button><button data-speed="4">4x</button>
         </div>
-        <div class="field"><label for="seedInput">SEED</label><input type="number" id="seedInput" value="0" step="1" min="0"><button class="btn" id="btnSeed" title="Random seed (N)">New seed</button></div>
+        <div class="field"><label for="seedInput">SEED</label><input type="number" id="seedInput" value="0" step="1" min="0"><select id="seedSelect" aria-label="Exported seed" hidden></select><button class="btn" id="btnSeed" title="Random seed (N)">New seed</button></div>
         <div class="field"><label for="ckptSelect">CKPT</label><select id="ckptSelect"></select></div>
+        <button class="btn btn-tp" id="btnTrain" hidden title="Step through the exported checkpoints, earliest first">&#9654; Replay training progress</button>
         <label class="toggle" title="Ghost-play the heuristic baseline on the same seed"><input type="checkbox" id="cmpToggle"><span class="track"><i></i></span>Compare with baseline</label>
       </div>
     </div>
