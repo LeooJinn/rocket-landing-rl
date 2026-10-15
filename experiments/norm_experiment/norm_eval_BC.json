@@ -1,0 +1,158 @@
+{
+  "B_s0": {
+    "run": "experiments/results/exp_fixed_s0",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 107.98864037273285,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "B_s1": {
+    "run": "experiments/results/exp_fixed_s1",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 111.93533340109609,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "B_s2": {
+    "run": "experiments/results/exp_fixed_s2",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 110.8224829797527,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "B_s3": {
+    "run": "experiments/results/exp_fixed_s3",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 109.2138459134196,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "B_s4": {
+    "run": "experiments/results/exp_fixed_s4",
+    "success_rate": 0.7,
+    "crash_rate": 0.3,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 45.9742514973606,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "B_s5": {
+    "run": "experiments/results/exp_fixed_s5",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 104.46705068038116,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "C_s0": {
+    "run": "experiments/results/exp_fixednoclip_s0",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 103.52747990511163,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "C_s1": {
+    "run": "experiments/results/exp_fixednoclip_s1",
+    "success_rate": 0.0,
+    "crash_rate": 1.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": -114.78061991487199,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "C_s2": {
+    "run": "experiments/results/exp_fixednoclip_s2",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 111.59713863382545,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "C_s3": {
+    "run": "experiments/results/exp_fixednoclip_s3",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 110.08295406100915,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "C_s4": {
+    "run": "experiments/results/exp_fixednoclip_s4",
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 112.02008344777543,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "C_s5": {
+    "run": "experiments/results/exp_fixednoclip_s5",
+    "success_rate": 0.0,
+    "crash_rate": 1.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": -91.25714127074072,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  }
+}

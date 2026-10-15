@@ -1,0 +1,1245 @@
+upd 1/1220 step 4096 eps 31 R -98.7 succ 0.00 ent 1.384 kl 0.0023 sps 24440
+upd 2/1220 step 8192 eps 35 R -99.1 succ 0.00 ent 1.365 kl 0.0078 sps 25381
+upd 3/1220 step 12288 eps 36 R -100.6 succ 0.00 ent 1.305 kl 0.0133 sps 25778
+upd 4/1220 step 16384 eps 39 R -102.0 succ 0.00 ent 1.289 kl 0.0060 sps 25936
+upd 5/1220 step 20480 eps 36 R -102.6 succ 0.00 ent 1.249 kl 0.0108 sps 26264
+upd 6/1220 step 24576 eps 29 R -104.1 succ 0.00 ent 1.207 kl 0.0113 sps 26524
+upd 7/1220 step 28672 eps 27 R -107.6 succ 0.00 ent 1.172 kl 0.0105 sps 26649
+upd 8/1220 step 32768 eps 24 R -112.3 succ 0.00 ent 1.085 kl 0.0052 sps 26775
+upd 9/1220 step 36864 eps 23 R -114.8 succ 0.00 ent 1.078 kl 0.0040 sps 26749
+upd 10/1220 step 40960 eps 24 R -112.5 succ 0.00 ent 1.147 kl 0.0040 sps 26640 | eval succ 0.00 R -119.0
+upd 11/1220 step 45056 eps 26 R -110.8 succ 0.00 ent 1.145 kl 0.0042 sps 24392
+upd 12/1220 step 49152 eps 27 R -110.5 succ 0.00 ent 1.147 kl 0.0070 sps 24634
+upd 13/1220 step 53248 eps 23 R -110.6 succ 0.00 ent 1.141 kl 0.0043 sps 24873
+upd 14/1220 step 57344 eps 25 R -114.3 succ 0.00 ent 1.115 kl 0.0065 sps 25016
+upd 15/1220 step 61440 eps 26 R -114.5 succ 0.00 ent 1.104 kl 0.0034 sps 25125
+upd 16/1220 step 65536 eps 22 R -114.3 succ 0.00 ent 1.133 kl 0.0029 sps 25210
+upd 17/1220 step 69632 eps 29 R -112.5 succ 0.00 ent 1.181 kl 0.0087 sps 25306
+upd 18/1220 step 73728 eps 26 R -111.7 succ 0.00 ent 1.209 kl 0.0077 sps 25372
+upd 19/1220 step 77824 eps 19 R -110.8 succ 0.00 ent 1.245 kl 0.0085 sps 25430
+upd 20/1220 step 81920 eps 23 R -107.8 succ 0.00 ent 1.290 kl 0.0081 sps 25533 | eval succ 0.00 R -115.3
+upd 21/1220 step 86016 eps 28 R -103.5 succ 0.00 ent 1.330 kl 0.0109 sps 23909
+upd 22/1220 step 90112 eps 30 R -101.3 succ 0.00 ent 1.314 kl 0.0070 sps 24003
+upd 23/1220 step 94208 eps 27 R -99.8 succ 0.00 ent 1.256 kl 0.0093 sps 24092
+upd 24/1220 step 98304 eps 17 R -99.3 succ 0.00 ent 1.194 kl 0.0087 sps 24177
+upd 25/1220 step 102400 eps 10 R -101.2 succ 0.00 ent 1.152 kl 0.0059 sps 24246
+upd 26/1220 step 106496 eps 16 R -111.1 succ 0.00 ent 1.078 kl 0.0063 sps 24366
+upd 27/1220 step 110592 eps 7 R -115.5 succ 0.00 ent 1.162 kl 0.0075 sps 24480
+upd 28/1220 step 114688 eps 11 R -119.9 succ 0.00 ent 1.174 kl 0.0060 sps 24535
+upd 29/1220 step 118784 eps 4 R -119.9 succ 0.00 ent 1.233 kl 0.0105 sps 24605
+upd 30/1220 step 122880 eps 4 R -119.5 succ 0.00 ent 1.225 kl 0.0074 sps 24665 | eval succ 0.00 R -120.6
+upd 31/1220 step 126976 eps 8 R -116.3 succ 0.00 ent 1.146 kl 0.0027 sps 22081
+upd 32/1220 step 131072 eps 8 R -108.1 succ 0.00 ent 1.090 kl 0.0109 sps 22197
+upd 33/1220 step 135168 eps 2 R -114.1 succ 0.00 ent 1.081 kl 0.0126 sps 22296
+upd 34/1220 step 139264 eps 6 R -111.5 succ 0.00 ent 1.162 kl 0.0052 sps 22402
+upd 35/1220 step 143360 eps 5 R -118.1 succ 0.00 ent 1.181 kl 0.0089 sps 22496
+upd 36/1220 step 147456 eps 5 R -117.0 succ 0.00 ent 1.112 kl 0.0067 sps 22612
+upd 37/1220 step 151552 eps 5 R -116.1 succ 0.00 ent 1.081 kl 0.0042 sps 22723
+upd 38/1220 step 155648 eps 5 R -116.6 succ 0.00 ent 1.121 kl 0.0053 sps 22838
+upd 39/1220 step 159744 eps 6 R -117.0 succ 0.00 ent 1.156 kl 0.0072 sps 22929
+upd 40/1220 step 163840 eps 3 R -120.5 succ 0.00 ent 1.055 kl 0.0096 sps 23001 | eval succ 0.00 R -118.7
+upd 41/1220 step 167936 eps 7 R -120.5 succ 0.00 ent 1.069 kl 0.0030 sps 21697
+upd 42/1220 step 172032 eps 4 R -119.1 succ 0.00 ent 1.043 kl 0.0089 sps 21809
+upd 43/1220 step 176128 eps 8 R -123.7 succ 0.00 ent 1.112 kl 0.0025 sps 21904
+upd 44/1220 step 180224 eps 7 R -125.8 succ 0.00 ent 1.183 kl 0.0066 sps 21987
+upd 45/1220 step 184320 eps 1 R -121.5 succ 0.00 ent 1.181 kl 0.0071 sps 22071
+upd 46/1220 step 188416 eps 7 R -124.1 succ 0.00 ent 1.167 kl 0.0062 sps 22148
+upd 47/1220 step 192512 eps 10 R -118.7 succ 0.00 ent 1.102 kl 0.0041 sps 22225
+upd 48/1220 step 196608 eps 2 R -120.1 succ 0.00 ent 1.178 kl 0.0038 sps 22306
+upd 49/1220 step 200704 eps 6 R -121.2 succ 0.00 ent 1.200 kl 0.0094 sps 22381
+upd 50/1220 step 204800 eps 8 R -120.5 succ 0.00 ent 1.203 kl 0.0093 sps 22468 | eval succ 0.00 R -124.2
+upd 51/1220 step 208896 eps 2 R -120.5 succ 0.00 ent 1.093 kl 0.0169 sps 19764
+upd 52/1220 step 212992 eps 6 R -118.5 succ 0.00 ent 1.086 kl 0.0092 sps 19861
+upd 53/1220 step 217088 eps 8 R -119.2 succ 0.00 ent 1.173 kl 0.0056 sps 19953
+upd 54/1220 step 221184 eps 2 R -122.1 succ 0.00 ent 1.073 kl 0.0144 sps 20035
+upd 55/1220 step 225280 eps 6 R -119.5 succ 0.00 ent 1.130 kl 0.0044 sps 20120
+upd 56/1220 step 229376 eps 7 R -120.0 succ 0.00 ent 1.165 kl 0.0108 sps 20208
+upd 57/1220 step 233472 eps 4 R -122.2 succ 0.00 ent 1.184 kl 0.0027 sps 20287
+upd 58/1220 step 237568 eps 8 R -119.7 succ 0.00 ent 1.205 kl 0.0144 sps 20370
+upd 59/1220 step 241664 eps 7 R -117.3 succ 0.00 ent 1.158 kl 0.0023 sps 20451
+upd 60/1220 step 245760 eps 7 R -115.6 succ 0.00 ent 1.203 kl 0.0048 sps 20533 | eval succ 0.00 R -116.9
+upd 61/1220 step 249856 eps 7 R -113.3 succ 0.00 ent 1.158 kl 0.0027 sps 19348
+upd 62/1220 step 253952 eps 12 R -101.7 succ 0.00 ent 1.122 kl 0.0047 sps 19439
+upd 63/1220 step 258048 eps 8 R -101.3 succ 0.00 ent 1.152 kl 0.0031 sps 19518
+upd 64/1220 step 262144 eps 3 R -106.2 succ 0.00 ent 1.135 kl 0.0045 sps 19596
+upd 65/1220 step 266240 eps 7 R -117.4 succ 0.00 ent 1.094 kl 0.0097 sps 19673
+upd 66/1220 step 270336 eps 6 R -116.7 succ 0.00 ent 1.142 kl 0.0039 sps 19750
+upd 67/1220 step 274432 eps 4 R -98.8 succ 0.00 ent 1.085 kl 0.0063 sps 19823
+upd 68/1220 step 278528 eps 7 R -113.6 succ 0.00 ent 1.099 kl 0.0024 sps 19896
+upd 69/1220 step 282624 eps 6 R -106.4 succ 0.00 ent 1.152 kl 0.0079 sps 19967
+upd 70/1220 step 286720 eps 4 R -112.4 succ 0.00 ent 1.139 kl 0.0056 sps 20036 | eval succ 0.00 R -114.3
+upd 71/1220 step 290816 eps 8 R -102.0 succ 0.00 ent 1.061 kl 0.0062 sps 18528
+upd 72/1220 step 294912 eps 6 R -105.1 succ 0.00 ent 1.081 kl 0.0029 sps 18605
+upd 73/1220 step 299008 eps 5 R -103.5 succ 0.00 ent 1.103 kl 0.0034 sps 18677
+upd 74/1220 step 303104 eps 6 R -115.5 succ 0.00 ent 1.069 kl 0.0039 sps 18749
+upd 75/1220 step 307200 eps 5 R -117.7 succ 0.00 ent 1.056 kl 0.0090 sps 18823
+upd 76/1220 step 311296 eps 5 R -119.6 succ 0.00 ent 1.109 kl 0.0034 sps 18894
+upd 77/1220 step 315392 eps 9 R -118.2 succ 0.00 ent 1.114 kl 0.0040 sps 18965
+upd 78/1220 step 319488 eps 3 R -119.7 succ 0.00 ent 1.050 kl 0.0106 sps 19041
+upd 79/1220 step 323584 eps 7 R -118.8 succ 0.00 ent 1.105 kl 0.0031 sps 19116
+upd 80/1220 step 327680 eps 5 R -121.1 succ 0.00 ent 1.100 kl 0.0073 sps 19192 | eval succ 0.00 R -119.6
+upd 81/1220 step 331776 eps 4 R -118.7 succ 0.00 ent 1.138 kl 0.0081 sps 18122
+upd 82/1220 step 335872 eps 6 R -119.0 succ 0.00 ent 1.065 kl 0.0056 sps 18193
+upd 83/1220 step 339968 eps 4 R -116.7 succ 0.00 ent 1.096 kl 0.0062 sps 18262
+upd 84/1220 step 344064 eps 6 R -117.3 succ 0.00 ent 1.101 kl 0.0090 sps 18331
+upd 85/1220 step 348160 eps 11 R -108.7 succ 0.00 ent 1.070 kl 0.0028 sps 18395
+upd 86/1220 step 352256 eps 8 R -110.3 succ 0.00 ent 1.078 kl 0.0032 sps 18461
+upd 87/1220 step 356352 eps 3 R -106.4 succ 0.00 ent 1.106 kl 0.0047 sps 18523
+upd 88/1220 step 360448 eps 7 R -116.0 succ 0.00 ent 1.068 kl 0.0069 sps 18590
+upd 89/1220 step 364544 eps 10 R -114.4 succ 0.00 ent 1.102 kl 0.0044 sps 18660
+upd 90/1220 step 368640 eps 1 R -115.7 succ 0.00 ent 1.119 kl 0.0043 sps 18729 | eval succ 0.00 R -120.3
+upd 91/1220 step 372736 eps 6 R -117.8 succ 0.00 ent 1.064 kl 0.0046 sps 17712
+upd 92/1220 step 376832 eps 9 R -119.3 succ 0.00 ent 1.096 kl 0.0106 sps 17774
+upd 93/1220 step 380928 eps 1 R -118.5 succ 0.00 ent 1.110 kl 0.0064 sps 17838
+upd 94/1220 step 385024 eps 5 R -118.9 succ 0.00 ent 1.086 kl 0.0041 sps 17900
+upd 95/1220 step 389120 eps 9 R -115.4 succ 0.00 ent 1.056 kl 0.0039 sps 17961
+upd 96/1220 step 393216 eps 1 R -112.6 succ 0.00 ent 1.076 kl 0.0100 sps 18021
+upd 97/1220 step 397312 eps 6 R -115.0 succ 0.00 ent 1.076 kl 0.0045 sps 18082
+upd 98/1220 step 401408 eps 8 R -114.3 succ 0.00 ent 1.074 kl 0.0084 sps 18146
+upd 99/1220 step 405504 eps 3 R -110.6 succ 0.00 ent 1.112 kl 0.0023 sps 18210
+upd 100/1220 step 409600 eps 7 R -106.8 succ 0.00 ent 0.987 kl 0.0121 sps 18275 | eval succ 0.00 R -122.2
+upd 101/1220 step 413696 eps 7 R -106.0 succ 0.00 ent 1.058 kl 0.0051 sps 17324
+upd 102/1220 step 417792 eps 2 R -113.4 succ 0.00 ent 1.147 kl 0.0101 sps 17382
+upd 103/1220 step 421888 eps 6 R -108.0 succ 0.00 ent 1.079 kl 0.0045 sps 17440
+upd 104/1220 step 425984 eps 9 R -105.8 succ 0.00 ent 0.986 kl 0.0094 sps 17498
+upd 105/1220 step 430080 eps 9 R -81.3 succ 0.00 ent 1.125 kl 0.0061 sps 17559
+upd 106/1220 step 434176 eps 6 R -76.0 succ 0.00 ent 1.114 kl 0.0061 sps 17621
+upd 107/1220 step 438272 eps 7 R -94.6 succ 0.00 ent 1.065 kl 0.0045 sps 17681
+upd 108/1220 step 442368 eps 12 R -93.6 succ 0.00 ent 1.027 kl 0.0064 sps 17740
+upd 109/1220 step 446464 eps 8 R -81.6 succ 0.00 ent 1.118 kl 0.0050 sps 17800
+upd 110/1220 step 450560 eps 5 R -86.0 succ 0.00 ent 1.108 kl 0.0026 sps 17858 | eval succ 0.00 R -117.9
+upd 111/1220 step 454656 eps 9 R -102.1 succ 0.00 ent 1.056 kl 0.0051 sps 17028
+upd 112/1220 step 458752 eps 5 R -84.4 succ 0.00 ent 1.141 kl 0.0062 sps 17084
+upd 113/1220 step 462848 eps 6 R -77.1 succ 0.17 ent 1.101 kl 0.0065 sps 17140
+upd 114/1220 step 466944 eps 13 R -69.1 succ 0.08 ent 1.081 kl 0.0037 sps 17198
+upd 115/1220 step 471040 eps 10 R -53.8 succ 0.10 ent 1.135 kl 0.0060 sps 17255
+upd 116/1220 step 475136 eps 16 R -63.4 succ 0.00 ent 1.093 kl 0.0047 sps 17313
+upd 117/1220 step 479232 eps 9 R -65.9 succ 0.00 ent 1.157 kl 0.0042 sps 17368
+upd 118/1220 step 483328 eps 9 R -53.4 succ 0.11 ent 1.146 kl 0.0080 sps 17423
+upd 119/1220 step 487424 eps 17 R -79.3 succ 0.00 ent 1.067 kl 0.0067 sps 17479
+upd 120/1220 step 491520 eps 9 R -52.5 succ 0.11 ent 1.079 kl 0.0046 sps 17533 | eval succ 0.00 R -110.6
+upd 121/1220 step 495616 eps 9 R -66.9 succ 0.00 ent 1.081 kl 0.0051 sps 16845
+upd 122/1220 step 499712 eps 7 R -79.4 succ 0.00 ent 1.082 kl 0.0050 sps 16899
+upd 123/1220 step 503808 eps 8 R -89.8 succ 0.00 ent 1.076 kl 0.0054 sps 16954
+upd 124/1220 step 507904 eps 8 R -94.7 succ 0.00 ent 1.079 kl 0.0029 sps 17008
+upd 125/1220 step 512000 eps 9 R -49.0 succ 0.22 ent 1.135 kl 0.0065 sps 17061
+upd 126/1220 step 516096 eps 6 R -78.5 succ 0.00 ent 1.139 kl 0.0027 sps 17115
+upd 127/1220 step 520192 eps 11 R -86.5 succ 0.00 ent 1.075 kl 0.0054 sps 17167
+upd 128/1220 step 524288 eps 6 R -64.5 succ 0.00 ent 1.116 kl 0.0045 sps 17219
+upd 129/1220 step 528384 eps 8 R -84.2 succ 0.00 ent 1.116 kl 0.0062 sps 17270
+upd 130/1220 step 532480 eps 10 R -88.6 succ 0.00 ent 1.123 kl 0.0031 sps 17320 | eval succ 0.00 R -113.3
+upd 131/1220 step 536576 eps 11 R -78.5 succ 0.00 ent 1.071 kl 0.0056 sps 16706
+upd 132/1220 step 540672 eps 10 R -80.7 succ 0.00 ent 1.073 kl 0.0042 sps 16757
+upd 133/1220 step 544768 eps 6 R -72.0 succ 0.00 ent 1.079 kl 0.0035 sps 16807
+upd 134/1220 step 548864 eps 8 R -85.8 succ 0.00 ent 1.093 kl 0.0032 sps 16856
+upd 135/1220 step 552960 eps 11 R -86.2 succ 0.00 ent 1.064 kl 0.0020 sps 16906
+upd 136/1220 step 557056 eps 6 R -76.3 succ 0.00 ent 1.095 kl 0.0048 sps 16956
+upd 137/1220 step 561152 eps 8 R -96.3 succ 0.00 ent 1.034 kl 0.0064 sps 17004
+upd 138/1220 step 565248 eps 8 R -99.1 succ 0.00 ent 1.029 kl 0.0043 sps 17052
+upd 139/1220 step 569344 eps 6 R -84.6 succ 0.00 ent 1.021 kl 0.0102 sps 17100
+upd 140/1220 step 573440 eps 6 R -108.7 succ 0.00 ent 1.019 kl 0.0047 sps 17147 | eval succ 0.00 R -114.7
+upd 141/1220 step 577536 eps 6 R -110.9 succ 0.00 ent 1.037 kl 0.0036 sps 16582
+upd 142/1220 step 581632 eps 5 R -114.5 succ 0.00 ent 1.037 kl 0.0068 sps 16626
+upd 143/1220 step 585728 eps 8 R -97.7 succ 0.00 ent 1.052 kl 0.0084 sps 16672
+upd 144/1220 step 589824 eps 7 R -88.0 succ 0.00 ent 1.057 kl 0.0106 sps 16719
+upd 145/1220 step 593920 eps 15 R -83.2 succ 0.00 ent 1.007 kl 0.0060 sps 16765
+upd 146/1220 step 598016 eps 7 R -74.2 succ 0.00 ent 1.072 kl 0.0080 sps 16811
+upd 147/1220 step 602112 eps 13 R -70.5 succ 0.00 ent 1.045 kl 0.0059 sps 16856
+upd 148/1220 step 606208 eps 14 R -77.2 succ 0.00 ent 1.011 kl 0.0051 sps 16901
+upd 149/1220 step 610304 eps 17 R -77.1 succ 0.00 ent 0.947 kl 0.0088 sps 16944
+upd 150/1220 step 614400 eps 12 R -70.2 succ 0.00 ent 0.983 kl 0.0092 sps 16984 | eval succ 0.00 R -85.0
+upd 151/1220 step 618496 eps 11 R -67.2 succ 0.00 ent 1.023 kl 0.0056 sps 16733
+upd 152/1220 step 622592 eps 12 R -68.9 succ 0.00 ent 1.033 kl 0.0040 sps 16772
+upd 153/1220 step 626688 eps 12 R -71.4 succ 0.00 ent 0.983 kl 0.0090 sps 16814
+upd 154/1220 step 630784 eps 12 R -70.8 succ 0.00 ent 0.991 kl 0.0069 sps 16855
+upd 155/1220 step 634880 eps 11 R -80.0 succ 0.00 ent 1.031 kl 0.0032 sps 16896
+upd 156/1220 step 638976 eps 10 R -85.2 succ 0.00 ent 1.023 kl 0.0066 sps 16936
+upd 157/1220 step 643072 eps 12 R -92.5 succ 0.00 ent 1.042 kl 0.0052 sps 16979
+upd 158/1220 step 647168 eps 6 R -78.8 succ 0.00 ent 1.049 kl 0.0029 sps 17023
+upd 159/1220 step 651264 eps 11 R -86.0 succ 0.00 ent 1.041 kl 0.0038 sps 17066
+upd 160/1220 step 655360 eps 11 R -55.7 succ 0.09 ent 1.056 kl 0.0037 sps 17110 | eval succ 0.02 R -106.2
+upd 161/1220 step 659456 eps 7 R -59.0 succ 0.00 ent 1.037 kl 0.0139 sps 16625
+upd 162/1220 step 663552 eps 9 R -73.2 succ 0.11 ent 1.097 kl 0.0086 sps 16656
+upd 163/1220 step 667648 eps 9 R -69.0 succ 0.00 ent 1.074 kl 0.0056 sps 16691
+upd 164/1220 step 671744 eps 10 R -98.1 succ 0.00 ent 1.088 kl 0.0034 sps 16725
+upd 165/1220 step 675840 eps 6 R -96.7 succ 0.00 ent 1.052 kl 0.0084 sps 16758
+upd 166/1220 step 679936 eps 3 R -103.7 succ 0.00 ent 1.024 kl 0.0115 sps 16794
+upd 167/1220 step 684032 eps 7 R -118.2 succ 0.00 ent 1.007 kl 0.0075 sps 16829
+upd 168/1220 step 688128 eps 6 R -118.7 succ 0.00 ent 1.062 kl 0.0074 sps 16868
+upd 169/1220 step 692224 eps 4 R -111.2 succ 0.00 ent 1.078 kl 0.0034 sps 16905
+upd 170/1220 step 696320 eps 5 R -117.9 succ 0.00 ent 1.080 kl 0.0082 sps 16943 | eval succ 0.00 R -116.2
+upd 171/1220 step 700416 eps 7 R -116.9 succ 0.00 ent 1.073 kl 0.0059 sps 16553
+upd 172/1220 step 704512 eps 5 R -104.5 succ 0.00 ent 1.075 kl 0.0063 sps 16587
+upd 173/1220 step 708608 eps 7 R -106.2 succ 0.00 ent 1.045 kl 0.0021 sps 16622
+upd 174/1220 step 712704 eps 8 R -92.4 succ 0.00 ent 1.087 kl 0.0055 sps 16658
+upd 175/1220 step 716800 eps 9 R -58.5 succ 0.11 ent 1.091 kl 0.0065 sps 16687
+upd 176/1220 step 720896 eps 13 R -77.0 succ 0.00 ent 1.069 kl 0.0034 sps 16721
+upd 177/1220 step 724992 eps 14 R -79.7 succ 0.00 ent 1.028 kl 0.0044 sps 16753
+upd 178/1220 step 729088 eps 12 R -64.8 succ 0.00 ent 1.026 kl 0.0066 sps 16790
+upd 179/1220 step 733184 eps 11 R -54.0 succ 0.09 ent 1.113 kl 0.0096 sps 16824
+upd 180/1220 step 737280 eps 13 R -54.8 succ 0.08 ent 1.156 kl 0.0062 sps 16859 | eval succ 0.02 R -92.7
+upd 181/1220 step 741376 eps 17 R -80.7 succ 0.00 ent 1.067 kl 0.0074 sps 16208
+upd 182/1220 step 745472 eps 12 R -78.1 succ 0.00 ent 1.039 kl 0.0089 sps 16218
+upd 183/1220 step 749568 eps 9 R -87.2 succ 0.00 ent 1.110 kl 0.0044 sps 16234
+upd 184/1220 step 753664 eps 12 R -95.1 succ 0.00 ent 1.142 kl 0.0066 sps 16236
+upd 185/1220 step 757760 eps 11 R -85.2 succ 0.00 ent 1.135 kl 0.0050 sps 16234
+upd 186/1220 step 761856 eps 15 R -95.2 succ 0.00 ent 1.073 kl 0.0076 sps 16248
+upd 187/1220 step 765952 eps 9 R -96.9 succ 0.00 ent 1.070 kl 0.0041 sps 16273
+upd 188/1220 step 770048 eps 5 R -74.9 succ 0.00 ent 1.077 kl 0.0091 sps 16302
+upd 189/1220 step 774144 eps 5 R -115.4 succ 0.00 ent 1.112 kl 0.0072 sps 16327
+upd 190/1220 step 778240 eps 9 R -117.4 succ 0.00 ent 1.095 kl 0.0042 sps 16342 | eval succ 0.00 R -113.8
+upd 191/1220 step 782336 eps 5 R -109.2 succ 0.00 ent 1.087 kl 0.0037 sps 16168
+upd 192/1220 step 786432 eps 13 R -114.9 succ 0.00 ent 1.044 kl 0.0048 sps 16181
+upd 193/1220 step 790528 eps 7 R -113.2 succ 0.00 ent 1.106 kl 0.0081 sps 16206
+upd 194/1220 step 794624 eps 9 R -115.0 succ 0.00 ent 1.139 kl 0.0108 sps 16232
+upd 195/1220 step 798720 eps 7 R -113.8 succ 0.00 ent 1.168 kl 0.0112 sps 16254
+upd 196/1220 step 802816 eps 8 R -115.7 succ 0.00 ent 1.162 kl 0.0096 sps 16286
+upd 197/1220 step 806912 eps 2 R -116.4 succ 0.00 ent 1.149 kl 0.0092 sps 16318
+upd 198/1220 step 811008 eps 6 R -117.4 succ 0.00 ent 1.164 kl 0.0048 sps 16345
+upd 199/1220 step 815104 eps 9 R -114.8 succ 0.00 ent 1.098 kl 0.0033 sps 16370
+upd 200/1220 step 819200 eps 2 R -113.9 succ 0.00 ent 1.114 kl 0.0044 sps 16342 | eval succ 0.00 R -122.0
+upd 201/1220 step 823296 eps 6 R -114.8 succ 0.00 ent 1.104 kl 0.0024 sps 15872
+upd 202/1220 step 827392 eps 8 R -115.0 succ 0.00 ent 1.117 kl 0.0061 sps 15902
+upd 203/1220 step 831488 eps 3 R -112.4 succ 0.00 ent 1.106 kl 0.0037 sps 15931
+upd 204/1220 step 835584 eps 8 R -111.3 succ 0.00 ent 1.104 kl 0.0031 sps 15961
+upd 205/1220 step 839680 eps 7 R -112.9 succ 0.00 ent 1.096 kl 0.0036 sps 15994
+upd 206/1220 step 843776 eps 4 R -111.9 succ 0.00 ent 1.153 kl 0.0117 sps 16027
+upd 207/1220 step 847872 eps 6 R -112.5 succ 0.00 ent 1.145 kl 0.0065 sps 16059
+upd 208/1220 step 851968 eps 8 R -107.1 succ 0.00 ent 1.123 kl 0.0046 sps 16092
+upd 209/1220 step 856064 eps 7 R -86.0 succ 0.00 ent 1.077 kl 0.0045 sps 16124
+upd 210/1220 step 860160 eps 6 R -94.9 succ 0.00 ent 1.145 kl 0.0079 sps 16156 | eval succ 0.00 R -113.4
+upd 211/1220 step 864256 eps 6 R -98.0 succ 0.00 ent 1.108 kl 0.0046 sps 15770
+upd 212/1220 step 868352 eps 9 R -85.0 succ 0.00 ent 1.132 kl 0.0070 sps 15797
+upd 213/1220 step 872448 eps 10 R -70.6 succ 0.00 ent 1.140 kl 0.0080 sps 15812
+upd 214/1220 step 876544 eps 10 R -59.7 succ 0.00 ent 1.108 kl 0.0045 sps 15835
+upd 215/1220 step 880640 eps 9 R -23.8 succ 0.22 ent 1.134 kl 0.0089 sps 15862
+upd 216/1220 step 884736 eps 11 R -57.3 succ 0.00 ent 1.052 kl 0.0068 sps 15891
+upd 217/1220 step 888832 eps 8 R -15.9 succ 0.25 ent 1.130 kl 0.0051 sps 15922
+upd 218/1220 step 892928 eps 13 R -59.0 succ 0.00 ent 1.059 kl 0.0046 sps 15953
+upd 219/1220 step 897024 eps 9 R -57.2 succ 0.00 ent 1.086 kl 0.0062 sps 15980
+upd 220/1220 step 901120 eps 11 R -58.3 succ 0.00 ent 1.062 kl 0.0069 sps 16011 | eval succ 0.00 R -112.6
+upd 221/1220 step 905216 eps 11 R -57.8 succ 0.00 ent 1.034 kl 0.0080 sps 15701
+upd 222/1220 step 909312 eps 2 R -59.3 succ 0.00 ent 1.124 kl 0.0058 sps 15729
+upd 223/1220 step 913408 eps 10 R -76.3 succ 0.00 ent 1.147 kl 0.0070 sps 15758
+upd 224/1220 step 917504 eps 6 R -91.0 succ 0.00 ent 1.040 kl 0.0141 sps 15789
+upd 225/1220 step 921600 eps 9 R -24.3 succ 0.22 ent 1.120 kl 0.0041 sps 15819
+upd 226/1220 step 925696 eps 8 R -62.1 succ 0.12 ent 1.146 kl 0.0041 sps 15849
+upd 227/1220 step 929792 eps 6 R -34.3 succ 0.17 ent 1.143 kl 0.0028 sps 15878
+upd 228/1220 step 933888 eps 9 R -45.7 succ 0.11 ent 1.108 kl 0.0027 sps 15905
+upd 229/1220 step 937984 eps 11 R 41.2 succ 0.64 ent 1.114 kl 0.0058 sps 15933
+upd 230/1220 step 942080 eps 12 R -29.6 succ 0.17 ent 1.095 kl 0.0050 sps 15959 | eval succ 0.00 R -70.6
+upd 231/1220 step 946176 eps 11 R -40.5 succ 0.09 ent 1.110 kl 0.0030 sps 15797
+upd 232/1220 step 950272 eps 9 R -59.5 succ 0.00 ent 1.124 kl 0.0045 sps 15813
+upd 233/1220 step 954368 eps 14 R -62.9 succ 0.00 ent 1.102 kl 0.0045 sps 15838
+upd 234/1220 step 958464 eps 13 R -63.1 succ 0.00 ent 1.065 kl 0.0063 sps 15865
+upd 235/1220 step 962560 eps 12 R -58.2 succ 0.00 ent 1.078 kl 0.0049 sps 15891
+upd 236/1220 step 966656 eps 9 R -55.9 succ 0.00 ent 1.055 kl 0.0093 sps 15912
+upd 237/1220 step 970752 eps 9 R -38.5 succ 0.11 ent 1.112 kl 0.0086 sps 15923
+upd 238/1220 step 974848 eps 13 R 3.7 succ 0.38 ent 1.103 kl 0.0053 sps 15947
+upd 239/1220 step 978944 eps 11 R -39.5 succ 0.09 ent 1.041 kl 0.0096 sps 15976
+upd 240/1220 step 983040 eps 10 R -23.0 succ 0.20 ent 1.088 kl 0.0062 sps 16003 | eval succ 0.00 R -107.5
+upd 241/1220 step 987136 eps 10 R -26.8 succ 0.20 ent 1.071 kl 0.0057 sps 15728
+upd 242/1220 step 991232 eps 9 R -30.2 succ 0.22 ent 1.076 kl 0.0051 sps 15754
+upd 243/1220 step 995328 eps 5 R -61.5 succ 0.00 ent 1.065 kl 0.0072 sps 15781
+upd 244/1220 step 999424 eps 4 R -98.5 succ 0.00 ent 1.116 kl 0.0023 sps 15807
+upd 245/1220 step 1003520 eps 8 R -111.0 succ 0.00 ent 1.090 kl 0.0033 sps 15830
+upd 246/1220 step 1007616 eps 6 R -100.2 succ 0.00 ent 1.117 kl 0.0025 sps 15855
+upd 247/1220 step 1011712 eps 4 R -112.2 succ 0.00 ent 1.153 kl 0.0087 sps 15880
+upd 248/1220 step 1015808 eps 7 R -112.6 succ 0.00 ent 1.129 kl 0.0069 sps 15905
+upd 249/1220 step 1019904 eps 6 R -103.1 succ 0.00 ent 1.146 kl 0.0059 sps 15930
+upd 250/1220 step 1024000 eps 8 R -92.3 succ 0.00 ent 1.124 kl 0.0028 sps 15951 | eval succ 0.00 R -114.4
+upd 251/1220 step 1028096 eps 10 R -85.1 succ 0.00 ent 1.140 kl 0.0028 sps 15678
+upd 252/1220 step 1032192 eps 9 R -78.6 succ 0.00 ent 1.110 kl 0.0042 sps 15703
+upd 253/1220 step 1036288 eps 14 R -53.4 succ 0.07 ent 1.126 kl 0.0051 sps 15728
+upd 254/1220 step 1040384 eps 12 R -58.0 succ 0.00 ent 1.089 kl 0.0017 sps 15753
+upd 255/1220 step 1044480 eps 9 R -24.4 succ 0.22 ent 1.145 kl 0.0086 sps 15778
+upd 256/1220 step 1048576 eps 13 R -34.4 succ 0.15 ent 1.119 kl 0.0065 sps 15803
+upd 257/1220 step 1052672 eps 14 R -47.6 succ 0.07 ent 1.076 kl 0.0074 sps 15829
+upd 258/1220 step 1056768 eps 12 R -14.9 succ 0.25 ent 1.098 kl 0.0048 sps 15854
+upd 259/1220 step 1060864 eps 12 R -3.0 succ 0.33 ent 1.097 kl 0.0030 sps 15879
+upd 260/1220 step 1064960 eps 10 R -22.0 succ 0.20 ent 1.057 kl 0.0066 sps 15904 | eval succ 0.00 R -113.3
+upd 261/1220 step 1069056 eps 6 R -10.7 succ 0.33 ent 1.105 kl 0.0036 sps 15645
+upd 262/1220 step 1073152 eps 9 R -61.6 succ 0.11 ent 1.088 kl 0.0060 sps 15670
+upd 263/1220 step 1077248 eps 6 R -38.5 succ 0.33 ent 1.138 kl 0.0060 sps 15694
+upd 264/1220 step 1081344 eps 9 R -38.0 succ 0.22 ent 1.115 kl 0.0038 sps 15718
+upd 265/1220 step 1085440 eps 13 R -3.2 succ 0.46 ent 1.155 kl 0.0093 sps 15743
+upd 266/1220 step 1089536 eps 13 R -30.4 succ 0.15 ent 1.094 kl 0.0030 sps 15768
+upd 267/1220 step 1093632 eps 10 R -13.3 succ 0.30 ent 1.132 kl 0.0033 sps 15792
+upd 268/1220 step 1097728 eps 15 R -67.5 succ 0.00 ent 1.070 kl 0.0043 sps 15816
+upd 269/1220 step 1101824 eps 12 R -16.6 succ 0.25 ent 1.129 kl 0.0049 sps 15840
+upd 270/1220 step 1105920 eps 10 R -46.9 succ 0.10 ent 1.133 kl 0.0064 sps 15863 | eval succ 0.02 R -103.1
+upd 271/1220 step 1110016 eps 15 R -60.4 succ 0.07 ent 1.094 kl 0.0029 sps 15646
+upd 272/1220 step 1114112 eps 14 R -68.3 succ 0.00 ent 1.079 kl 0.0031 sps 15669
+upd 273/1220 step 1118208 eps 12 R -43.3 succ 0.08 ent 1.055 kl 0.0050 sps 15692
+upd 274/1220 step 1122304 eps 13 R -26.6 succ 0.23 ent 1.147 kl 0.0069 sps 15715
+upd 275/1220 step 1126400 eps 14 R -47.5 succ 0.07 ent 1.112 kl 0.0026 sps 15739
+upd 276/1220 step 1130496 eps 17 R -54.6 succ 0.06 ent 1.104 kl 0.0049 sps 15763
+upd 277/1220 step 1134592 eps 18 R -41.6 succ 0.11 ent 1.054 kl 0.0051 sps 15788
+upd 278/1220 step 1138688 eps 15 R -12.7 succ 0.27 ent 1.094 kl 0.0022 sps 15811
+upd 279/1220 step 1142784 eps 17 R -23.6 succ 0.24 ent 1.039 kl 0.0054 sps 15835
+upd 280/1220 step 1146880 eps 16 R -4.1 succ 0.31 ent 1.007 kl 0.0035 sps 15858 | eval succ 0.00 R -111.2
+upd 281/1220 step 1150976 eps 12 R -15.0 succ 0.25 ent 1.015 kl 0.0079 sps 15655
+upd 282/1220 step 1155072 eps 3 R -58.1 succ 0.00 ent 1.009 kl 0.0117 sps 15678
+upd 283/1220 step 1159168 eps 7 R -111.4 succ 0.00 ent 1.043 kl 0.0079 sps 15700
+upd 284/1220 step 1163264 eps 6 R -111.7 succ 0.00 ent 1.074 kl 0.0023 sps 15723
+upd 285/1220 step 1167360 eps 3 R -111.4 succ 0.00 ent 1.051 kl 0.0076 sps 15745
+upd 286/1220 step 1171456 eps 7 R -111.9 succ 0.00 ent 1.139 kl 0.0051 sps 15768
+upd 287/1220 step 1175552 eps 7 R -111.7 succ 0.00 ent 1.137 kl 0.0065 sps 15791
+upd 288/1220 step 1179648 eps 2 R -111.1 succ 0.00 ent 1.158 kl 0.0074 sps 15815
+upd 289/1220 step 1183744 eps 7 R -111.6 succ 0.00 ent 1.130 kl 0.0082 sps 15829
+upd 290/1220 step 1187840 eps 9 R -80.7 succ 0.11 ent 1.140 kl 0.0074 sps 15850 | eval succ 0.00 R -110.8
+upd 291/1220 step 1191936 eps 10 R 3.2 succ 0.50 ent 1.125 kl 0.0057 sps 15641
+upd 292/1220 step 1196032 eps 16 R -24.5 succ 0.25 ent 1.119 kl 0.0067 sps 15663
+upd 293/1220 step 1200128 eps 17 R -18.8 succ 0.24 ent 1.097 kl 0.0038 sps 15684
+upd 294/1220 step 1204224 eps 18 R 0.4 succ 0.33 ent 1.083 kl 0.0041 sps 15705
+upd 295/1220 step 1208320 eps 20 R -25.0 succ 0.20 ent 1.027 kl 0.0040 sps 15727
+upd 296/1220 step 1212416 eps 17 R -28.0 succ 0.18 ent 1.031 kl 0.0037 sps 15748
+upd 297/1220 step 1216512 eps 10 R 38.7 succ 0.60 ent 1.108 kl 0.0055 sps 15769
+upd 298/1220 step 1220608 eps 15 R 6.5 succ 0.40 ent 1.070 kl 0.0034 sps 15790
+upd 299/1220 step 1224704 eps 19 R -51.8 succ 0.11 ent 1.041 kl 0.0051 sps 15811
+upd 300/1220 step 1228800 eps 13 R -29.8 succ 0.15 ent 1.040 kl 0.0061 sps 15833 | eval succ 0.00 R -111.0
+upd 301/1220 step 1232896 eps 7 R -8.6 succ 0.29 ent 1.093 kl 0.0054 sps 15624
+upd 302/1220 step 1236992 eps 7 R -57.8 succ 0.14 ent 1.167 kl 0.0074 sps 15645
+upd 303/1220 step 1241088 eps 9 R -92.4 succ 0.00 ent 1.088 kl 0.0057 sps 15666
+upd 304/1220 step 1245184 eps 14 R -63.4 succ 0.07 ent 1.137 kl 0.0065 sps 15687
+upd 305/1220 step 1249280 eps 15 R -76.6 succ 0.00 ent 1.069 kl 0.0058 sps 15708
+upd 306/1220 step 1253376 eps 15 R -30.7 succ 0.20 ent 1.079 kl 0.0070 sps 15729
+upd 307/1220 step 1257472 eps 14 R -8.1 succ 0.36 ent 1.144 kl 0.0121 sps 15750
+upd 308/1220 step 1261568 eps 20 R -26.0 succ 0.25 ent 1.098 kl 0.0043 sps 15772
+upd 309/1220 step 1265664 eps 21 R -20.9 succ 0.24 ent 1.057 kl 0.0046 sps 15794
+upd 310/1220 step 1269760 eps 18 R -31.8 succ 0.17 ent 1.037 kl 0.0031 sps 15816 | eval succ 0.00 R -111.0
+upd 311/1220 step 1273856 eps 14 R -17.9 succ 0.29 ent 1.042 kl 0.0038 sps 15612
+upd 312/1220 step 1277952 eps 14 R 6.4 succ 0.43 ent 1.102 kl 0.0058 sps 15632
+upd 313/1220 step 1282048 eps 17 R 7.6 succ 0.41 ent 1.075 kl 0.0060 sps 15652
+upd 314/1220 step 1286144 eps 17 R -40.2 succ 0.12 ent 1.038 kl 0.0055 sps 15672
+upd 315/1220 step 1290240 eps 17 R -42.5 succ 0.12 ent 1.043 kl 0.0035 sps 15693
+upd 316/1220 step 1294336 eps 13 R -9.4 succ 0.31 ent 1.049 kl 0.0035 sps 15715
+upd 317/1220 step 1298432 eps 8 R 25.7 succ 0.50 ent 1.116 kl 0.0065 sps 15737
+upd 318/1220 step 1302528 eps 15 R -48.5 succ 0.13 ent 1.094 kl 0.0038 sps 15760
+upd 319/1220 step 1306624 eps 16 R -35.9 succ 0.19 ent 1.032 kl 0.0045 sps 15782
+upd 320/1220 step 1310720 eps 11 R -14.4 succ 0.27 ent 1.093 kl 0.0039 sps 15803 | eval succ 0.00 R -110.2
+upd 321/1220 step 1314816 eps 6 R -35.4 succ 0.17 ent 1.084 kl 0.0029 sps 15613
+upd 322/1220 step 1318912 eps 6 R -58.3 succ 0.17 ent 1.148 kl 0.0056 sps 15632
+upd 323/1220 step 1323008 eps 13 R -40.0 succ 0.15 ent 1.120 kl 0.0026 sps 15651
+upd 324/1220 step 1327104 eps 16 R -16.0 succ 0.25 ent 1.111 kl 0.0045 sps 15670
+upd 325/1220 step 1331200 eps 17 R -22.6 succ 0.24 ent 1.055 kl 0.0014 sps 15690
+upd 326/1220 step 1335296 eps 17 R -0.0 succ 0.35 ent 1.046 kl 0.0022 sps 15708
+upd 327/1220 step 1339392 eps 19 R -33.0 succ 0.16 ent 1.005 kl 0.0085 sps 15729
+upd 328/1220 step 1343488 eps 6 R 28.0 succ 0.50 ent 1.136 kl 0.0056 sps 15739
+upd 329/1220 step 1347584 eps 15 R -12.3 succ 0.27 ent 1.059 kl 0.0025 sps 15759
+upd 330/1220 step 1351680 eps 12 R -1.1 succ 0.33 ent 1.126 kl 0.0054 sps 15780 | eval succ 0.00 R -94.1
+upd 331/1220 step 1355776 eps 17 R 39.5 succ 0.59 ent 1.048 kl 0.0049 sps 15590
+upd 332/1220 step 1359872 eps 17 R -6.0 succ 0.29 ent 1.018 kl 0.0039 sps 15609
+upd 333/1220 step 1363968 eps 12 R 24.0 succ 0.50 ent 1.119 kl 0.0046 sps 15627
+upd 334/1220 step 1368064 eps 14 R -34.1 succ 0.14 ent 1.003 kl 0.0068 sps 15646
+upd 335/1220 step 1372160 eps 9 R 31.6 succ 0.56 ent 1.117 kl 0.0039 sps 15666
+upd 336/1220 step 1376256 eps 14 R 14.4 succ 0.43 ent 0.996 kl 0.0070 sps 15685
+upd 337/1220 step 1380352 eps 8 R 66.0 succ 0.75 ent 1.106 kl 0.0046 sps 15704
+upd 338/1220 step 1384448 eps 15 R 83.8 succ 0.87 ent 1.108 kl 0.0050 sps 15725
+upd 339/1220 step 1388544 eps 15 R 21.0 succ 0.47 ent 1.061 kl 0.0033 sps 15745
+upd 340/1220 step 1392640 eps 12 R 8.6 succ 0.42 ent 1.024 kl 0.0044 sps 15765 | eval succ 0.00 R -91.8
+upd 341/1220 step 1396736 eps 11 R 75.8 succ 0.82 ent 1.122 kl 0.0045 sps 15578
+upd 342/1220 step 1400832 eps 16 R 11.7 succ 0.44 ent 1.053 kl 0.0047 sps 15596
+upd 343/1220 step 1404928 eps 13 R -34.2 succ 0.15 ent 1.027 kl 0.0055 sps 15615
+upd 344/1220 step 1409024 eps 10 R -31.5 succ 0.20 ent 1.025 kl 0.0056 sps 15633
+upd 345/1220 step 1413120 eps 5 R -1.5 succ 0.40 ent 1.121 kl 0.0033 sps 15652
+upd 346/1220 step 1417216 eps 13 R 40.8 succ 0.62 ent 1.083 kl 0.0018 sps 15671
+upd 347/1220 step 1421312 eps 6 R 25.1 succ 0.50 ent 1.097 kl 0.0041 sps 15689
+upd 348/1220 step 1425408 eps 14 R 46.6 succ 0.64 ent 1.076 kl 0.0046 sps 15709
+upd 349/1220 step 1429504 eps 16 R 13.6 succ 0.44 ent 1.037 kl 0.0051 sps 15729
+upd 350/1220 step 1433600 eps 11 R 41.6 succ 0.64 ent 1.116 kl 0.0092 sps 15749 | eval succ 0.02 R -71.7
+upd 351/1220 step 1437696 eps 13 R 78.7 succ 0.85 ent 1.065 kl 0.0066 sps 15568
+upd 352/1220 step 1441792 eps 21 R 10.6 succ 0.43 ent 0.975 kl 0.0050 sps 15586
+upd 353/1220 step 1445888 eps 14 R -8.7 succ 0.29 ent 1.037 kl 0.0044 sps 15605
+upd 354/1220 step 1449984 eps 14 R -13.5 succ 0.29 ent 1.043 kl 0.0045 sps 15623
+upd 355/1220 step 1454080 eps 12 R 66.1 succ 0.75 ent 1.063 kl 0.0062 sps 15641
+upd 356/1220 step 1458176 eps 16 R 44.9 succ 0.62 ent 1.067 kl 0.0048 sps 15660
+upd 357/1220 step 1462272 eps 16 R 13.0 succ 0.44 ent 1.071 kl 0.0035 sps 15678
+upd 358/1220 step 1466368 eps 19 R -6.8 succ 0.32 ent 0.993 kl 0.0045 sps 15698
+upd 359/1220 step 1470464 eps 14 R 0.1 succ 0.36 ent 1.015 kl 0.0031 sps 15717
+upd 360/1220 step 1474560 eps 13 R 28.3 succ 0.54 ent 1.022 kl 0.0035 sps 15737 | eval succ 0.00 R -97.1
+upd 361/1220 step 1478656 eps 11 R 17.5 succ 0.45 ent 1.004 kl 0.0050 sps 15562
+upd 362/1220 step 1482752 eps 11 R 73.9 succ 0.82 ent 1.065 kl 0.0059 sps 15580
+upd 363/1220 step 1486848 eps 17 R 49.5 succ 0.65 ent 1.021 kl 0.0055 sps 15597
+upd 364/1220 step 1490944 eps 14 R 83.2 succ 0.86 ent 1.053 kl 0.0079 sps 15615
+upd 365/1220 step 1495040 eps 14 R 60.5 succ 0.71 ent 1.011 kl 0.0067 sps 15632
+upd 366/1220 step 1499136 eps 15 R 75.4 succ 0.80 ent 1.046 kl 0.0036 sps 15649
+upd 367/1220 step 1503232 eps 14 R 3.4 succ 0.36 ent 1.013 kl 0.0051 sps 15667
+upd 368/1220 step 1507328 eps 13 R 32.3 succ 0.54 ent 1.009 kl 0.0043 sps 15684
+upd 369/1220 step 1511424 eps 7 R 35.3 succ 0.57 ent 1.086 kl 0.0041 sps 15701
+upd 370/1220 step 1515520 eps 14 R 31.3 succ 0.57 ent 1.016 kl 0.0050 sps 15718 | eval succ 0.00 R -98.7
+upd 371/1220 step 1519616 eps 5 R 41.1 succ 0.60 ent 1.042 kl 0.0059 sps 15554
+upd 372/1220 step 1523712 eps 10 R 4.3 succ 0.40 ent 1.032 kl 0.0072 sps 15571
+upd 373/1220 step 1527808 eps 3 R -10.6 succ 0.33 ent 1.031 kl 0.0088 sps 15587
+upd 374/1220 step 1531904 eps 5 R -44.5 succ 0.20 ent 1.088 kl 0.0044 sps 15604
+upd 375/1220 step 1536000 eps 12 R -46.7 succ 0.17 ent 1.033 kl 0.0094 sps 15621
+upd 376/1220 step 1540096 eps 2 R -65.2 succ 0.00 ent 1.023 kl 0.0119 sps 15639
+upd 377/1220 step 1544192 eps 6 R -85.8 succ 0.00 ent 1.070 kl 0.0059 sps 15656
+upd 378/1220 step 1548288 eps 9 R -79.8 succ 0.11 ent 1.096 kl 0.0013 sps 15673
+upd 379/1220 step 1552384 eps 2 R -85.1 succ 0.00 ent 1.059 kl 0.0075 sps 15690
+upd 380/1220 step 1556480 eps 7 R -86.3 succ 0.00 ent 1.130 kl 0.0029 sps 15706 | eval succ 0.00 R -111.3
+upd 381/1220 step 1560576 eps 8 R -89.7 succ 0.00 ent 1.052 kl 0.0061 sps 15538
+upd 382/1220 step 1564672 eps 3 R -90.2 succ 0.00 ent 1.080 kl 0.0056 sps 15554
+upd 383/1220 step 1568768 eps 7 R -104.6 succ 0.00 ent 1.083 kl 0.0029 sps 15571
+upd 384/1220 step 1572864 eps 6 R -108.5 succ 0.00 ent 1.135 kl 0.0083 sps 15588
+upd 385/1220 step 1576960 eps 3 R -96.3 succ 0.00 ent 1.150 kl 0.0074 sps 15605
+upd 386/1220 step 1581056 eps 9 R -87.9 succ 0.00 ent 1.144 kl 0.0080 sps 15624
+upd 387/1220 step 1585152 eps 4 R -89.5 succ 0.00 ent 1.138 kl 0.0110 sps 15642
+upd 388/1220 step 1589248 eps 7 R -43.8 succ 0.14 ent 1.170 kl 0.0111 sps 15660
+upd 389/1220 step 1593344 eps 9 R 8.9 succ 0.44 ent 1.136 kl 0.0107 sps 15677
+upd 390/1220 step 1597440 eps 10 R 71.7 succ 0.80 ent 1.137 kl 0.0096 sps 15693 | eval succ 0.90 R 83.0
+upd 391/1220 step 1601536 eps 13 R 80.3 succ 0.85 ent 1.119 kl 0.0093 sps 15536
+upd 392/1220 step 1605632 eps 18 R 31.2 succ 0.56 ent 1.047 kl 0.0026 sps 15552
+upd 393/1220 step 1609728 eps 16 R 36.3 succ 0.56 ent 1.006 kl 0.0038 sps 15569
+upd 394/1220 step 1613824 eps 13 R 61.8 succ 0.69 ent 1.040 kl 0.0044 sps 15585
+upd 395/1220 step 1617920 eps 14 R 75.9 succ 0.79 ent 1.082 kl 0.0027 sps 15601
+upd 396/1220 step 1622016 eps 16 R 8.2 succ 0.38 ent 0.997 kl 0.0061 sps 15618
+upd 397/1220 step 1626112 eps 16 R 39.8 succ 0.56 ent 1.004 kl 0.0029 sps 15635
+upd 398/1220 step 1630208 eps 15 R 83.2 succ 0.87 ent 1.097 kl 0.0035 sps 15652
+upd 399/1220 step 1634304 eps 14 R 83.6 succ 0.86 ent 1.085 kl 0.0041 sps 15669
+upd 400/1220 step 1638400 eps 17 R 42.2 succ 0.59 ent 1.005 kl 0.0042 sps 15685 | eval succ 0.90 R 84.9
+upd 401/1220 step 1642496 eps 15 R 76.2 succ 0.80 ent 1.079 kl 0.0056 sps 15533
+upd 402/1220 step 1646592 eps 17 R 61.7 succ 0.71 ent 1.027 kl 0.0028 sps 15549
+upd 403/1220 step 1650688 eps 15 R 87.2 succ 0.87 ent 1.038 kl 0.0038 sps 15565
+upd 404/1220 step 1654784 eps 16 R 56.5 succ 0.69 ent 1.014 kl 0.0038 sps 15581
+upd 405/1220 step 1658880 eps 16 R 86.3 succ 0.88 ent 1.010 kl 0.0027 sps 15596
+upd 406/1220 step 1662976 eps 15 R 54.8 succ 0.67 ent 1.006 kl 0.0039 sps 15612
+upd 407/1220 step 1667072 eps 16 R 26.2 succ 0.50 ent 1.049 kl 0.0031 sps 15629
+upd 408/1220 step 1671168 eps 20 R 25.9 succ 0.55 ent 0.982 kl 0.0064 sps 15646
+upd 409/1220 step 1675264 eps 11 R 26.0 succ 0.55 ent 0.994 kl 0.0089 sps 15662
+upd 410/1220 step 1679360 eps 7 R 103.1 succ 1.00 ent 1.062 kl 0.0065 sps 15677 | eval succ 0.04 R -60.9
+upd 411/1220 step 1683456 eps 13 R 90.6 succ 0.92 ent 1.070 kl 0.0057 sps 15529
+upd 412/1220 step 1687552 eps 13 R 92.3 succ 0.92 ent 1.056 kl 0.0044 sps 15544
+upd 413/1220 step 1691648 eps 16 R 85.4 succ 0.88 ent 1.070 kl 0.0022 sps 15559
+upd 414/1220 step 1695744 eps 11 R 62.6 succ 0.73 ent 1.010 kl 0.0060 sps 15574
+upd 415/1220 step 1699840 eps 11 R 90.7 succ 0.91 ent 1.026 kl 0.0033 sps 15590
+upd 416/1220 step 1703936 eps 12 R 91.6 succ 0.92 ent 1.060 kl 0.0029 sps 15605
+upd 417/1220 step 1708032 eps 11 R 104.4 succ 1.00 ent 1.068 kl 0.0042 sps 15621
+upd 418/1220 step 1712128 eps 15 R 85.1 succ 0.87 ent 1.038 kl 0.0037 sps 15638
+upd 419/1220 step 1716224 eps 11 R 89.2 succ 0.91 ent 1.041 kl 0.0041 sps 15655
+upd 420/1220 step 1720320 eps 10 R 72.5 succ 0.80 ent 1.005 kl 0.0040 sps 15670 | eval succ 0.00 R -75.8
+upd 421/1220 step 1724416 eps 11 R 102.4 succ 1.00 ent 1.064 kl 0.0056 sps 15536
+upd 422/1220 step 1728512 eps 9 R 84.9 succ 0.89 ent 1.079 kl 0.0049 sps 15551
+upd 423/1220 step 1732608 eps 12 R 76.8 succ 0.83 ent 1.078 kl 0.0014 sps 15566
+upd 424/1220 step 1736704 eps 14 R -8.3 succ 0.29 ent 1.073 kl 0.0042 sps 15581
+upd 425/1220 step 1740800 eps 11 R -51.6 succ 0.00 ent 1.106 kl 0.0061 sps 15597
+upd 426/1220 step 1744896 eps 16 R -21.8 succ 0.19 ent 1.038 kl 0.0040 sps 15612
+upd 427/1220 step 1748992 eps 13 R 54.9 succ 0.69 ent 1.115 kl 0.0080 sps 15628
+upd 428/1220 step 1753088 eps 16 R 26.2 succ 0.50 ent 1.034 kl 0.0046 sps 15644
+upd 429/1220 step 1757184 eps 13 R 56.1 succ 0.69 ent 1.044 kl 0.0050 sps 15660
+upd 430/1220 step 1761280 eps 16 R 86.3 succ 0.88 ent 1.026 kl 0.0040 sps 15676 | eval succ 1.00 R 103.7
+upd 431/1220 step 1765376 eps 14 R 50.1 succ 0.64 ent 0.996 kl 0.0038 sps 15581
+upd 432/1220 step 1769472 eps 13 R 82.8 succ 0.85 ent 1.037 kl 0.0032 sps 15596
+upd 433/1220 step 1773568 eps 14 R 73.1 succ 0.79 ent 1.097 kl 0.0034 sps 15611
+upd 434/1220 step 1777664 eps 14 R 86.8 succ 0.86 ent 1.055 kl 0.0037 sps 15625
+upd 435/1220 step 1781760 eps 16 R 59.5 succ 0.69 ent 1.034 kl 0.0026 sps 15639
+upd 436/1220 step 1785856 eps 11 R 22.3 succ 0.45 ent 1.031 kl 0.0047 sps 15654
+upd 437/1220 step 1789952 eps 12 R 107.9 succ 1.00 ent 1.056 kl 0.0039 sps 15669
+upd 438/1220 step 1794048 eps 11 R 94.0 succ 0.91 ent 1.023 kl 0.0033 sps 15683
+upd 439/1220 step 1798144 eps 14 R 98.1 succ 0.93 ent 1.106 kl 0.0047 sps 15698
+upd 440/1220 step 1802240 eps 13 R 96.9 succ 0.92 ent 1.047 kl 0.0026 sps 15713 | eval succ 0.38 R -3.3
+upd 441/1220 step 1806336 eps 11 R 92.8 succ 0.91 ent 1.061 kl 0.0016 sps 15580
+upd 442/1220 step 1810432 eps 12 R 93.6 succ 0.92 ent 1.025 kl 0.0023 sps 15595
+upd 443/1220 step 1814528 eps 13 R 99.2 succ 0.92 ent 1.064 kl 0.0022 sps 15609
+upd 444/1220 step 1818624 eps 14 R 96.9 succ 0.93 ent 1.025 kl 0.0051 sps 15623
+upd 445/1220 step 1822720 eps 12 R 81.3 succ 0.83 ent 1.083 kl 0.0046 sps 15637
+upd 446/1220 step 1826816 eps 12 R 83.3 succ 0.83 ent 1.004 kl 0.0045 sps 15651
+upd 447/1220 step 1830912 eps 15 R 65.0 succ 0.73 ent 1.083 kl 0.0053 sps 15666
+upd 448/1220 step 1835008 eps 13 R 57.8 succ 0.69 ent 1.026 kl 0.0044 sps 15680
+upd 449/1220 step 1839104 eps 12 R 80.1 succ 0.83 ent 1.043 kl 0.0035 sps 15695
+upd 450/1220 step 1843200 eps 14 R 96.1 succ 0.93 ent 1.091 kl 0.0040 sps 15709 | eval succ 0.40 R 1.3
+upd 451/1220 step 1847296 eps 16 R 38.2 succ 0.56 ent 1.018 kl 0.0042 sps 15588
+upd 452/1220 step 1851392 eps 15 R 30.6 succ 0.53 ent 0.986 kl 0.0044 sps 15602
+upd 453/1220 step 1855488 eps 13 R 84.1 succ 0.85 ent 1.027 kl 0.0044 sps 15616
+upd 454/1220 step 1859584 eps 13 R 84.8 succ 0.85 ent 1.047 kl 0.0045 sps 15629
+upd 455/1220 step 1863680 eps 13 R 67.4 succ 0.77 ent 0.984 kl 0.0062 sps 15643
+upd 456/1220 step 1867776 eps 12 R 59.2 succ 0.75 ent 1.019 kl 0.0043 sps 15657
+upd 457/1220 step 1871872 eps 11 R 106.7 succ 1.00 ent 1.011 kl 0.0066 sps 15671
+upd 458/1220 step 1875968 eps 10 R 104.2 succ 1.00 ent 1.060 kl 0.0047 sps 15685
+upd 459/1220 step 1880064 eps 10 R 71.4 succ 0.80 ent 0.979 kl 0.0039 sps 15699
+upd 460/1220 step 1884160 eps 12 R 74.8 succ 0.83 ent 1.024 kl 0.0017 sps 15713 | eval succ 0.00 R -89.1
+upd 461/1220 step 1888256 eps 9 R 87.0 succ 0.89 ent 1.011 kl 0.0029 sps 15592
+upd 462/1220 step 1892352 eps 13 R 102.4 succ 1.00 ent 0.980 kl 0.0035 sps 15606
+upd 463/1220 step 1896448 eps 11 R 103.4 succ 1.00 ent 1.047 kl 0.0025 sps 15620
+upd 464/1220 step 1900544 eps 8 R 63.5 succ 0.75 ent 1.039 kl 0.0010 sps 15633
+upd 465/1220 step 1904640 eps 11 R 87.9 succ 0.91 ent 1.002 kl 0.0035 sps 15647
+upd 466/1220 step 1908736 eps 10 R 55.1 succ 0.70 ent 1.030 kl 0.0036 sps 15660
+upd 467/1220 step 1912832 eps 7 R 58.3 succ 0.71 ent 1.045 kl 0.0045 sps 15673
+upd 468/1220 step 1916928 eps 9 R 81.4 succ 0.89 ent 1.093 kl 0.0048 sps 15687
+upd 469/1220 step 1921024 eps 9 R 13.4 succ 0.44 ent 1.018 kl 0.0052 sps 15700
+upd 470/1220 step 1925120 eps 7 R 76.0 succ 0.86 ent 1.078 kl 0.0057 sps 15713 | eval succ 0.00 R -76.2
+upd 471/1220 step 1929216 eps 10 R 99.3 succ 1.00 ent 1.080 kl 0.0104 sps 15584
+upd 472/1220 step 1933312 eps 13 R 102.1 succ 1.00 ent 1.079 kl 0.0079 sps 15598
+upd 473/1220 step 1937408 eps 10 R 105.9 succ 1.00 ent 1.027 kl 0.0063 sps 15611
+upd 474/1220 step 1941504 eps 10 R 75.0 succ 0.80 ent 1.031 kl 0.0023 sps 15625
+upd 475/1220 step 1945600 eps 12 R 93.7 succ 0.92 ent 1.018 kl 0.0044 sps 15637
+upd 476/1220 step 1949696 eps 8 R 107.2 succ 1.00 ent 1.005 kl 0.0057 sps 15650
+upd 477/1220 step 1953792 eps 11 R 93.2 succ 0.91 ent 1.065 kl 0.0031 sps 15663
+upd 478/1220 step 1957888 eps 11 R 77.7 succ 0.82 ent 1.024 kl 0.0049 sps 15677
+upd 479/1220 step 1961984 eps 8 R 88.0 succ 0.88 ent 1.033 kl 0.0050 sps 15690
+upd 480/1220 step 1966080 eps 9 R 86.1 succ 0.89 ent 1.031 kl 0.0035 sps 15703 | eval succ 0.00 R -79.5
+upd 481/1220 step 1970176 eps 5 R 105.3 succ 1.00 ent 1.092 kl 0.0035 sps 15583
+upd 482/1220 step 1974272 eps 12 R 89.4 succ 0.92 ent 1.055 kl 0.0023 sps 15597
+upd 483/1220 step 1978368 eps 8 R 105.9 succ 1.00 ent 1.034 kl 0.0040 sps 15610
+upd 484/1220 step 1982464 eps 11 R 104.9 succ 1.00 ent 1.050 kl 0.0052 sps 15623
+upd 485/1220 step 1986560 eps 9 R 89.1 succ 0.89 ent 1.085 kl 0.0058 sps 15636
+upd 486/1220 step 1990656 eps 11 R 104.9 succ 1.00 ent 1.008 kl 0.0045 sps 15649
+upd 487/1220 step 1994752 eps 11 R 106.2 succ 1.00 ent 1.043 kl 0.0041 sps 15662
+upd 488/1220 step 1998848 eps 10 R 106.1 succ 1.00 ent 1.024 kl 0.0039 sps 15676
+upd 489/1220 step 2002944 eps 11 R 106.9 succ 1.00 ent 1.001 kl 0.0053 sps 15689
+upd 490/1220 step 2007040 eps 10 R 107.4 succ 1.00 ent 1.034 kl 0.0033 sps 15702 | eval succ 0.84 R 75.0
+upd 491/1220 step 2011136 eps 9 R 105.6 succ 1.00 ent 1.048 kl 0.0043 sps 15596
+upd 492/1220 step 2015232 eps 9 R 105.5 succ 1.00 ent 0.988 kl 0.0059 sps 15608
+upd 493/1220 step 2019328 eps 8 R 105.6 succ 1.00 ent 1.001 kl 0.0064 sps 15621
+upd 494/1220 step 2023424 eps 8 R 106.4 succ 1.00 ent 0.999 kl 0.0057 sps 15634
+upd 495/1220 step 2027520 eps 7 R 104.0 succ 1.00 ent 1.048 kl 0.0014 sps 15647
+upd 496/1220 step 2031616 eps 8 R 103.9 succ 1.00 ent 1.039 kl 0.0033 sps 15659
+upd 497/1220 step 2035712 eps 9 R 106.2 succ 1.00 ent 1.042 kl 0.0037 sps 15672
+upd 498/1220 step 2039808 eps 8 R 107.6 succ 1.00 ent 1.052 kl 0.0051 sps 15683
+upd 499/1220 step 2043904 eps 7 R 107.5 succ 1.00 ent 1.035 kl 0.0026 sps 15695
+upd 500/1220 step 2048000 eps 8 R 86.7 succ 0.88 ent 1.027 kl 0.0031 sps 15708 | eval succ 0.80 R 69.1
+upd 501/1220 step 2052096 eps 7 R 104.9 succ 1.00 ent 1.047 kl 0.0040 sps 15593
+upd 502/1220 step 2056192 eps 9 R 87.4 succ 0.89 ent 1.035 kl 0.0012 sps 15606
+upd 503/1220 step 2060288 eps 7 R 104.6 succ 1.00 ent 1.027 kl 0.0035 sps 15618
+upd 504/1220 step 2064384 eps 9 R 104.5 succ 1.00 ent 1.063 kl 0.0050 sps 15631
+upd 505/1220 step 2068480 eps 8 R 105.4 succ 1.00 ent 1.071 kl 0.0040 sps 15643
+upd 506/1220 step 2072576 eps 8 R 83.4 succ 0.88 ent 1.028 kl 0.0025 sps 15655
+upd 507/1220 step 2076672 eps 6 R 105.7 succ 1.00 ent 1.010 kl 0.0034 sps 15668
+upd 508/1220 step 2080768 eps 10 R 104.9 succ 1.00 ent 1.042 kl 0.0021 sps 15680
+upd 509/1220 step 2084864 eps 8 R 103.8 succ 1.00 ent 1.038 kl 0.0025 sps 15692
+upd 510/1220 step 2088960 eps 8 R 105.0 succ 1.00 ent 1.021 kl 0.0057 sps 15705 | eval succ 0.98 R 98.7
+upd 511/1220 step 2093056 eps 8 R 103.5 succ 1.00 ent 1.017 kl 0.0026 sps 15605
+upd 512/1220 step 2097152 eps 7 R 104.9 succ 1.00 ent 0.991 kl 0.0016 sps 15617
+upd 513/1220 step 2101248 eps 8 R 104.3 succ 1.00 ent 0.966 kl 0.0050 sps 15630
+upd 514/1220 step 2105344 eps 8 R 66.4 succ 0.75 ent 0.992 kl 0.0037 sps 15643
+upd 515/1220 step 2109440 eps 6 R 104.1 succ 1.00 ent 1.036 kl 0.0030 sps 15655
+upd 516/1220 step 2113536 eps 9 R 85.7 succ 0.89 ent 1.005 kl 0.0029 sps 15668
+upd 517/1220 step 2117632 eps 5 R 104.4 succ 1.00 ent 1.056 kl 0.0024 sps 15681
+upd 518/1220 step 2121728 eps 11 R 88.7 succ 0.91 ent 1.020 kl 0.0036 sps 15693
+upd 519/1220 step 2125824 eps 5 R 104.7 succ 1.00 ent 1.065 kl 0.0040 sps 15705
+upd 520/1220 step 2129920 eps 10 R 105.9 succ 1.00 ent 1.053 kl 0.0045 sps 15717 | eval succ 1.00 R 104.8
+upd 521/1220 step 2134016 eps 7 R 105.8 succ 1.00 ent 0.995 kl 0.0048 sps 15625
+upd 522/1220 step 2138112 eps 9 R 105.6 succ 1.00 ent 1.065 kl 0.0063 sps 15637
+upd 523/1220 step 2142208 eps 7 R 104.6 succ 1.00 ent 1.008 kl 0.0046 sps 15649
+upd 524/1220 step 2146304 eps 10 R 103.9 succ 1.00 ent 1.021 kl 0.0033 sps 15661
+upd 525/1220 step 2150400 eps 8 R 85.2 succ 0.88 ent 1.017 kl 0.0043 sps 15674
+upd 526/1220 step 2154496 eps 10 R 105.0 succ 1.00 ent 1.007 kl 0.0052 sps 15685
+upd 527/1220 step 2158592 eps 8 R 104.8 succ 1.00 ent 0.974 kl 0.0053 sps 15698
+upd 528/1220 step 2162688 eps 9 R 89.9 succ 0.89 ent 0.970 kl 0.0044 sps 15709
+upd 529/1220 step 2166784 eps 7 R 105.1 succ 1.00 ent 0.937 kl 0.0041 sps 15721
+upd 530/1220 step 2170880 eps 11 R 90.3 succ 0.91 ent 1.015 kl 0.0031 sps 15733 | eval succ 1.00 R 104.4
+upd 531/1220 step 2174976 eps 6 R 102.9 succ 1.00 ent 1.026 kl 0.0031 sps 15642
+upd 532/1220 step 2179072 eps 10 R 103.5 succ 1.00 ent 0.976 kl 0.0051 sps 15655
+upd 533/1220 step 2183168 eps 6 R 77.4 succ 0.83 ent 1.023 kl 0.0036 sps 15668
+upd 534/1220 step 2187264 eps 10 R 88.3 succ 0.90 ent 0.986 kl 0.0036 sps 15680
+upd 535/1220 step 2191360 eps 9 R 85.6 succ 0.89 ent 1.054 kl 0.0046 sps 15692
+upd 536/1220 step 2195456 eps 8 R 104.3 succ 1.00 ent 1.012 kl 0.0020 sps 15704
+upd 537/1220 step 2199552 eps 8 R 87.0 succ 0.88 ent 0.994 kl 0.0030 sps 15716
+upd 538/1220 step 2203648 eps 7 R 105.1 succ 1.00 ent 1.017 kl 0.0071 sps 15728
+upd 539/1220 step 2207744 eps 9 R 102.6 succ 1.00 ent 1.027 kl 0.0040 sps 15739
+upd 540/1220 step 2211840 eps 10 R 91.0 succ 0.90 ent 1.006 kl 0.0035 sps 15751 | eval succ 0.98 R 99.5
+upd 541/1220 step 2215936 eps 7 R 104.7 succ 1.00 ent 1.008 kl 0.0061 sps 15659
+upd 542/1220 step 2220032 eps 9 R 103.9 succ 1.00 ent 1.012 kl 0.0054 sps 15671
+upd 543/1220 step 2224128 eps 8 R 107.0 succ 1.00 ent 0.959 kl 0.0036 sps 15683
+upd 544/1220 step 2228224 eps 7 R 83.2 succ 0.86 ent 0.983 kl 0.0036 sps 15696
+upd 545/1220 step 2232320 eps 11 R 108.0 succ 1.00 ent 0.978 kl 0.0042 sps 15708
+upd 546/1220 step 2236416 eps 4 R 104.3 succ 1.00 ent 0.960 kl 0.0043 sps 15720
+upd 547/1220 step 2240512 eps 9 R 105.2 succ 1.00 ent 1.018 kl 0.0025 sps 15731
+upd 548/1220 step 2244608 eps 7 R 106.0 succ 1.00 ent 0.951 kl 0.0051 sps 15743
+upd 549/1220 step 2248704 eps 9 R 82.5 succ 0.89 ent 0.996 kl 0.0039 sps 15755
+upd 550/1220 step 2252800 eps 7 R 104.7 succ 1.00 ent 0.930 kl 0.0076 sps 15766 | eval succ 0.44 R 4.2
+upd 551/1220 step 2256896 eps 9 R 104.7 succ 1.00 ent 0.988 kl 0.0044 sps 15666
+upd 552/1220 step 2260992 eps 7 R 103.9 succ 1.00 ent 0.951 kl 0.0054 sps 15677
+upd 553/1220 step 2265088 eps 6 R 103.0 succ 1.00 ent 0.966 kl 0.0053 sps 15688
+upd 554/1220 step 2269184 eps 7 R 78.3 succ 0.86 ent 0.975 kl 0.0028 sps 15701
+upd 555/1220 step 2273280 eps 8 R 100.1 succ 1.00 ent 0.983 kl 0.0092 sps 15713
+upd 556/1220 step 2277376 eps 6 R 106.3 succ 1.00 ent 0.999 kl 0.0006 sps 15726
+upd 557/1220 step 2281472 eps 10 R 90.0 succ 0.90 ent 1.016 kl 0.0052 sps 15737
+upd 558/1220 step 2285568 eps 5 R 110.1 succ 1.00 ent 0.979 kl 0.0029 sps 15748
+upd 559/1220 step 2289664 eps 11 R 105.9 succ 1.00 ent 0.999 kl 0.0056 sps 15759
+upd 560/1220 step 2293760 eps 5 R 106.6 succ 1.00 ent 0.996 kl 0.0045 sps 15771 | eval succ 1.00 R 104.8
+upd 561/1220 step 2297856 eps 11 R 91.5 succ 0.91 ent 0.971 kl 0.0023 sps 15681
+upd 562/1220 step 2301952 eps 6 R 107.0 succ 1.00 ent 0.996 kl 0.0027 sps 15693
+upd 563/1220 step 2306048 eps 10 R 105.8 succ 1.00 ent 0.981 kl 0.0072 sps 15704
+upd 564/1220 step 2310144 eps 8 R 108.7 succ 1.00 ent 0.955 kl 0.0037 sps 15715
+upd 565/1220 step 2314240 eps 9 R 106.6 succ 1.00 ent 0.973 kl 0.0081 sps 15728
+upd 566/1220 step 2318336 eps 14 R 107.1 succ 1.00 ent 0.994 kl 0.0026 sps 15740
+upd 567/1220 step 2322432 eps 8 R 105.1 succ 1.00 ent 0.996 kl 0.0028 sps 15752
+upd 568/1220 step 2326528 eps 9 R 106.2 succ 1.00 ent 1.031 kl 0.0064 sps 15764
+upd 569/1220 step 2330624 eps 12 R 109.2 succ 1.00 ent 1.004 kl 0.0064 sps 15775
+upd 570/1220 step 2334720 eps 8 R 69.7 succ 0.75 ent 0.970 kl 0.0030 sps 15786 | eval succ 1.00 R 109.2
+upd 571/1220 step 2338816 eps 12 R 106.6 succ 1.00 ent 0.972 kl 0.0045 sps 15721
+upd 572/1220 step 2342912 eps 12 R 94.5 succ 0.92 ent 1.042 kl 0.0059 sps 15732
+upd 573/1220 step 2347008 eps 6 R 107.7 succ 1.00 ent 0.987 kl 0.0009 sps 15742
+upd 574/1220 step 2351104 eps 14 R 107.5 succ 1.00 ent 1.015 kl 0.0060 sps 15753
+upd 575/1220 step 2355200 eps 11 R 106.5 succ 1.00 ent 1.012 kl 0.0032 sps 15764
+upd 576/1220 step 2359296 eps 12 R 108.3 succ 1.00 ent 0.995 kl 0.0050 sps 15776
+upd 577/1220 step 2363392 eps 10 R 107.2 succ 1.00 ent 0.945 kl 0.0038 sps 15787
+upd 578/1220 step 2367488 eps 16 R 107.1 succ 1.00 ent 1.038 kl 0.0037 sps 15799
+upd 579/1220 step 2371584 eps 11 R 93.6 succ 0.91 ent 0.987 kl 0.0038 sps 15810
+upd 580/1220 step 2375680 eps 10 R 109.1 succ 1.00 ent 1.010 kl 0.0022 sps 15822 | eval succ 1.00 R 108.2
+upd 581/1220 step 2379776 eps 11 R 107.9 succ 1.00 ent 1.005 kl 0.0041 sps 15763
+upd 582/1220 step 2383872 eps 13 R 109.4 succ 1.00 ent 1.009 kl 0.0048 sps 15774
+upd 583/1220 step 2387968 eps 14 R 108.9 succ 1.00 ent 0.983 kl 0.0058 sps 15785
+upd 584/1220 step 2392064 eps 7 R 104.2 succ 1.00 ent 0.965 kl 0.0042 sps 15796
+upd 585/1220 step 2396160 eps 16 R 86.8 succ 0.88 ent 0.960 kl 0.0015 sps 15807
+upd 586/1220 step 2400256 eps 14 R 95.9 succ 0.93 ent 0.961 kl 0.0031 sps 15818
+upd 587/1220 step 2404352 eps 12 R 108.0 succ 1.00 ent 0.997 kl 0.0029 sps 15828
+upd 588/1220 step 2408448 eps 9 R 107.6 succ 1.00 ent 0.968 kl 0.0034 sps 15839
+upd 589/1220 step 2412544 eps 14 R 107.3 succ 1.00 ent 1.006 kl 0.0046 sps 15850
+upd 590/1220 step 2416640 eps 15 R 84.6 succ 0.87 ent 0.976 kl 0.0015 sps 15861 | eval succ 1.00 R 110.4
+upd 591/1220 step 2420736 eps 13 R 108.7 succ 1.00 ent 1.012 kl 0.0034 sps 15808
+upd 592/1220 step 2424832 eps 14 R 109.5 succ 1.00 ent 0.986 kl 0.0054 sps 15818
+upd 593/1220 step 2428928 eps 11 R 92.7 succ 0.91 ent 0.998 kl 0.0027 sps 15829
+upd 594/1220 step 2433024 eps 15 R 108.1 succ 1.00 ent 0.991 kl 0.0048 sps 15840
+upd 595/1220 step 2437120 eps 13 R 82.3 succ 0.85 ent 1.011 kl 0.0020 sps 15851
+upd 596/1220 step 2441216 eps 16 R 109.6 succ 1.00 ent 1.022 kl 0.0064 sps 15862
+upd 597/1220 step 2445312 eps 14 R 86.2 succ 0.86 ent 0.996 kl 0.0023 sps 15873
+upd 598/1220 step 2449408 eps 14 R 109.5 succ 1.00 ent 1.011 kl 0.0077 sps 15884
+upd 599/1220 step 2453504 eps 18 R 100.0 succ 0.94 ent 0.996 kl 0.0048 sps 15894
+upd 600/1220 step 2457600 eps 15 R 99.0 succ 0.93 ent 0.972 kl 0.0027 sps 15904 | eval succ 1.00 R 112.6
+upd 601/1220 step 2461696 eps 16 R 79.2 succ 0.81 ent 0.961 kl 0.0034 sps 15865
+upd 602/1220 step 2465792 eps 16 R 66.6 succ 0.75 ent 0.987 kl 0.0029 sps 15877
+upd 603/1220 step 2469888 eps 17 R 62.2 succ 0.71 ent 0.985 kl 0.0040 sps 15888
+upd 604/1220 step 2473984 eps 17 R 91.2 succ 0.88 ent 0.947 kl 0.0034 sps 15898
+upd 605/1220 step 2478080 eps 19 R 47.3 succ 0.63 ent 0.949 kl 0.0039 sps 15909
+upd 606/1220 step 2482176 eps 17 R 48.0 succ 0.65 ent 0.956 kl 0.0027 sps 15919
+upd 607/1220 step 2486272 eps 17 R 100.3 succ 0.94 ent 0.957 kl 0.0019 sps 15930
+upd 608/1220 step 2490368 eps 17 R 60.7 succ 0.71 ent 0.954 kl 0.0040 sps 15940
+upd 609/1220 step 2494464 eps 18 R 35.4 succ 0.56 ent 0.952 kl 0.0023 sps 15950
+upd 610/1220 step 2498560 eps 20 R 29.1 succ 0.50 ent 0.912 kl 0.0031 sps 15961 | eval succ 0.96 R 104.1
+upd 611/1220 step 2502656 eps 19 R 12.3 succ 0.42 ent 0.938 kl 0.0019 sps 15918
+upd 612/1220 step 2506752 eps 17 R 45.0 succ 0.65 ent 0.936 kl 0.0047 sps 15928
+upd 613/1220 step 2510848 eps 16 R 56.3 succ 0.69 ent 0.976 kl 0.0025 sps 15938
+upd 614/1220 step 2514944 eps 18 R 62.0 succ 0.72 ent 0.976 kl 0.0016 sps 15948
+upd 615/1220 step 2519040 eps 19 R 41.3 succ 0.58 ent 0.911 kl 0.0031 sps 15959
+upd 616/1220 step 2523136 eps 16 R 60.2 succ 0.69 ent 0.987 kl 0.0017 sps 15970
+upd 617/1220 step 2527232 eps 16 R 97.7 succ 0.94 ent 0.974 kl 0.0040 sps 15981
+upd 618/1220 step 2531328 eps 15 R 75.3 succ 0.80 ent 1.001 kl 0.0037 sps 15991
+upd 619/1220 step 2535424 eps 16 R 49.2 succ 0.62 ent 0.992 kl 0.0017 sps 16001
+upd 620/1220 step 2539520 eps 15 R 56.3 succ 0.67 ent 0.973 kl 0.0025 sps 16011 | eval succ 1.00 R 110.8
+upd 621/1220 step 2543616 eps 17 R 100.9 succ 0.94 ent 1.017 kl 0.0042 sps 15955
+upd 622/1220 step 2547712 eps 16 R 77.9 succ 0.81 ent 0.984 kl 0.0018 sps 15965
+upd 623/1220 step 2551808 eps 17 R 80.7 succ 0.82 ent 1.017 kl 0.0042 sps 15976
+upd 624/1220 step 2555904 eps 18 R 8.0 succ 0.39 ent 0.987 kl 0.0028 sps 15986
+upd 625/1220 step 2560000 eps 17 R 13.6 succ 0.41 ent 0.992 kl 0.0013 sps 15996
+upd 626/1220 step 2564096 eps 18 R 17.2 succ 0.44 ent 0.997 kl 0.0020 sps 16006
+upd 627/1220 step 2568192 eps 18 R 17.2 succ 0.44 ent 0.968 kl 0.0020 sps 16016
+upd 628/1220 step 2572288 eps 18 R 35.3 succ 0.56 ent 0.978 kl 0.0025 sps 16027
+upd 629/1220 step 2576384 eps 17 R 31.7 succ 0.53 ent 0.991 kl 0.0037 sps 16038
+upd 630/1220 step 2580480 eps 15 R -0.5 succ 0.33 ent 0.928 kl 0.0058 sps 16048 | eval succ 0.92 R 88.2
+upd 631/1220 step 2584576 eps 15 R 54.0 succ 0.67 ent 1.031 kl 0.0037 sps 15962
+upd 632/1220 step 2588672 eps 19 R 23.4 succ 0.47 ent 0.913 kl 0.0066 sps 15972
+upd 633/1220 step 2592768 eps 15 R 18.9 succ 0.47 ent 0.972 kl 0.0031 sps 15981
+upd 634/1220 step 2596864 eps 13 R 68.3 succ 0.77 ent 0.982 kl 0.0039 sps 15991
+upd 635/1220 step 2600960 eps 16 R 57.1 succ 0.69 ent 0.964 kl 0.0034 sps 16001
+upd 636/1220 step 2605056 eps 11 R 91.0 succ 0.91 ent 1.051 kl 0.0057 sps 16011
+upd 637/1220 step 2609152 eps 11 R 77.6 succ 0.82 ent 0.995 kl 0.0030 sps 16021
+upd 638/1220 step 2613248 eps 14 R 72.7 succ 0.79 ent 0.970 kl 0.0053 sps 16032
+upd 639/1220 step 2617344 eps 11 R 93.5 succ 0.91 ent 1.010 kl 0.0030 sps 16042
+upd 640/1220 step 2621440 eps 14 R 83.9 succ 0.86 ent 1.009 kl 0.0022 sps 16053 | eval succ 0.98 R 99.3
+upd 641/1220 step 2625536 eps 16 R 66.1 succ 0.75 ent 0.989 kl 0.0031 sps 15983
+upd 642/1220 step 2629632 eps 12 R 104.1 succ 1.00 ent 1.022 kl 0.0047 sps 15994
+upd 643/1220 step 2633728 eps 12 R 79.0 succ 0.83 ent 1.004 kl 0.0043 sps 16004
+upd 644/1220 step 2637824 eps 10 R 56.9 succ 0.70 ent 0.969 kl 0.0038 sps 16013
+upd 645/1220 step 2641920 eps 13 R 94.3 succ 0.92 ent 1.048 kl 0.0041 sps 16023
+upd 646/1220 step 2646016 eps 11 R 103.8 succ 1.00 ent 1.033 kl 0.0050 sps 16032
+upd 647/1220 step 2650112 eps 12 R 93.1 succ 0.92 ent 0.987 kl 0.0040 sps 16042
+upd 648/1220 step 2654208 eps 15 R 63.4 succ 0.73 ent 1.016 kl 0.0023 sps 16051
+upd 649/1220 step 2658304 eps 14 R 105.0 succ 1.00 ent 1.045 kl 0.0059 sps 16061
+upd 650/1220 step 2662400 eps 16 R 87.9 succ 0.88 ent 0.998 kl 0.0022 sps 16072 | eval succ 1.00 R 106.0
+upd 651/1220 step 2666496 eps 17 R 60.6 succ 0.71 ent 1.016 kl 0.0025 sps 16021
+upd 652/1220 step 2670592 eps 14 R 72.3 succ 0.79 ent 1.050 kl 0.0039 sps 16030
+upd 653/1220 step 2674688 eps 22 R 40.9 succ 0.59 ent 0.986 kl 0.0039 sps 16040
+upd 654/1220 step 2678784 eps 15 R 17.1 succ 0.47 ent 0.940 kl 0.0020 sps 16049
+upd 655/1220 step 2682880 eps 20 R 56.2 succ 0.70 ent 0.953 kl 0.0029 sps 16059
+upd 656/1220 step 2686976 eps 16 R 46.2 succ 0.62 ent 0.955 kl 0.0036 sps 16069
+upd 657/1220 step 2691072 eps 13 R 81.9 succ 0.85 ent 0.981 kl 0.0044 sps 16078
+upd 658/1220 step 2695168 eps 13 R 68.7 succ 0.77 ent 0.984 kl 0.0049 sps 16088
+upd 659/1220 step 2699264 eps 11 R 93.6 succ 0.91 ent 1.008 kl 0.0057 sps 16098
+upd 660/1220 step 2703360 eps 15 R 74.9 succ 0.80 ent 0.993 kl 0.0038 sps 16107 | eval succ 0.86 R 76.1
+upd 661/1220 step 2707456 eps 13 R 56.2 succ 0.69 ent 1.017 kl 0.0028 sps 16029
+upd 662/1220 step 2711552 eps 13 R 69.2 succ 0.77 ent 1.016 kl 0.0027 sps 16038
+upd 663/1220 step 2715648 eps 11 R 92.3 succ 0.91 ent 1.004 kl 0.0020 sps 16047
+upd 664/1220 step 2719744 eps 15 R 75.7 succ 0.80 ent 1.041 kl 0.0030 sps 16057
+upd 665/1220 step 2723840 eps 9 R 70.9 succ 0.78 ent 0.996 kl 0.0033 sps 16066
+upd 666/1220 step 2727936 eps 13 R 66.2 succ 0.77 ent 1.008 kl 0.0030 sps 16076
+upd 667/1220 step 2732032 eps 14 R 47.4 succ 0.64 ent 0.955 kl 0.0045 sps 16085
+upd 668/1220 step 2736128 eps 11 R 17.9 succ 0.45 ent 0.989 kl 0.0043 sps 16094
+upd 669/1220 step 2740224 eps 9 R 0.1 succ 0.33 ent 0.963 kl 0.0066 sps 16103
+upd 670/1220 step 2744320 eps 10 R 104.8 succ 1.00 ent 0.978 kl 0.0061 sps 16112 | eval succ 0.00 R -78.2
+upd 671/1220 step 2748416 eps 4 R 59.9 succ 0.75 ent 1.009 kl 0.0023 sps 16009
+upd 672/1220 step 2752512 eps 10 R 101.7 succ 1.00 ent 0.985 kl 0.0060 sps 16018
+upd 673/1220 step 2756608 eps 4 R 96.6 succ 1.00 ent 0.968 kl 0.0059 sps 16025
+upd 674/1220 step 2760704 eps 4 R 58.2 succ 0.75 ent 0.982 kl 0.0050 sps 16033
+upd 675/1220 step 2764800 eps 9 R 3.0 succ 0.44 ent 1.018 kl 0.0038 sps 16042
+upd 676/1220 step 2768896 eps 4 R -29.5 succ 0.25 ent 1.045 kl 0.0034 sps 16051
+upd 677/1220 step 2772992 eps 5 R 96.0 succ 1.00 ent 1.039 kl 0.0010 sps 16060
+upd 678/1220 step 2777088 eps 9 R 79.6 succ 0.89 ent 1.041 kl 0.0019 sps 16069
+upd 679/1220 step 2781184 eps 4 R 58.7 succ 0.75 ent 1.049 kl 0.0026 sps 16078
+upd 680/1220 step 2785280 eps 10 R 66.4 succ 0.80 ent 1.081 kl 0.0058 sps 16088 | eval succ 0.04 R -70.2
+upd 681/1220 step 2789376 eps 4 R 97.6 succ 1.00 ent 1.085 kl 0.0046 sps 15995
+upd 682/1220 step 2793472 eps 5 R 101.6 succ 1.00 ent 1.081 kl 0.0043 sps 16003
+upd 683/1220 step 2797568 eps 9 R 102.8 succ 1.00 ent 1.099 kl 0.0069 sps 16012
+upd 684/1220 step 2801664 eps 7 R 104.3 succ 1.00 ent 1.072 kl 0.0063 sps 16021
+upd 685/1220 step 2805760 eps 10 R 105.0 succ 1.00 ent 1.091 kl 0.0080 sps 16031
+upd 686/1220 step 2809856 eps 7 R 106.8 succ 1.00 ent 1.077 kl 0.0059 sps 16040
+upd 687/1220 step 2813952 eps 11 R 93.2 succ 0.91 ent 1.005 kl 0.0028 sps 16049
+upd 688/1220 step 2818048 eps 8 R 106.0 succ 1.00 ent 1.080 kl 0.0069 sps 16058
+upd 689/1220 step 2822144 eps 9 R 107.5 succ 1.00 ent 1.032 kl 0.0036 sps 16067
+upd 690/1220 step 2826240 eps 14 R 108.7 succ 1.00 ent 1.053 kl 0.0035 sps 16076 | eval succ 1.00 R 108.9
+upd 691/1220 step 2830336 eps 7 R 110.2 succ 1.00 ent 1.001 kl 0.0026 sps 16011
+upd 692/1220 step 2834432 eps 12 R 111.3 succ 1.00 ent 1.023 kl 0.0026 sps 16021
+upd 693/1220 step 2838528 eps 10 R 107.6 succ 1.00 ent 0.988 kl 0.0051 sps 16030
+upd 694/1220 step 2842624 eps 9 R 108.4 succ 1.00 ent 0.992 kl 0.0043 sps 16038
+upd 695/1220 step 2846720 eps 13 R 108.7 succ 1.00 ent 0.968 kl 0.0067 sps 16047
+upd 696/1220 step 2850816 eps 5 R 106.5 succ 1.00 ent 0.954 kl 0.0077 sps 16056
+upd 697/1220 step 2854912 eps 13 R 107.8 succ 1.00 ent 0.974 kl 0.0072 sps 16065
+upd 698/1220 step 2859008 eps 4 R 106.4 succ 1.00 ent 0.971 kl 0.0068 sps 16074
+upd 699/1220 step 2863104 eps 11 R 107.8 succ 1.00 ent 1.002 kl 0.0055 sps 16082
+upd 700/1220 step 2867200 eps 4 R 106.0 succ 1.00 ent 0.987 kl 0.0051 sps 16091 | eval succ 0.46 R 9.1
+upd 701/1220 step 2871296 eps 9 R 104.4 succ 1.00 ent 1.007 kl 0.0012 sps 16008
+upd 702/1220 step 2875392 eps 5 R 71.3 succ 0.80 ent 0.971 kl 0.0046 sps 16017
+upd 703/1220 step 2879488 eps 6 R 104.7 succ 1.00 ent 0.988 kl 0.0043 sps 16026
+upd 704/1220 step 2883584 eps 9 R 101.3 succ 1.00 ent 1.030 kl 0.0025 sps 16035
+upd 705/1220 step 2887680 eps 7 R 102.5 succ 1.00 ent 1.025 kl 0.0028 sps 16044
+upd 706/1220 step 2891776 eps 8 R 103.1 succ 1.00 ent 1.071 kl 0.0032 sps 16053
+upd 707/1220 step 2895872 eps 6 R 101.9 succ 1.00 ent 0.995 kl 0.0035 sps 16062
+upd 708/1220 step 2899968 eps 10 R 89.1 succ 0.90 ent 1.040 kl 0.0029 sps 16070
+upd 709/1220 step 2904064 eps 5 R 101.2 succ 1.00 ent 1.016 kl 0.0034 sps 16079
+upd 710/1220 step 2908160 eps 10 R 104.0 succ 1.00 ent 1.050 kl 0.0046 sps 16088 | eval succ 1.00 R 102.5
+upd 711/1220 step 2912256 eps 5 R 103.2 succ 1.00 ent 1.053 kl 0.0020 sps 16013
+upd 712/1220 step 2916352 eps 9 R 103.8 succ 1.00 ent 1.070 kl 0.0055 sps 16022
+upd 713/1220 step 2920448 eps 9 R 103.6 succ 1.00 ent 1.052 kl 0.0035 sps 16031
+upd 714/1220 step 2924544 eps 8 R 107.5 succ 1.00 ent 1.017 kl 0.0032 sps 16039
+upd 715/1220 step 2928640 eps 8 R 106.8 succ 1.00 ent 1.031 kl 0.0012 sps 16048
+upd 716/1220 step 2932736 eps 11 R 106.0 succ 1.00 ent 1.006 kl 0.0026 sps 16057
+upd 717/1220 step 2936832 eps 6 R 105.6 succ 1.00 ent 1.004 kl 0.0046 sps 16066
+upd 718/1220 step 2940928 eps 10 R 89.7 succ 0.90 ent 1.011 kl 0.0025 sps 16074
+upd 719/1220 step 2945024 eps 6 R 104.8 succ 1.00 ent 0.988 kl 0.0039 sps 16083
+upd 720/1220 step 2949120 eps 10 R 104.9 succ 1.00 ent 0.990 kl 0.0036 sps 16091 | eval succ 1.00 R 103.5
+upd 721/1220 step 2953216 eps 6 R 106.1 succ 1.00 ent 1.002 kl 0.0053 sps 16020
+upd 722/1220 step 2957312 eps 8 R 103.4 succ 1.00 ent 0.973 kl 0.0044 sps 16027
+upd 723/1220 step 2961408 eps 8 R 101.8 succ 1.00 ent 0.969 kl 0.0045 sps 16036
+upd 724/1220 step 2965504 eps 8 R 103.4 succ 1.00 ent 0.946 kl 0.0059 sps 16043
+upd 725/1220 step 2969600 eps 5 R 103.4 succ 1.00 ent 0.973 kl 0.0060 sps 16051
+upd 726/1220 step 2973696 eps 6 R 98.2 succ 1.00 ent 0.993 kl 0.0025 sps 16059
+upd 727/1220 step 2977792 eps 7 R 101.3 succ 1.00 ent 1.001 kl 0.0026 sps 16068
+upd 728/1220 step 2981888 eps 8 R 99.7 succ 1.00 ent 0.978 kl 0.0033 sps 16076
+upd 729/1220 step 2985984 eps 8 R 101.3 succ 1.00 ent 0.991 kl 0.0021 sps 16085
+upd 730/1220 step 2990080 eps 7 R 99.9 succ 1.00 ent 1.049 kl 0.0047 sps 16089 | eval succ 0.98 R 95.7
+upd 731/1220 step 2994176 eps 6 R 73.3 succ 0.83 ent 1.024 kl 0.0028 sps 16010
+upd 732/1220 step 2998272 eps 9 R 68.6 succ 0.78 ent 0.982 kl 0.0021 sps 16018
+upd 733/1220 step 3002368 eps 5 R 100.4 succ 1.00 ent 0.964 kl 0.0032 sps 16026
+upd 734/1220 step 3006464 eps 8 R 101.1 succ 1.00 ent 1.026 kl 0.0038 sps 16034
+upd 735/1220 step 3010560 eps 7 R 101.6 succ 1.00 ent 0.998 kl 0.0010 sps 16042
+upd 736/1220 step 3014656 eps 6 R 101.6 succ 1.00 ent 1.051 kl 0.0055 sps 16050
+upd 737/1220 step 3018752 eps 8 R 61.5 succ 0.75 ent 0.992 kl 0.0030 sps 16058
+upd 738/1220 step 3022848 eps 8 R 99.5 succ 1.00 ent 1.032 kl 0.0033 sps 16067
+upd 739/1220 step 3026944 eps 8 R 101.6 succ 1.00 ent 1.048 kl 0.0050 sps 16075
+upd 740/1220 step 3031040 eps 8 R 104.1 succ 1.00 ent 1.025 kl 0.0035 sps 16084 | eval succ 1.00 R 102.4
+upd 741/1220 step 3035136 eps 8 R 83.3 succ 0.88 ent 1.019 kl 0.0045 sps 16012
+upd 742/1220 step 3039232 eps 8 R 104.0 succ 1.00 ent 1.010 kl 0.0032 sps 16020
+upd 743/1220 step 3043328 eps 7 R 104.4 succ 1.00 ent 1.038 kl 0.0031 sps 16028
+upd 744/1220 step 3047424 eps 8 R 105.1 succ 1.00 ent 1.059 kl 0.0050 sps 16036
+upd 745/1220 step 3051520 eps 9 R 70.2 succ 0.78 ent 1.021 kl 0.0033 sps 16045
+upd 746/1220 step 3055616 eps 7 R 106.1 succ 1.00 ent 1.021 kl 0.0038 sps 16053
+upd 747/1220 step 3059712 eps 9 R 104.7 succ 1.00 ent 1.000 kl 0.0057 sps 16061
+upd 748/1220 step 3063808 eps 8 R 105.0 succ 1.00 ent 1.037 kl 0.0047 sps 16070
+upd 749/1220 step 3067904 eps 9 R 104.2 succ 1.00 ent 1.038 kl 0.0037 sps 16079
+upd 750/1220 step 3072000 eps 10 R 104.7 succ 1.00 ent 1.046 kl 0.0074 sps 16088 | eval succ 1.00 R 103.2
+upd 751/1220 step 3076096 eps 11 R 104.3 succ 1.00 ent 1.043 kl 0.0065 sps 16032
+upd 752/1220 step 3080192 eps 10 R 105.3 succ 1.00 ent 1.011 kl 0.0063 sps 16040
+upd 753/1220 step 3084288 eps 9 R 104.9 succ 1.00 ent 0.959 kl 0.0038 sps 16048
+upd 754/1220 step 3088384 eps 12 R 103.2 succ 1.00 ent 0.961 kl 0.0028 sps 16056
+upd 755/1220 step 3092480 eps 11 R 90.0 succ 0.91 ent 0.996 kl 0.0026 sps 16064
+upd 756/1220 step 3096576 eps 10 R 104.1 succ 1.00 ent 0.968 kl 0.0037 sps 16072
+upd 757/1220 step 3100672 eps 8 R 104.7 succ 1.00 ent 0.931 kl 0.0078 sps 16080
+upd 758/1220 step 3104768 eps 11 R 103.1 succ 1.00 ent 0.972 kl 0.0033 sps 16088
+upd 759/1220 step 3108864 eps 10 R 101.6 succ 1.00 ent 0.974 kl 0.0048 sps 16097
+upd 760/1220 step 3112960 eps 9 R 102.7 succ 1.00 ent 0.967 kl 0.0028 sps 16106 | eval succ 1.00 R 99.6
+upd 761/1220 step 3117056 eps 9 R 101.4 succ 1.00 ent 0.976 kl 0.0022 sps 16042
+upd 762/1220 step 3121152 eps 8 R 101.0 succ 1.00 ent 0.952 kl 0.0017 sps 16050
+upd 763/1220 step 3125248 eps 8 R 101.4 succ 1.00 ent 0.968 kl 0.0035 sps 16058
+upd 764/1220 step 3129344 eps 9 R 100.5 succ 1.00 ent 0.988 kl 0.0045 sps 16066
+upd 765/1220 step 3133440 eps 9 R 102.1 succ 1.00 ent 1.021 kl 0.0042 sps 16074
+upd 766/1220 step 3137536 eps 8 R 102.7 succ 1.00 ent 1.032 kl 0.0057 sps 16081
+upd 767/1220 step 3141632 eps 13 R 90.3 succ 0.92 ent 0.989 kl 0.0023 sps 16089
+upd 768/1220 step 3145728 eps 8 R 101.8 succ 1.00 ent 1.026 kl 0.0048 sps 16097
+upd 769/1220 step 3149824 eps 10 R 102.8 succ 1.00 ent 1.035 kl 0.0040 sps 16104
+upd 770/1220 step 3153920 eps 11 R 103.1 succ 1.00 ent 1.039 kl 0.0044 sps 16112 | eval succ 1.00 R 102.2
+upd 771/1220 step 3158016 eps 10 R 87.5 succ 0.90 ent 1.009 kl 0.0019 sps 16059
+upd 772/1220 step 3162112 eps 11 R 103.5 succ 1.00 ent 1.003 kl 0.0018 sps 16067
+upd 773/1220 step 3166208 eps 14 R 92.2 succ 0.93 ent 1.019 kl 0.0054 sps 16075
+upd 774/1220 step 3170304 eps 10 R 105.0 succ 1.00 ent 1.005 kl 0.0045 sps 16083
+upd 775/1220 step 3174400 eps 14 R 104.3 succ 1.00 ent 1.047 kl 0.0058 sps 16091
+upd 776/1220 step 3178496 eps 10 R 104.3 succ 1.00 ent 1.006 kl 0.0012 sps 16098
+upd 777/1220 step 3182592 eps 15 R 104.3 succ 1.00 ent 1.018 kl 0.0048 sps 16105
+upd 778/1220 step 3186688 eps 15 R 104.2 succ 1.00 ent 1.024 kl 0.0042 sps 16113
+upd 779/1220 step 3190784 eps 13 R 92.6 succ 0.92 ent 0.957 kl 0.0030 sps 16120
+upd 780/1220 step 3194880 eps 15 R 95.4 succ 0.93 ent 1.039 kl 0.0053 sps 16128 | eval succ 1.00 R 105.5
+upd 781/1220 step 3198976 eps 14 R 93.5 succ 0.93 ent 0.989 kl 0.0020 sps 16092
+upd 782/1220 step 3203072 eps 15 R 96.5 succ 0.93 ent 1.011 kl 0.0033 sps 16101
+upd 783/1220 step 3207168 eps 18 R 97.7 succ 0.94 ent 0.984 kl 0.0023 sps 16109
+upd 784/1220 step 3211264 eps 16 R 66.9 succ 0.75 ent 1.005 kl 0.0044 sps 16118
+upd 785/1220 step 3215360 eps 16 R 58.0 succ 0.69 ent 0.983 kl 0.0029 sps 16126
+upd 786/1220 step 3219456 eps 18 R 72.5 succ 0.78 ent 0.960 kl 0.0012 sps 16135
+upd 787/1220 step 3223552 eps 14 R 84.5 succ 0.86 ent 1.019 kl 0.0038 sps 16142
+upd 788/1220 step 3227648 eps 18 R 53.3 succ 0.67 ent 0.980 kl 0.0023 sps 16150
+upd 789/1220 step 3231744 eps 17 R 39.8 succ 0.59 ent 0.957 kl 0.0022 sps 16158
+upd 790/1220 step 3235840 eps 18 R 71.7 succ 0.78 ent 0.946 kl 0.0028 sps 16165 | eval succ 1.00 R 108.4
+upd 791/1220 step 3239936 eps 17 R 70.9 succ 0.76 ent 0.933 kl 0.0019 sps 16129
+upd 792/1220 step 3244032 eps 15 R 54.6 succ 0.67 ent 0.952 kl 0.0037 sps 16137
+upd 793/1220 step 3248128 eps 15 R 56.7 succ 0.67 ent 0.953 kl 0.0033 sps 16145
+upd 794/1220 step 3252224 eps 15 R 75.9 succ 0.80 ent 0.995 kl 0.0053 sps 16153
+upd 795/1220 step 3256320 eps 13 R 97.2 succ 0.92 ent 1.044 kl 0.0044 sps 16162
+upd 796/1220 step 3260416 eps 13 R 72.8 succ 0.77 ent 0.978 kl 0.0035 sps 16170
+upd 797/1220 step 3264512 eps 18 R 55.2 succ 0.67 ent 0.985 kl 0.0048 sps 16178
+upd 798/1220 step 3268608 eps 12 R 82.6 succ 0.83 ent 0.998 kl 0.0044 sps 16186
+upd 799/1220 step 3272704 eps 13 R 60.2 succ 0.69 ent 1.027 kl 0.0038 sps 16194
+upd 800/1220 step 3276800 eps 12 R 67.2 succ 0.75 ent 1.007 kl 0.0023 sps 16202 | eval succ 1.00 R 108.5
+upd 801/1220 step 3280896 eps 15 R 75.9 succ 0.80 ent 0.971 kl 0.0031 sps 16159
+upd 802/1220 step 3284992 eps 14 R 27.0 succ 0.50 ent 0.950 kl 0.0032 sps 16166
+upd 803/1220 step 3289088 eps 17 R 48.0 succ 0.65 ent 0.936 kl 0.0034 sps 16174
+upd 804/1220 step 3293184 eps 14 R 60.0 succ 0.71 ent 0.950 kl 0.0034 sps 16181
+upd 805/1220 step 3297280 eps 14 R 28.0 succ 0.50 ent 0.967 kl 0.0025 sps 16189
+upd 806/1220 step 3301376 eps 9 R 51.8 succ 0.67 ent 0.939 kl 0.0020 sps 16196
+upd 807/1220 step 3305472 eps 14 R 37.9 succ 0.57 ent 0.926 kl 0.0025 sps 16205
+upd 808/1220 step 3309568 eps 12 R -11.7 succ 0.25 ent 0.979 kl 0.0035 sps 16213
+upd 809/1220 step 3313664 eps 9 R 67.5 succ 0.78 ent 0.932 kl 0.0028 sps 16221
+upd 810/1220 step 3317760 eps 11 R 88.7 succ 0.91 ent 0.985 kl 0.0040 sps 16229 | eval succ 1.00 R 103.3
+upd 811/1220 step 3321856 eps 12 R 102.2 succ 1.00 ent 1.029 kl 0.0040 sps 16172
+upd 812/1220 step 3325952 eps 9 R 84.6 succ 0.89 ent 0.997 kl 0.0033 sps 16179
+upd 813/1220 step 3330048 eps 10 R 70.4 succ 0.80 ent 1.009 kl 0.0021 sps 16186
+upd 814/1220 step 3334144 eps 13 R 77.2 succ 0.85 ent 0.978 kl 0.0020 sps 16194
+upd 815/1220 step 3338240 eps 12 R 101.0 succ 1.00 ent 1.021 kl 0.0054 sps 16201
+upd 816/1220 step 3342336 eps 10 R 62.3 succ 0.80 ent 0.951 kl 0.0019 sps 16209
+upd 817/1220 step 3346432 eps 15 R 58.6 succ 0.73 ent 0.903 kl 0.0035 sps 16216
+upd 818/1220 step 3350528 eps 16 R 42.1 succ 0.62 ent 0.926 kl 0.0025 sps 16223
+upd 819/1220 step 3354624 eps 12 R 60.7 succ 0.75 ent 0.989 kl 0.0007 sps 16231
+upd 820/1220 step 3358720 eps 8 R 53.1 succ 0.75 ent 0.936 kl 0.0018 sps 16239 | eval succ 1.00 R 101.0
+upd 821/1220 step 3362816 eps 13 R 90.4 succ 0.92 ent 0.959 kl 0.0038 sps 16180
+upd 822/1220 step 3366912 eps 10 R 102.0 succ 1.00 ent 0.947 kl 0.0060 sps 16188
+upd 823/1220 step 3371008 eps 8 R 100.3 succ 1.00 ent 0.936 kl 0.0058 sps 16196
+upd 824/1220 step 3375104 eps 8 R 100.4 succ 1.00 ent 0.958 kl 0.0048 sps 16203
+upd 825/1220 step 3379200 eps 6 R 99.5 succ 1.00 ent 0.966 kl 0.0038 sps 16210
+upd 826/1220 step 3383296 eps 8 R 99.6 succ 1.00 ent 0.954 kl 0.0039 sps 16217
+upd 827/1220 step 3387392 eps 6 R 98.7 succ 1.00 ent 0.985 kl 0.0048 sps 16225
+upd 828/1220 step 3391488 eps 5 R 101.4 succ 1.00 ent 0.970 kl 0.0036 sps 16232
+upd 829/1220 step 3395584 eps 9 R 100.6 succ 1.00 ent 0.965 kl 0.0041 sps 16239
+upd 830/1220 step 3399680 eps 4 R 61.5 succ 0.75 ent 1.013 kl 0.0025 sps 16247 | eval succ 0.00 R -80.2
+upd 831/1220 step 3403776 eps 7 R 97.7 succ 1.00 ent 0.991 kl 0.0046 sps 16170
+upd 832/1220 step 3407872 eps 5 R 98.9 succ 1.00 ent 0.958 kl 0.0034 sps 16178
+upd 833/1220 step 3411968 eps 5 R -0.6 succ 0.40 ent 1.014 kl 0.0051 sps 16186
+upd 834/1220 step 3416064 eps 8 R 95.5 succ 1.00 ent 1.027 kl 0.0027 sps 16194
+upd 835/1220 step 3420160 eps 6 R 71.9 succ 0.83 ent 1.025 kl 0.0018 sps 16201
+upd 836/1220 step 3424256 eps 4 R 96.3 succ 1.00 ent 0.960 kl 0.0029 sps 16208
+upd 837/1220 step 3428352 eps 9 R 79.9 succ 0.89 ent 1.040 kl 0.0054 sps 16216
+upd 838/1220 step 3432448 eps 4 R 98.0 succ 1.00 ent 0.969 kl 0.0021 sps 16223
+upd 839/1220 step 3436544 eps 8 R 98.0 succ 1.00 ent 0.998 kl 0.0043 sps 16230
+upd 840/1220 step 3440640 eps 8 R 100.8 succ 1.00 ent 1.000 kl 0.0040 sps 16237 | eval succ 0.52 R 20.2
+upd 841/1220 step 3444736 eps 5 R 102.4 succ 1.00 ent 1.030 kl 0.0024 sps 16159
+upd 842/1220 step 3448832 eps 10 R 102.5 succ 1.00 ent 1.022 kl 0.0032 sps 16167
+upd 843/1220 step 3452928 eps 8 R 105.1 succ 1.00 ent 1.019 kl 0.0034 sps 16174
+upd 844/1220 step 3457024 eps 9 R 104.3 succ 1.00 ent 0.999 kl 0.0032 sps 16181
+upd 845/1220 step 3461120 eps 12 R 105.0 succ 1.00 ent 1.031 kl 0.0038 sps 16189
+upd 846/1220 step 3465216 eps 9 R 105.1 succ 1.00 ent 1.016 kl 0.0030 sps 16196
+upd 847/1220 step 3469312 eps 11 R 104.8 succ 1.00 ent 1.018 kl 0.0012 sps 16203
+upd 848/1220 step 3473408 eps 13 R 103.2 succ 1.00 ent 1.006 kl 0.0024 sps 16210
+upd 849/1220 step 3477504 eps 12 R 91.8 succ 0.92 ent 1.009 kl 0.0025 sps 16217
+upd 850/1220 step 3481600 eps 8 R 103.0 succ 1.00 ent 1.003 kl 0.0033 sps 16224 | eval succ 1.00 R 101.0
+upd 851/1220 step 3485696 eps 13 R 92.4 succ 0.92 ent 0.961 kl 0.0037 sps 16174
+upd 852/1220 step 3489792 eps 11 R 102.7 succ 1.00 ent 0.975 kl 0.0048 sps 16181
+upd 853/1220 step 3493888 eps 7 R 101.7 succ 1.00 ent 0.980 kl 0.0028 sps 16189
+upd 854/1220 step 3497984 eps 12 R 100.5 succ 1.00 ent 0.941 kl 0.0050 sps 16196
+upd 855/1220 step 3502080 eps 4 R 99.0 succ 1.00 ent 0.942 kl 0.0042 sps 16203
+upd 856/1220 step 3506176 eps 13 R 99.8 succ 1.00 ent 0.967 kl 0.0024 sps 16210
+upd 857/1220 step 3510272 eps 3 R 100.9 succ 1.00 ent 0.958 kl 0.0044 sps 16217
+upd 858/1220 step 3514368 eps 13 R 99.7 succ 1.00 ent 0.948 kl 0.0027 sps 16225
+upd 859/1220 step 3518464 eps 3 R 98.9 succ 1.00 ent 0.938 kl 0.0037 sps 16232
+upd 860/1220 step 3522560 eps 9 R 99.9 succ 1.00 ent 0.964 kl 0.0037 sps 16240 | eval succ 0.14 R -49.1
+upd 861/1220 step 3526656 eps 7 R 98.2 succ 1.00 ent 1.019 kl 0.0042 sps 16170
+upd 862/1220 step 3530752 eps 7 R 103.2 succ 1.00 ent 0.978 kl 0.0015 sps 16177
+upd 863/1220 step 3534848 eps 9 R 102.5 succ 1.00 ent 1.014 kl 0.0019 sps 16184
+upd 864/1220 step 3538944 eps 9 R 102.0 succ 1.00 ent 0.988 kl 0.0028 sps 16191
+upd 865/1220 step 3543040 eps 7 R 103.5 succ 1.00 ent 0.943 kl 0.0048 sps 16198
+upd 866/1220 step 3547136 eps 10 R 104.9 succ 1.00 ent 0.989 kl 0.0033 sps 16205
+upd 867/1220 step 3551232 eps 6 R 102.5 succ 1.00 ent 0.993 kl 0.0032 sps 16213
+upd 868/1220 step 3555328 eps 12 R 104.9 succ 1.00 ent 0.973 kl 0.0008 sps 16220
+upd 869/1220 step 3559424 eps 4 R 104.3 succ 1.00 ent 1.000 kl 0.0030 sps 16227
+upd 870/1220 step 3563520 eps 15 R 106.5 succ 1.00 ent 1.024 kl 0.0040 sps 16234 | eval succ 1.00 R 107.0
+upd 871/1220 step 3567616 eps 5 R 104.7 succ 1.00 ent 1.011 kl 0.0045 sps 16179
+upd 872/1220 step 3571712 eps 12 R 104.4 succ 1.00 ent 1.039 kl 0.0023 sps 16185
+upd 873/1220 step 3575808 eps 10 R 105.4 succ 1.00 ent 1.015 kl 0.0015 sps 16191
+upd 874/1220 step 3579904 eps 7 R 83.6 succ 0.86 ent 1.038 kl 0.0040 sps 16198
+upd 875/1220 step 3584000 eps 15 R 104.4 succ 1.00 ent 0.994 kl 0.0023 sps 16205
+upd 876/1220 step 3588096 eps 8 R 86.7 succ 0.88 ent 0.993 kl 0.0030 sps 16212
+upd 877/1220 step 3592192 eps 9 R 105.9 succ 1.00 ent 1.039 kl 0.0023 sps 16220
+upd 878/1220 step 3596288 eps 15 R 95.2 succ 0.93 ent 0.999 kl 0.0009 sps 16227
+upd 879/1220 step 3600384 eps 8 R 86.5 succ 0.88 ent 1.043 kl 0.0047 sps 16234
+upd 880/1220 step 3604480 eps 8 R 105.8 succ 1.00 ent 1.014 kl 0.0010 sps 16242 | eval succ 1.00 R 106.8
+upd 881/1220 step 3608576 eps 14 R 94.8 succ 0.93 ent 0.980 kl 0.0034 sps 16195
+upd 882/1220 step 3612672 eps 13 R 93.9 succ 0.92 ent 1.034 kl 0.0027 sps 16202
+upd 883/1220 step 3616768 eps 7 R 82.7 succ 0.86 ent 1.060 kl 0.0035 sps 16210
+upd 884/1220 step 3620864 eps 13 R 81.8 succ 0.85 ent 1.024 kl 0.0024 sps 16217
+upd 885/1220 step 3624960 eps 15 R 64.5 succ 0.73 ent 1.020 kl 0.0013 sps 16224
+upd 886/1220 step 3629056 eps 12 R 79.2 succ 0.83 ent 1.022 kl 0.0024 sps 16231
+upd 887/1220 step 3633152 eps 12 R 79.4 succ 0.83 ent 1.028 kl 0.0026 sps 16239
+upd 888/1220 step 3637248 eps 14 R 50.1 succ 0.64 ent 0.992 kl 0.0007 sps 16246
+upd 889/1220 step 3641344 eps 12 R 93.2 succ 0.92 ent 1.034 kl 0.0045 sps 16253
+upd 890/1220 step 3645440 eps 14 R 71.0 succ 0.79 ent 1.040 kl 0.0025 sps 16261 | eval succ 0.98 R 103.9
+upd 891/1220 step 3649536 eps 16 R 69.1 succ 0.75 ent 1.003 kl 0.0025 sps 16226
+upd 892/1220 step 3653632 eps 14 R 61.5 succ 0.71 ent 0.997 kl 0.0025 sps 16233
+upd 893/1220 step 3657728 eps 12 R 81.0 succ 0.83 ent 1.031 kl 0.0011 sps 16240
+upd 894/1220 step 3661824 eps 13 R 95.1 succ 0.92 ent 1.007 kl 0.0043 sps 16247
+upd 895/1220 step 3665920 eps 14 R 49.4 succ 0.64 ent 0.987 kl 0.0038 sps 16254
+upd 896/1220 step 3670016 eps 15 R 42.9 succ 0.60 ent 1.013 kl 0.0024 sps 16261
+upd 897/1220 step 3674112 eps 14 R 94.1 succ 0.93 ent 0.996 kl 0.0017 sps 16268
+upd 898/1220 step 3678208 eps 16 R 76.3 succ 0.81 ent 0.994 kl 0.0015 sps 16276
+upd 899/1220 step 3682304 eps 13 R 46.2 succ 0.62 ent 1.023 kl 0.0036 sps 16283
+upd 900/1220 step 3686400 eps 11 R 75.8 succ 0.82 ent 1.032 kl 0.0026 sps 16290 | eval succ 1.00 R 107.5
+upd 901/1220 step 3690496 eps 14 R 71.5 succ 0.79 ent 0.994 kl 0.0019 sps 16255
+upd 902/1220 step 3694592 eps 14 R 83.9 succ 0.86 ent 1.037 kl 0.0042 sps 16261
+upd 903/1220 step 3698688 eps 14 R 72.7 succ 0.79 ent 1.004 kl 0.0010 sps 16269
+upd 904/1220 step 3702784 eps 14 R 107.7 succ 1.00 ent 1.041 kl 0.0050 sps 16275
+upd 905/1220 step 3706880 eps 16 R 76.0 succ 0.81 ent 0.989 kl 0.0018 sps 16282
+upd 906/1220 step 3710976 eps 14 R 60.9 succ 0.71 ent 1.012 kl 0.0025 sps 16289
+upd 907/1220 step 3715072 eps 14 R 61.5 succ 0.71 ent 0.994 kl 0.0015 sps 16296
+upd 908/1220 step 3719168 eps 14 R 95.2 succ 0.93 ent 1.045 kl 0.0031 sps 16303
+upd 909/1220 step 3723264 eps 15 R 32.4 succ 0.53 ent 1.030 kl 0.0020 sps 16310
+upd 910/1220 step 3727360 eps 14 R 49.8 succ 0.64 ent 1.033 kl 0.0030 sps 16317 | eval succ 0.86 R 85.8
+upd 911/1220 step 3731456 eps 16 R 17.1 succ 0.44 ent 0.990 kl 0.0027 sps 16287
+upd 912/1220 step 3735552 eps 16 R 69.3 succ 0.75 ent 1.005 kl 0.0037 sps 16293
+upd 913/1220 step 3739648 eps 16 R 56.6 succ 0.69 ent 1.009 kl 0.0024 sps 16299
+upd 914/1220 step 3743744 eps 15 R 34.8 succ 0.53 ent 0.984 kl 0.0030 sps 16302
+upd 915/1220 step 3747840 eps 18 R 71.7 succ 0.78 ent 1.023 kl 0.0041 sps 16308
+upd 916/1220 step 3751936 eps 15 R 65.5 succ 0.73 ent 0.983 kl 0.0035 sps 16314
+upd 917/1220 step 3756032 eps 15 R 34.0 succ 0.53 ent 0.979 kl 0.0034 sps 16320
+upd 918/1220 step 3760128 eps 14 R 60.7 succ 0.71 ent 0.964 kl 0.0028 sps 16326
+upd 919/1220 step 3764224 eps 15 R 20.6 succ 0.47 ent 0.968 kl 0.0026 sps 16332
+upd 920/1220 step 3768320 eps 15 R 63.8 succ 0.73 ent 0.987 kl 0.0020 sps 16339 | eval succ 0.80 R 71.5
+upd 921/1220 step 3772416 eps 14 R 61.1 succ 0.71 ent 1.014 kl 0.0030 sps 16303
+upd 922/1220 step 3776512 eps 14 R 26.9 succ 0.50 ent 0.997 kl 0.0025 sps 16309
+upd 923/1220 step 3780608 eps 12 R 38.5 succ 0.58 ent 0.978 kl 0.0012 sps 16316
+upd 924/1220 step 3784704 eps 12 R 13.7 succ 0.42 ent 1.004 kl 0.0037 sps 16322
+upd 925/1220 step 3788800 eps 14 R 82.4 succ 0.86 ent 1.003 kl 0.0035 sps 16329
+upd 926/1220 step 3792896 eps 14 R 47.9 succ 0.64 ent 0.986 kl 0.0052 sps 16335
+upd 927/1220 step 3796992 eps 11 R 76.9 succ 0.82 ent 1.003 kl 0.0013 sps 16342
+upd 928/1220 step 3801088 eps 11 R 64.7 succ 0.73 ent 1.005 kl 0.0010 sps 16348
+upd 929/1220 step 3805184 eps 14 R 83.0 succ 0.86 ent 0.985 kl 0.0050 sps 16355
+upd 930/1220 step 3809280 eps 12 R 107.2 succ 1.00 ent 1.010 kl 0.0035 sps 16361 | eval succ 1.00 R 108.3
+upd 931/1220 step 3813376 eps 14 R 97.2 succ 0.93 ent 1.039 kl 0.0043 sps 16322
+upd 932/1220 step 3817472 eps 13 R 80.7 succ 0.85 ent 1.046 kl 0.0047 sps 16329
+upd 933/1220 step 3821568 eps 15 R 65.6 succ 0.73 ent 0.999 kl 0.0039 sps 16335
+upd 934/1220 step 3825664 eps 14 R 62.0 succ 0.71 ent 1.002 kl 0.0017 sps 16341
+upd 935/1220 step 3829760 eps 15 R 75.0 succ 0.80 ent 0.986 kl 0.0020 sps 16348
+upd 936/1220 step 3833856 eps 15 R 96.1 succ 0.93 ent 1.027 kl 0.0033 sps 16354
+upd 937/1220 step 3837952 eps 16 R 66.7 succ 0.75 ent 0.985 kl 0.0043 sps 16361
+upd 938/1220 step 3842048 eps 13 R 46.3 succ 0.62 ent 1.068 kl 0.0045 sps 16367
+upd 939/1220 step 3846144 eps 18 R 82.0 succ 0.83 ent 0.985 kl 0.0022 sps 16374
+upd 940/1220 step 3850240 eps 15 R 12.7 succ 0.40 ent 1.016 kl 0.0018 sps 16380 | eval succ 0.94 R 98.7
+upd 941/1220 step 3854336 eps 15 R 96.2 succ 0.93 ent 1.025 kl 0.0029 sps 16348
+upd 942/1220 step 3858432 eps 16 R 27.9 succ 0.50 ent 0.940 kl 0.0045 sps 16355
+upd 943/1220 step 3862528 eps 15 R 2.7 succ 0.33 ent 0.946 kl 0.0032 sps 16362
+upd 944/1220 step 3866624 eps 13 R 82.5 succ 0.85 ent 1.008 kl 0.0032 sps 16368
+upd 945/1220 step 3870720 eps 14 R 61.1 succ 0.71 ent 0.984 kl 0.0025 sps 16375
+upd 946/1220 step 3874816 eps 15 R 55.3 succ 0.67 ent 0.989 kl 0.0032 sps 16381
+upd 947/1220 step 3878912 eps 13 R 82.4 succ 0.85 ent 1.016 kl 0.0013 sps 16387
+upd 948/1220 step 3883008 eps 12 R 93.8 succ 0.92 ent 1.026 kl 0.0029 sps 16394
+upd 949/1220 step 3887104 eps 10 R 91.6 succ 0.90 ent 1.010 kl 0.0023 sps 16400
+upd 950/1220 step 3891200 eps 14 R 96.9 succ 0.93 ent 1.012 kl 0.0007 sps 16407 | eval succ 1.00 R 108.0
+upd 951/1220 step 3895296 eps 15 R 95.6 succ 0.93 ent 1.032 kl 0.0022 sps 16365
+upd 952/1220 step 3899392 eps 11 R 108.5 succ 1.00 ent 0.993 kl 0.0043 sps 16371
+upd 953/1220 step 3903488 eps 7 R 107.2 succ 1.00 ent 1.003 kl 0.0036 sps 16378
+upd 954/1220 step 3907584 eps 15 R 108.5 succ 1.00 ent 1.011 kl 0.0018 sps 16385
+upd 955/1220 step 3911680 eps 12 R 94.1 succ 0.92 ent 0.995 kl 0.0034 sps 16392
+upd 956/1220 step 3915776 eps 7 R 106.3 succ 1.00 ent 1.001 kl 0.0047 sps 16398
+upd 957/1220 step 3919872 eps 13 R 95.0 succ 0.92 ent 1.036 kl 0.0017 sps 16404
+upd 958/1220 step 3923968 eps 11 R 107.0 succ 1.00 ent 1.035 kl 0.0019 sps 16411
+upd 959/1220 step 3928064 eps 6 R 105.3 succ 1.00 ent 1.014 kl 0.0037 sps 16417
+upd 960/1220 step 3932160 eps 12 R 105.8 succ 1.00 ent 1.005 kl 0.0017 sps 16423 | eval succ 1.00 R 104.5
+upd 961/1220 step 3936256 eps 7 R 104.2 succ 1.00 ent 1.007 kl 0.0008 sps 16369
+upd 962/1220 step 3940352 eps 13 R 104.8 succ 1.00 ent 1.041 kl 0.0010 sps 16375
+upd 963/1220 step 3944448 eps 9 R 103.9 succ 1.00 ent 0.983 kl 0.0027 sps 16381
+upd 964/1220 step 3948544 eps 8 R 106.2 succ 1.00 ent 0.996 kl 0.0034 sps 16387
+upd 965/1220 step 3952640 eps 8 R 106.0 succ 1.00 ent 0.973 kl 0.0029 sps 16394
+upd 966/1220 step 3956736 eps 8 R 105.3 succ 1.00 ent 1.002 kl 0.0030 sps 16401
+upd 967/1220 step 3960832 eps 11 R 106.4 succ 1.00 ent 1.020 kl 0.0014 sps 16407
+upd 968/1220 step 3964928 eps 6 R 107.0 succ 1.00 ent 1.004 kl 0.0008 sps 16414
+upd 969/1220 step 3969024 eps 10 R 108.2 succ 1.00 ent 1.026 kl 0.0023 sps 16420
+upd 970/1220 step 3973120 eps 7 R 106.5 succ 1.00 ent 0.984 kl 0.0035 sps 16426 | eval succ 1.00 R 103.3
+upd 971/1220 step 3977216 eps 9 R 107.9 succ 1.00 ent 0.975 kl 0.0036 sps 16364
+upd 972/1220 step 3981312 eps 5 R 104.1 succ 1.00 ent 1.047 kl 0.0028 sps 16370
+upd 973/1220 step 3985408 eps 11 R 102.9 succ 1.00 ent 1.044 kl 0.0014 sps 16376
+upd 974/1220 step 3989504 eps 5 R 106.8 succ 1.00 ent 0.995 kl 0.0034 sps 16383
+upd 975/1220 step 3993600 eps 8 R 105.4 succ 1.00 ent 1.014 kl 0.0008 sps 16389
+upd 976/1220 step 3997696 eps 8 R 105.2 succ 1.00 ent 0.986 kl 0.0021 sps 16395
+upd 977/1220 step 4001792 eps 8 R 85.2 succ 0.88 ent 1.038 kl 0.0034 sps 16402
+upd 978/1220 step 4005888 eps 8 R 101.8 succ 1.00 ent 0.999 kl 0.0026 sps 16408
+upd 979/1220 step 4009984 eps 8 R 106.0 succ 1.00 ent 1.027 kl 0.0005 sps 16414
+upd 980/1220 step 4014080 eps 7 R 107.7 succ 1.00 ent 1.054 kl 0.0022 sps 16421 | eval succ 1.00 R 104.2
+upd 981/1220 step 4018176 eps 9 R 104.3 succ 1.00 ent 1.000 kl 0.0040 sps 16363
+upd 982/1220 step 4022272 eps 7 R 106.5 succ 1.00 ent 1.036 kl 0.0019 sps 16369
+upd 983/1220 step 4026368 eps 9 R 87.7 succ 0.89 ent 1.014 kl 0.0017 sps 16375
+upd 984/1220 step 4030464 eps 5 R 103.3 succ 1.00 ent 0.998 kl 0.0022 sps 16381
+upd 985/1220 step 4034560 eps 10 R 107.6 succ 1.00 ent 0.991 kl 0.0023 sps 16387
+upd 986/1220 step 4038656 eps 5 R 103.1 succ 1.00 ent 1.048 kl 0.0015 sps 16393
+upd 987/1220 step 4042752 eps 9 R 86.3 succ 0.89 ent 1.017 kl 0.0007 sps 16400
+upd 988/1220 step 4046848 eps 7 R 102.8 succ 1.00 ent 1.019 kl 0.0011 sps 16406
+upd 989/1220 step 4050944 eps 7 R 103.9 succ 1.00 ent 1.010 kl 0.0009 sps 16412
+upd 990/1220 step 4055040 eps 8 R 103.8 succ 1.00 ent 1.031 kl 0.0019 sps 16418 | eval succ 0.96 R 95.4
+upd 991/1220 step 4059136 eps 8 R 104.4 succ 1.00 ent 0.978 kl 0.0040 sps 16359
+upd 992/1220 step 4063232 eps 8 R 103.7 succ 1.00 ent 1.013 kl 0.0032 sps 16365
+upd 993/1220 step 4067328 eps 5 R 105.8 succ 1.00 ent 0.980 kl 0.0019 sps 16371
+upd 994/1220 step 4071424 eps 10 R 104.4 succ 1.00 ent 0.996 kl 0.0033 sps 16377
+upd 995/1220 step 4075520 eps 5 R 103.7 succ 1.00 ent 1.032 kl 0.0020 sps 16383
+upd 996/1220 step 4079616 eps 8 R 102.0 succ 1.00 ent 0.998 kl 0.0017 sps 16390
+upd 997/1220 step 4083712 eps 6 R 76.5 succ 0.83 ent 1.040 kl 0.0032 sps 16396
+upd 998/1220 step 4087808 eps 7 R 101.5 succ 1.00 ent 1.012 kl 0.0034 sps 16402
+upd 999/1220 step 4091904 eps 9 R 104.0 succ 1.00 ent 1.037 kl 0.0014 sps 16408
+upd 1000/1220 step 4096000 eps 7 R 78.3 succ 0.86 ent 1.013 kl 0.0026 sps 16414 | eval succ 1.00 R 102.5
+upd 1001/1220 step 4100096 eps 9 R 104.0 succ 1.00 ent 1.045 kl 0.0011 sps 16360
+upd 1002/1220 step 4104192 eps 7 R 102.1 succ 1.00 ent 1.013 kl 0.0017 sps 16366
+upd 1003/1220 step 4108288 eps 8 R 103.7 succ 1.00 ent 1.051 kl 0.0021 sps 16373
+upd 1004/1220 step 4112384 eps 8 R 102.7 succ 1.00 ent 1.035 kl 0.0033 sps 16379
+upd 1005/1220 step 4116480 eps 11 R 106.4 succ 1.00 ent 1.034 kl 0.0004 sps 16385
+upd 1006/1220 step 4120576 eps 6 R 77.4 succ 0.83 ent 1.035 kl 0.0003 sps 16391
+upd 1007/1220 step 4124672 eps 10 R 72.6 succ 0.80 ent 1.030 kl 0.0018 sps 16397
+upd 1008/1220 step 4128768 eps 8 R 105.0 succ 1.00 ent 1.030 kl 0.0040 sps 16403
+upd 1009/1220 step 4132864 eps 9 R 106.8 succ 1.00 ent 1.030 kl 0.0023 sps 16409
+upd 1010/1220 step 4136960 eps 9 R 88.1 succ 0.89 ent 1.015 kl 0.0002 sps 16415 | eval succ 1.00 R 103.4
+upd 1011/1220 step 4141056 eps 8 R 105.8 succ 1.00 ent 0.995 kl 0.0002 sps 16364
+upd 1012/1220 step 4145152 eps 9 R 105.7 succ 1.00 ent 1.037 kl 0.0032 sps 16371
+upd 1013/1220 step 4149248 eps 8 R 84.9 succ 0.88 ent 1.036 kl 0.0013 sps 16377
+upd 1014/1220 step 4153344 eps 8 R 107.8 succ 1.00 ent 1.012 kl 0.0030 sps 16384
+upd 1015/1220 step 4157440 eps 10 R 106.3 succ 1.00 ent 1.026 kl 0.0004 sps 16390
+upd 1016/1220 step 4161536 eps 8 R 86.7 succ 0.88 ent 0.985 kl 0.0010 sps 16396
+upd 1017/1220 step 4165632 eps 11 R 94.4 succ 0.91 ent 1.042 kl 0.0010 sps 16402
+upd 1018/1220 step 4169728 eps 8 R 87.5 succ 0.88 ent 0.984 kl 0.0021 sps 16408
+upd 1019/1220 step 4173824 eps 10 R 105.4 succ 1.00 ent 1.020 kl 0.0028 sps 16414
+upd 1020/1220 step 4177920 eps 9 R 107.4 succ 1.00 ent 1.010 kl 0.0004 sps 16420 | eval succ 1.00 R 104.9
+upd 1021/1220 step 4182016 eps 8 R 108.4 succ 1.00 ent 1.032 kl 0.0014 sps 16370
+upd 1022/1220 step 4186112 eps 9 R 108.1 succ 1.00 ent 1.004 kl 0.0003 sps 16375
+upd 1023/1220 step 4190208 eps 7 R 107.8 succ 1.00 ent 1.024 kl 0.0038 sps 16381
+upd 1024/1220 step 4194304 eps 10 R 105.3 succ 1.00 ent 0.983 kl 0.0010 sps 16387
+upd 1025/1220 step 4198400 eps 7 R 106.8 succ 1.00 ent 1.020 kl 0.0007 sps 16393
+upd 1026/1220 step 4202496 eps 12 R 106.4 succ 1.00 ent 1.038 kl 0.0051 sps 16399
+upd 1027/1220 step 4206592 eps 9 R 105.9 succ 1.00 ent 0.970 kl 0.0016 sps 16405
+upd 1028/1220 step 4210688 eps 10 R 91.7 succ 0.90 ent 0.996 kl 0.0012 sps 16411
+upd 1029/1220 step 4214784 eps 8 R 107.3 succ 1.00 ent 0.999 kl 0.0043 sps 16417
+upd 1030/1220 step 4218880 eps 8 R 103.8 succ 1.00 ent 0.992 kl 0.0005 sps 16423 | eval succ 1.00 R 105.7
+upd 1031/1220 step 4222976 eps 10 R 106.2 succ 1.00 ent 1.012 kl 0.0021 sps 16375
+upd 1032/1220 step 4227072 eps 11 R 105.2 succ 1.00 ent 0.983 kl 0.0007 sps 16381
+upd 1033/1220 step 4231168 eps 11 R 107.6 succ 1.00 ent 0.975 kl 0.0016 sps 16387
+upd 1034/1220 step 4235264 eps 9 R 107.5 succ 1.00 ent 1.003 kl 0.0001 sps 16393
+upd 1035/1220 step 4239360 eps 11 R 92.8 succ 0.91 ent 0.974 kl 0.0002 sps 16399
+upd 1036/1220 step 4243456 eps 11 R 92.9 succ 0.91 ent 0.983 kl 0.0001 sps 16405
+upd 1037/1220 step 4247552 eps 10 R 91.2 succ 0.90 ent 0.999 kl 0.0003 sps 16411
+upd 1038/1220 step 4251648 eps 11 R 106.8 succ 1.00 ent 0.970 kl 0.0013 sps 16416
+upd 1039/1220 step 4255744 eps 12 R 94.0 succ 0.92 ent 0.970 kl 0.0016 sps 16422
+upd 1040/1220 step 4259840 eps 8 R 106.9 succ 1.00 ent 1.008 kl 0.0043 sps 16429 | eval succ 1.00 R 107.9
+upd 1041/1220 step 4263936 eps 11 R 107.3 succ 1.00 ent 0.975 kl 0.0020 sps 16385
+upd 1042/1220 step 4268032 eps 10 R 108.0 succ 1.00 ent 1.012 kl 0.0010 sps 16390
+upd 1043/1220 step 4272128 eps 11 R 107.0 succ 1.00 ent 1.015 kl 0.0019 sps 16397
+upd 1044/1220 step 4276224 eps 10 R 110.8 succ 1.00 ent 0.965 kl 0.0009 sps 16403
+upd 1045/1220 step 4280320 eps 9 R 108.8 succ 1.00 ent 0.989 kl 0.0007 sps 16408
+upd 1046/1220 step 4284416 eps 13 R 95.8 succ 0.92 ent 0.991 kl 0.0004 sps 16414
+upd 1047/1220 step 4288512 eps 9 R 91.7 succ 0.89 ent 0.964 kl 0.0015 sps 16419
+upd 1048/1220 step 4292608 eps 8 R 107.6 succ 1.00 ent 0.980 kl 0.0032 sps 16425
+upd 1049/1220 step 4296704 eps 12 R 108.0 succ 1.00 ent 1.004 kl 0.0015 sps 16431
+upd 1050/1220 step 4300800 eps 12 R 108.9 succ 1.00 ent 0.990 kl 0.0016 sps 16437 | eval succ 1.00 R 107.1
+upd 1051/1220 step 4304896 eps 9 R 108.5 succ 1.00 ent 0.985 kl 0.0008 sps 16398
+upd 1052/1220 step 4308992 eps 12 R 107.1 succ 1.00 ent 1.017 kl 0.0023 sps 16403
+upd 1053/1220 step 4313088 eps 13 R 95.2 succ 0.92 ent 0.969 kl 0.0013 sps 16409
+upd 1054/1220 step 4317184 eps 9 R 105.3 succ 1.00 ent 0.997 kl 0.0032 sps 16415
+upd 1055/1220 step 4321280 eps 11 R 107.1 succ 1.00 ent 0.978 kl 0.0022 sps 16420
+upd 1056/1220 step 4325376 eps 13 R 108.2 succ 1.00 ent 0.976 kl 0.0032 sps 16426
+upd 1057/1220 step 4329472 eps 13 R 106.0 succ 1.00 ent 0.999 kl 0.0023 sps 16432
+upd 1058/1220 step 4333568 eps 10 R 108.0 succ 1.00 ent 1.020 kl 0.0010 sps 16438
+upd 1059/1220 step 4337664 eps 11 R 106.6 succ 1.00 ent 0.970 kl 0.0013 sps 16444
+upd 1060/1220 step 4341760 eps 15 R 105.7 succ 1.00 ent 0.970 kl 0.0011 sps 16450 | eval succ 1.00 R 105.6
+upd 1061/1220 step 4345856 eps 13 R 106.2 succ 1.00 ent 0.957 kl 0.0034 sps 16417
+upd 1062/1220 step 4349952 eps 8 R 104.3 succ 1.00 ent 0.955 kl 0.0031 sps 16423
+upd 1063/1220 step 4354048 eps 13 R 106.5 succ 1.00 ent 0.951 kl 0.0020 sps 16428
+upd 1064/1220 step 4358144 eps 13 R 105.5 succ 1.00 ent 0.979 kl 0.0008 sps 16433
+upd 1065/1220 step 4362240 eps 8 R 106.3 succ 1.00 ent 0.975 kl 0.0021 sps 16439
+upd 1066/1220 step 4366336 eps 10 R 90.2 succ 0.90 ent 0.992 kl 0.0008 sps 16444
+upd 1067/1220 step 4370432 eps 12 R 105.1 succ 1.00 ent 0.983 kl 0.0012 sps 16450
+upd 1068/1220 step 4374528 eps 8 R 104.2 succ 1.00 ent 0.981 kl 0.0014 sps 16456
+upd 1069/1220 step 4378624 eps 11 R 105.4 succ 1.00 ent 1.014 kl 0.0026 sps 16462
+upd 1070/1220 step 4382720 eps 13 R 106.7 succ 1.00 ent 0.954 kl 0.0013 sps 16468 | eval succ 1.00 R 105.1
+upd 1071/1220 step 4386816 eps 9 R 106.0 succ 1.00 ent 1.005 kl 0.0003 sps 16429
+upd 1072/1220 step 4390912 eps 11 R 105.4 succ 1.00 ent 1.010 kl 0.0021 sps 16436
+upd 1073/1220 step 4395008 eps 12 R 106.5 succ 1.00 ent 0.973 kl 0.0015 sps 16442
+upd 1074/1220 step 4399104 eps 9 R 106.4 succ 1.00 ent 0.997 kl 0.0004 sps 16448
+upd 1075/1220 step 4403200 eps 13 R 94.2 succ 0.92 ent 0.972 kl 0.0003 sps 16453
+upd 1076/1220 step 4407296 eps 12 R 108.7 succ 1.00 ent 0.959 kl 0.0015 sps 16459
+upd 1077/1220 step 4411392 eps 9 R 107.7 succ 1.00 ent 0.992 kl 0.0006 sps 16464
+upd 1078/1220 step 4415488 eps 13 R 108.1 succ 1.00 ent 0.989 kl 0.0003 sps 16470
+upd 1079/1220 step 4419584 eps 11 R 107.0 succ 1.00 ent 0.980 kl 0.0017 sps 16475
+upd 1080/1220 step 4423680 eps 11 R 106.4 succ 1.00 ent 1.008 kl 0.0014 sps 16481 | eval succ 1.00 R 107.3
+upd 1081/1220 step 4427776 eps 11 R 92.9 succ 0.91 ent 0.998 kl 0.0005 sps 16444
+upd 1082/1220 step 4431872 eps 12 R 109.0 succ 1.00 ent 1.019 kl 0.0025 sps 16450
+upd 1083/1220 step 4435968 eps 13 R 108.7 succ 1.00 ent 0.993 kl 0.0011 sps 16456
+upd 1084/1220 step 4440064 eps 12 R 82.7 succ 0.83 ent 0.961 kl 0.0013 sps 16462
+upd 1085/1220 step 4444160 eps 10 R 107.8 succ 1.00 ent 1.011 kl 0.0030 sps 16468
+upd 1086/1220 step 4448256 eps 14 R 107.7 succ 1.00 ent 0.958 kl 0.0021 sps 16473
+upd 1087/1220 step 4452352 eps 12 R 108.6 succ 1.00 ent 0.999 kl 0.0018 sps 16479
+upd 1088/1220 step 4456448 eps 14 R 109.0 succ 1.00 ent 0.998 kl 0.0011 sps 16484
+upd 1089/1220 step 4460544 eps 12 R 110.2 succ 1.00 ent 0.992 kl 0.0005 sps 16490
+upd 1090/1220 step 4464640 eps 15 R 109.3 succ 1.00 ent 0.955 kl 0.0004 sps 16495 | eval succ 1.00 R 110.4
+upd 1091/1220 step 4468736 eps 16 R 110.2 succ 1.00 ent 0.948 kl 0.0016 sps 16467
+upd 1092/1220 step 4472832 eps 13 R 110.5 succ 1.00 ent 0.962 kl 0.0002 sps 16473
+upd 1093/1220 step 4476928 eps 9 R 89.9 succ 0.89 ent 0.975 kl 0.0006 sps 16479
+upd 1094/1220 step 4481024 eps 13 R 109.5 succ 1.00 ent 0.989 kl 0.0020 sps 16485
+upd 1095/1220 step 4485120 eps 14 R 97.6 succ 0.93 ent 0.991 kl 0.0007 sps 16491
+upd 1096/1220 step 4489216 eps 15 R 99.4 succ 0.93 ent 0.962 kl 0.0008 sps 16497
+upd 1097/1220 step 4493312 eps 9 R 109.6 succ 1.00 ent 0.958 kl 0.0005 sps 16502
+upd 1098/1220 step 4497408 eps 13 R 110.1 succ 1.00 ent 0.985 kl 0.0001 sps 16507
+upd 1099/1220 step 4501504 eps 11 R 109.2 succ 1.00 ent 0.951 kl 0.0017 sps 16513
+upd 1100/1220 step 4505600 eps 15 R 99.4 succ 0.93 ent 0.964 kl 0.0005 sps 16518 | eval succ 1.00 R 110.2
+upd 1101/1220 step 4509696 eps 10 R 110.4 succ 1.00 ent 0.975 kl 0.0002 sps 16484
+upd 1102/1220 step 4513792 eps 14 R 110.4 succ 1.00 ent 0.970 kl 0.0004 sps 16490
+upd 1103/1220 step 4517888 eps 12 R 108.6 succ 1.00 ent 0.963 kl 0.0012 sps 16495
+upd 1104/1220 step 4521984 eps 12 R 110.8 succ 1.00 ent 0.943 kl 0.0012 sps 16502
+upd 1105/1220 step 4526080 eps 12 R 109.7 succ 1.00 ent 0.988 kl 0.0018 sps 16508
+upd 1106/1220 step 4530176 eps 16 R 110.0 succ 1.00 ent 0.952 kl 0.0008 sps 16514
+upd 1107/1220 step 4534272 eps 6 R 108.0 succ 1.00 ent 0.949 kl 0.0031 sps 16519
+upd 1108/1220 step 4538368 eps 12 R 110.2 succ 1.00 ent 0.983 kl 0.0003 sps 16525
+upd 1109/1220 step 4542464 eps 13 R 108.8 succ 1.00 ent 0.979 kl 0.0009 sps 16530
+upd 1110/1220 step 4546560 eps 9 R 108.1 succ 1.00 ent 1.002 kl 0.0004 sps 16536 | eval succ 1.00 R 107.6
+upd 1111/1220 step 4550656 eps 13 R 108.8 succ 1.00 ent 0.986 kl 0.0004 sps 16497
+upd 1112/1220 step 4554752 eps 11 R 109.4 succ 1.00 ent 0.953 kl 0.0011 sps 16503
+upd 1113/1220 step 4558848 eps 13 R 108.1 succ 1.00 ent 0.974 kl 0.0006 sps 16508
+upd 1114/1220 step 4562944 eps 8 R 108.5 succ 1.00 ent 0.944 kl 0.0012 sps 16514
+upd 1115/1220 step 4567040 eps 12 R 108.7 succ 1.00 ent 0.971 kl 0.0015 sps 16519
+upd 1116/1220 step 4571136 eps 11 R 108.7 succ 1.00 ent 0.972 kl 0.0003 sps 16525
+upd 1117/1220 step 4575232 eps 13 R 109.8 succ 1.00 ent 0.957 kl 0.0013 sps 16531
+upd 1118/1220 step 4579328 eps 10 R 110.7 succ 1.00 ent 0.967 kl 0.0002 sps 16537
+upd 1119/1220 step 4583424 eps 11 R 95.2 succ 0.91 ent 0.951 kl 0.0001 sps 16542
+upd 1120/1220 step 4587520 eps 12 R 108.8 succ 1.00 ent 0.976 kl 0.0019 sps 16548 | eval succ 1.00 R 108.6
+upd 1121/1220 step 4591616 eps 9 R 109.8 succ 1.00 ent 1.009 kl 0.0016 sps 16510
+upd 1122/1220 step 4595712 eps 13 R 110.1 succ 1.00 ent 0.985 kl 0.0008 sps 16516
+upd 1123/1220 step 4599808 eps 11 R 109.6 succ 1.00 ent 0.974 kl 0.0010 sps 16521
+upd 1124/1220 step 4603904 eps 15 R 98.5 succ 0.93 ent 0.997 kl 0.0021 sps 16526
+upd 1125/1220 step 4608000 eps 10 R 110.2 succ 1.00 ent 0.998 kl 0.0026 sps 16532
+upd 1126/1220 step 4612096 eps 14 R 110.9 succ 1.00 ent 0.979 kl 0.0005 sps 16537
+upd 1127/1220 step 4616192 eps 13 R 96.8 succ 0.92 ent 0.987 kl 0.0006 sps 16543
+upd 1128/1220 step 4620288 eps 16 R 99.0 succ 0.94 ent 0.981 kl 0.0001 sps 16548
+upd 1129/1220 step 4624384 eps 11 R 111.9 succ 1.00 ent 0.989 kl 0.0006 sps 16554
+upd 1130/1220 step 4628480 eps 13 R 96.5 succ 0.92 ent 0.980 kl 0.0001 sps 16560 | eval succ 1.00 R 111.9
+upd 1131/1220 step 4632576 eps 12 R 110.2 succ 1.00 ent 0.970 kl 0.0001 sps 16529
+upd 1132/1220 step 4636672 eps 14 R 99.2 succ 0.93 ent 0.969 kl 0.0000 sps 16535
+upd 1133/1220 step 4640768 eps 12 R 111.1 succ 1.00 ent 0.939 kl 0.0001 sps 16540
+upd 1134/1220 step 4644864 eps 13 R 98.2 succ 0.92 ent 0.980 kl 0.0013 sps 16546
+upd 1135/1220 step 4648960 eps 14 R 77.8 succ 0.79 ent 0.985 kl 0.0008 sps 16552
+upd 1136/1220 step 4653056 eps 15 R 98.3 succ 0.93 ent 0.996 kl 0.0012 sps 16557
+upd 1137/1220 step 4657152 eps 15 R 110.8 succ 1.00 ent 0.987 kl 0.0009 sps 16562
+upd 1138/1220 step 4661248 eps 15 R 55.6 succ 0.67 ent 0.955 kl 0.0003 sps 16568
+upd 1139/1220 step 4665344 eps 18 R 74.4 succ 0.78 ent 0.942 kl 0.0012 sps 16573
+upd 1140/1220 step 4669440 eps 15 R 77.8 succ 0.80 ent 0.970 kl 0.0005 sps 16578 | eval succ 1.00 R 111.6
+upd 1141/1220 step 4673536 eps 15 R 110.5 succ 1.00 ent 0.962 kl 0.0005 sps 16551
+upd 1142/1220 step 4677632 eps 14 R 97.4 succ 0.93 ent 0.973 kl 0.0002 sps 16556
+upd 1143/1220 step 4681728 eps 15 R 100.2 succ 0.93 ent 0.979 kl 0.0015 sps 16561
+upd 1144/1220 step 4685824 eps 17 R 81.9 succ 0.82 ent 0.930 kl 0.0002 sps 16567
+upd 1145/1220 step 4689920 eps 16 R 79.8 succ 0.81 ent 0.981 kl 0.0003 sps 16572
+upd 1146/1220 step 4694016 eps 16 R 91.6 succ 0.88 ent 0.953 kl 0.0001 sps 16577
+upd 1147/1220 step 4698112 eps 13 R 86.1 succ 0.85 ent 0.975 kl 0.0004 sps 16583
+upd 1148/1220 step 4702208 eps 18 R 102.5 succ 0.94 ent 0.956 kl 0.0011 sps 16588
+upd 1149/1220 step 4706304 eps 15 R 109.7 succ 1.00 ent 0.955 kl 0.0002 sps 16594
+upd 1150/1220 step 4710400 eps 15 R 108.9 succ 1.00 ent 0.958 kl 0.0001 sps 16599 | eval succ 1.00 R 112.7
+upd 1151/1220 step 4714496 eps 16 R 97.8 succ 0.94 ent 0.955 kl 0.0008 sps 16574
+upd 1152/1220 step 4718592 eps 15 R 54.3 succ 0.67 ent 0.947 kl 0.0001 sps 16580
+upd 1153/1220 step 4722688 eps 18 R 79.8 succ 0.83 ent 0.974 kl 0.0015 sps 16585
+upd 1154/1220 step 4726784 eps 17 R 72.4 succ 0.76 ent 0.962 kl 0.0002 sps 16590
+upd 1155/1220 step 4730880 eps 18 R 63.2 succ 0.72 ent 0.936 kl 0.0009 sps 16595
+upd 1156/1220 step 4734976 eps 16 R 80.0 succ 0.81 ent 0.950 kl 0.0007 sps 16600
+upd 1157/1220 step 4739072 eps 16 R 78.6 succ 0.81 ent 0.941 kl 0.0001 sps 16605
+upd 1158/1220 step 4743168 eps 17 R 97.7 succ 0.94 ent 0.964 kl 0.0000 sps 16611
+upd 1159/1220 step 4747264 eps 16 R 88.8 succ 0.88 ent 0.935 kl 0.0002 sps 16616
+upd 1160/1220 step 4751360 eps 15 R 50.1 succ 0.67 ent 0.948 kl 0.0001 sps 16622 | eval succ 1.00 R 110.2
+upd 1161/1220 step 4755456 eps 17 R 78.8 succ 0.82 ent 0.942 kl 0.0004 sps 16595
+upd 1162/1220 step 4759552 eps 18 R 90.4 succ 0.89 ent 0.958 kl 0.0004 sps 16601
+upd 1163/1220 step 4763648 eps 15 R 62.2 succ 0.73 ent 0.938 kl 0.0002 sps 16606
+upd 1164/1220 step 4767744 eps 16 R 88.0 succ 0.88 ent 0.933 kl 0.0001 sps 16612
+upd 1165/1220 step 4771840 eps 15 R 108.4 succ 1.00 ent 0.948 kl 0.0005 sps 16617
+upd 1166/1220 step 4775936 eps 12 R 108.4 succ 1.00 ent 0.952 kl 0.0002 sps 16623
+upd 1167/1220 step 4780032 eps 17 R 90.0 succ 0.88 ent 0.956 kl 0.0001 sps 16628
+upd 1168/1220 step 4784128 eps 14 R 85.9 succ 0.86 ent 0.954 kl 0.0001 sps 16633
+upd 1169/1220 step 4788224 eps 18 R 90.8 succ 0.89 ent 0.928 kl 0.0001 sps 16638
+upd 1170/1220 step 4792320 eps 13 R 84.6 succ 0.85 ent 0.935 kl 0.0001 sps 16643 | eval succ 1.00 R 110.2
+upd 1171/1220 step 4796416 eps 14 R 62.4 succ 0.71 ent 0.937 kl 0.0001 sps 16615
+upd 1172/1220 step 4800512 eps 15 R 63.0 succ 0.73 ent 0.949 kl 0.0001 sps 16620
+upd 1173/1220 step 4804608 eps 15 R 77.0 succ 0.80 ent 0.969 kl 0.0000 sps 16625
+upd 1174/1220 step 4808704 eps 15 R 87.0 succ 0.87 ent 0.937 kl 0.0004 sps 16630
+upd 1175/1220 step 4812800 eps 15 R 77.7 succ 0.80 ent 0.939 kl 0.0001 sps 16636
+upd 1176/1220 step 4816896 eps 16 R 99.3 succ 0.94 ent 0.959 kl 0.0001 sps 16641
+upd 1177/1220 step 4820992 eps 18 R 73.5 succ 0.78 ent 0.964 kl 0.0002 sps 16646
+upd 1178/1220 step 4825088 eps 17 R 100.2 succ 0.94 ent 0.940 kl 0.0001 sps 16652
+upd 1179/1220 step 4829184 eps 15 R 87.6 succ 0.87 ent 0.945 kl 0.0001 sps 16658
+upd 1180/1220 step 4833280 eps 15 R 96.4 succ 0.93 ent 0.935 kl 0.0000 sps 16663 | eval succ 1.00 R 111.9
+upd 1181/1220 step 4837376 eps 13 R 72.5 succ 0.77 ent 0.955 kl 0.0000 sps 16635
+upd 1182/1220 step 4841472 eps 17 R 90.3 succ 0.88 ent 0.968 kl 0.0000 sps 16640
+upd 1183/1220 step 4845568 eps 14 R 99.3 succ 0.93 ent 0.945 kl 0.0000 sps 16645
+upd 1184/1220 step 4849664 eps 16 R 99.4 succ 0.94 ent 0.948 kl 0.0000 sps 16650
+upd 1185/1220 step 4853760 eps 15 R 99.3 succ 0.93 ent 0.972 kl 0.0002 sps 16655
+upd 1186/1220 step 4857856 eps 16 R 79.7 succ 0.81 ent 0.973 kl 0.0002 sps 16661
+upd 1187/1220 step 4861952 eps 17 R 110.8 succ 1.00 ent 0.957 kl 0.0001 sps 16666
+upd 1188/1220 step 4866048 eps 14 R 95.6 succ 0.93 ent 0.958 kl 0.0001 sps 16671
+upd 1189/1220 step 4870144 eps 16 R 80.1 succ 0.81 ent 0.935 kl 0.0001 sps 16676
+upd 1190/1220 step 4874240 eps 15 R 87.8 succ 0.87 ent 0.962 kl 0.0001 sps 16680 | eval succ 1.00 R 112.1
+upd 1191/1220 step 4878336 eps 18 R 38.9 succ 0.56 ent 0.944 kl 0.0000 sps 16652
+upd 1192/1220 step 4882432 eps 13 R 108.5 succ 1.00 ent 0.969 kl 0.0000 sps 16657
+upd 1193/1220 step 4886528 eps 15 R 78.7 succ 0.80 ent 0.946 kl 0.0001 sps 16662
+upd 1194/1220 step 4890624 eps 16 R 90.1 succ 0.88 ent 0.977 kl 0.0000 sps 16667
+upd 1195/1220 step 4894720 eps 15 R 87.8 succ 0.87 ent 0.938 kl 0.0000 sps 16672
+upd 1196/1220 step 4898816 eps 16 R 90.6 succ 0.88 ent 0.930 kl 0.0000 sps 16677
+upd 1197/1220 step 4902912 eps 16 R 97.4 succ 0.94 ent 0.941 kl 0.0000 sps 16682
+upd 1198/1220 step 4907008 eps 15 R 97.7 succ 0.93 ent 0.941 kl 0.0001 sps 16687
+upd 1199/1220 step 4911104 eps 12 R 95.0 succ 0.92 ent 0.948 kl 0.0000 sps 16692
+upd 1200/1220 step 4915200 eps 17 R 90.5 succ 0.88 ent 0.956 kl 0.0000 sps 16697 | eval succ 1.00 R 111.9
+upd 1201/1220 step 4919296 eps 14 R 109.2 succ 1.00 ent 0.952 kl 0.0000 sps 16670
+upd 1202/1220 step 4923392 eps 17 R 70.9 succ 0.76 ent 0.971 kl 0.0000 sps 16675
+upd 1203/1220 step 4927488 eps 16 R 97.7 succ 0.94 ent 0.955 kl 0.0000 sps 16680
+upd 1204/1220 step 4931584 eps 14 R 98.1 succ 0.93 ent 0.952 kl 0.0000 sps 16685
+upd 1205/1220 step 4935680 eps 15 R 88.1 succ 0.87 ent 0.946 kl 0.0000 sps 16690
+upd 1206/1220 step 4939776 eps 20 R 100.5 succ 0.95 ent 0.944 kl 0.0000 sps 16695
+upd 1207/1220 step 4943872 eps 14 R 84.0 succ 0.86 ent 0.958 kl 0.0000 sps 16700
+upd 1208/1220 step 4947968 eps 15 R 99.4 succ 0.93 ent 0.956 kl 0.0000 sps 16705
+upd 1209/1220 step 4952064 eps 17 R 100.9 succ 0.94 ent 0.957 kl 0.0000 sps 16710
+upd 1210/1220 step 4956160 eps 15 R 86.9 succ 0.87 ent 0.970 kl 0.0000 sps 16715 | eval succ 1.00 R 111.3
+upd 1211/1220 step 4960256 eps 15 R 108.7 succ 1.00 ent 0.934 kl 0.0000 sps 16688
+upd 1212/1220 step 4964352 eps 16 R 107.8 succ 1.00 ent 0.967 kl 0.0000 sps 16694
+upd 1213/1220 step 4968448 eps 13 R 110.0 succ 1.00 ent 0.980 kl 0.0000 sps 16699
+upd 1214/1220 step 4972544 eps 15 R 98.7 succ 0.93 ent 0.951 kl 0.0000 sps 16704
+upd 1215/1220 step 4976640 eps 15 R 98.4 succ 0.93 ent 0.928 kl 0.0000 sps 16709
+upd 1216/1220 step 4980736 eps 17 R 90.1 succ 0.88 ent 0.945 kl 0.0000 sps 16714
+upd 1217/1220 step 4984832 eps 16 R 59.8 succ 0.69 ent 0.941 kl 0.0000 sps 16719
+upd 1218/1220 step 4988928 eps 15 R 97.0 succ 0.93 ent 0.994 kl 0.0000 sps 16723
+upd 1219/1220 step 4993024 eps 16 R 109.6 succ 1.00 ent 0.955 kl 0.0000 sps 16728
+upd 1220/1220 step 4997120 eps 16 R 99.3 succ 0.94 ent 0.954 kl 0.0000 sps 16733 | eval succ 1.00 R 111.5
+{
+  "seed": 4,
+  "num_updates": 1220,
+  "total_env_steps": 4997120,
+  "episodes": 13597,
+  "wallclock_s": 299.20057916641235,
+  "steps_per_s": 16701.571895329762,
+  "last_eval": {
+    "update": 1220,
+    "global_step": 4997120,
+    "success_rate": 1.0,
+    "crash_rate": 0.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 111.51022777956904,
+    "mean_fuel_used": 0.5462599999999819,
+    "mean_steps": 369.74
+  },
+  "best_eval": {
+    "update": 1150,
+    "success_rate": 1.0,
+    "mean_reward": 112.70001738982792
+  },
+  "run_dir": "experiments/results/exp_fixednoclip_s4"
+}
