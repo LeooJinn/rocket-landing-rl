@@ -1,0 +1,80 @@
+{
+  "A_s0": {
+    "run": "/Users/leojin/projects/rocket-landing-rl/experiments/results/v2_s0",
+    "success_rate": 0.0,
+    "crash_rate": 1.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": -82.28562596704681,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "A_s1": {
+    "run": "/Users/leojin/projects/rocket-landing-rl/experiments/results/v2_s1",
+    "success_rate": 0.86,
+    "crash_rate": 0.14,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 79.83456727212324,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "A_s2": {
+    "run": "/Users/leojin/projects/rocket-landing-rl/experiments/results/v2_s2",
+    "success_rate": 0.0,
+    "crash_rate": 1.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": -109.76563961864969,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "A_s3": {
+    "run": "/Users/leojin/projects/rocket-landing-rl/experiments/results/v2_s3",
+    "success_rate": 0.0,
+    "crash_rate": 1.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": -114.14616541815907,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "A_s4": {
+    "run": "/Users/leojin/projects/rocket-landing-rl/experiments/results/v2_s4",
+    "success_rate": 0.795,
+    "crash_rate": 0.205,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": 65.96239132423028,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  },
+  "A_s5": {
+    "run": "/Users/leojin/projects/rocket-landing-rl/experiments/results/v2_s5",
+    "success_rate": 0.0,
+    "crash_rate": 1.0,
+    "out_of_bounds_rate": 0.0,
+    "timeout_rate": 0.0,
+    "mean_reward": -114.22457241692759,
+    "episodes": 200,
+    "seeds": [
+      40000,
+      40199
+    ]
+  }
+}
