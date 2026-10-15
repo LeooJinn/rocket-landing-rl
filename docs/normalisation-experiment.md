@@ -42,7 +42,7 @@ commit is the same base (861a0b6) as this branch before my change; I did not rer
 not verify bit-for-bit reproducibility of the control with the new code.
 
 Evaluation: the FINAL checkpoint (`final.pt`, last update, not best-so-far) of every run, greedy,
-200 episodes with reset seeds 40000..39999+200 (40000..40199), disjoint from training seeds
+200 episodes with reset seeds 40000..40199, disjoint from training seeds
 (1,000,000+) and in-training eval seeds (20000..20049). Script:
 `scripts/eval_final_checkpoints.py`; raw output in `experiments/norm_experiment/`.
 
