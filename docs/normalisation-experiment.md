@@ -7,7 +7,7 @@ amplified 30-300x; `clip_vloss` with `reward_scale` 0.01 may slow the critic.)
 
 ## Implementation
 
-New config key `obs_norm` (default `"running"`, so old configs and checkpoints behave as
+New config key `obs_norm` (originally default `"running"`; since the headline experiment (`docs/headline-results.md`) the default is `"fixed"` and `ppo_v1/ppo_v1_tuned/ppo_v2` pin `"running"`; old configs and checkpoints behave as
 before).
 
 - `"running"`: `RunningMeanStd`, updated on every training step (unchanged).
