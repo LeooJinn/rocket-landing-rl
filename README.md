@@ -111,11 +111,11 @@ rocket-landing-rl/
 
 ## Milestones
 
-- [ ] Create a reproducible Python project and dependency configuration.
-- [ ] Implement the 2D physics state and deterministic stepping tests.
-- [ ] Add action validation, fuel use, landing checks, crash checks, and timeout handling.
-- [ ] Implement and test the reward function.
-- [ ] Add a baseline controller for validating the environment.
+- [x] Create a reproducible Python project and dependency configuration.
+- [x] Implement the 2D physics state and deterministic stepping tests.
+- [x] Add action validation, fuel use, landing checks, crash checks, and timeout handling.
+- [x] Implement and test the reward function.
+- [x] Add a baseline controller for validating the environment.
 - [ ] Train the first PyTorch policy.
 - [ ] Add evaluation on held-out starting states.
 - [ ] Record episode trajectories and metrics.
@@ -139,4 +139,16 @@ The project will describe the method as reinforcement learning with reward shapi
 
 ## Status
 
-Initial design and repository scaffold. Implementation will begin with the deterministic 2D environment and its tests.
+The Python project, the deterministic 2D environment (physics, fuel, landing/crash/timeout
+handling, action validation), reward v1, and a hand-written heuristic baseline controller are
+implemented and tested. The baseline lands safely in about 99% of 100 evaluation episodes
+(see `docs/environment.md`). PyTorch training, held-out evaluation tooling, trajectory
+recording and the browser replay viewer are not built yet.
+
+## Quickstart
+
+```bash
+uv sync                      # install dependencies
+uv run pytest                # run the test suite
+uv run python scripts/evaluate_baseline.py --episodes 100 --seed 0   # baseline eval
+```
