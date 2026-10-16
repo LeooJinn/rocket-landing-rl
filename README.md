@@ -14,7 +14,7 @@ significance test. The write-up below says which numbers are solid and which are
 
 **Live demo (recorded runs, no server needed): <https://jiaxiangjin.com/rocket-landing-rl/>**
 
-![The same start flown by an early, a middle and the final checkpoint of one training run: two crashes after running out of fuel, then a landing](docs/demo.gif)
+![The same start flown by an early, a middle and the final checkpoint of one training run (reward v3a): the early one crashes after running out of fuel, the middle one lands slowly, the final one lands in about half the time with more fuel left](docs/demo.gif)
 
 ## Headline result
 
@@ -199,7 +199,7 @@ uv run python scripts/serve_viewer.py --results-dir experiments/results --port 8
 ```
 
 **Static demo (no Python server).** `frontend/demo/` is a pre-computed recording of one finished run
-(`exp_fixed_s0`: v2, fixed scales, seed 0): 10 start seeds at 3 checkpoints plus the baseline, so the viewer
+(`hlc_v3a_s14`: reward v3a, fixed scales, training seed 14; 500 of 500 held-out landings): 10 start seeds at 3 checkpoints plus the baseline, so the viewer
 can replay a policy going from crashing to landing. Any static file server works, and the page falls back to
 it automatically when there is no API:
 

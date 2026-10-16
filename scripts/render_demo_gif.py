@@ -5,7 +5,7 @@ an early checkpoint, a middle one, and the final policy. Frames come from the st
 scripts/export_static_demo.py, so every frame is real simulator output, not an animation.
 
     uv run python scripts/render_demo_gif.py                       # defaults: frontend/demo, seed 20000
-    uv run python scripts/render_demo_gif.py --run exp_fixed_s0 --seed 20003 --out docs/demo.gif
+    uv run python scripts/render_demo_gif.py --run hlc_v3a_s14 --seed 20000 --out docs/demo.gif
 
 Needs Pillow (installed with the `plots` extra, via matplotlib).
 """
@@ -147,7 +147,7 @@ def draw_panel(ep: dict, k: int, hold: int, label: str, w: int, h: int, fonts) -
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--demo-dir", default="frontend/demo")
-    ap.add_argument("--run", default="exp_fixed_s0")
+    ap.add_argument("--run", default="hlc_v3a_s14")
     ap.add_argument("--seed", type=int, default=20000)
     ap.add_argument("--checkpoints", nargs=3, default=["ckpt_00100", "ckpt_00500", "final"])
     ap.add_argument("--labels", nargs=3, default=["Early", "Middle", "Final"])

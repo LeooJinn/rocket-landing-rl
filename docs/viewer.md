@@ -55,8 +55,8 @@ bounded and resets on restart. Reward version is read from the run's `config.jso
 ## Static demo (no server, e.g. GitHub Pages)
 
 `frontend/demo/` holds a pre-computed recording of one finished run, so the
-viewer works as a plain static site. The committed recording was exported from run `exp_fixed_s0` (reward v2, fixed-scale normalisation,
-seed 0; that run directory is not in this repository). Re-export from any run directory with:
+viewer works as a plain static site. The committed recording was exported from run `hlc_v3a_s14` (reward v3a, fixed-scale normalisation,
+training seed 14, 500 of 500 held-out landings; that run directory is not in this repository). Re-export from any run directory with:
 
 ```
 uv run python scripts/export_static_demo.py RUN_DIR [--out DIR]
