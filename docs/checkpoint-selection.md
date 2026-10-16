@@ -38,14 +38,17 @@ What this does and does not show, in order of importance:
    test success of the same checkpoint almost exactly (193 checkpoints evaluated on both: correlation 0.9989, mean
    absolute gap 1.0 pp, max 8.5 pp).
 3. **Selection does not fix an unstable training process.** It can only pick a checkpoint that exists. Six of the 20
-   runs have no checkpoint above 70% on any seed range (v1 s0, s4, s6, s7, s9 and v2 s6); selection returns the least
-   bad one and says so (validation 0-65%).
+   runs have no candidate above 70% on the test ranges (v1 s0, s4, s6, s7, s9 and v2 s6; best candidates 63%, 1%, 43%,
+   42%, 69%, 2%); selection returns the least bad one and says so (validation 0-65%).
 4. **The existing `best.pt` is as good as the validated selection, and better than selecting among the 50-update
    checkpoints in v1.** In v1 the good policies live in windows shorter than the checkpoint spacing (50 updates), so
    no saved checkpoint is good (v1 s5: best saved checkpoint 46%, `best.pt` 100%). Adding `best.pt` (picked every
    10 updates on the in-training eval seeds) to the candidate pool fixes that. This was added AFTER seeing the test table
    and is therefore confirmed on a second, fresh seed range (see "Protocol").
-5. Practical recommendation: keep checkpoints at the in-training-eval cadence (every 10 updates) or at least keep
+5. **For the stabilised training config (10 new seeds, out of sample) `final.pt` is already 89.9% (9/10 seeds) and
+   `stable3` changes the nine healthy seeds by <= 0.2 pp.** Selection compensates for an unstable run; it is not a
+   substitute for stabilising it.
+6. Practical recommendation: keep checkpoints at the in-training-eval cadence (every 10 updates) or at least keep
    `best.pt`; run the selection with `--include-best`; read the validation number in `selected.json` as the
    deployability check (chosen validation >= 90%: 14/20 runs, all >= 97.8% on the fresh test range; the other 6 are
    <= 68.8%).
@@ -300,6 +303,53 @@ before this range was rolled out.
   chosen policy is deployable, but it did not change the aggregate here. The honest summary is "use `best.pt` or a validated checkpoint,
   never `final.pt`", and the validation step is what turns that into a measured, auditable number.
 
+## Out-of-sample check: the stabilised config `st_c_ed30lr` (10 new training seeds)
+
+The stabilisation work trained 10 new runs (`st_c_ed30lr_s0-9`: reward v2, fixed normalisation, entropy
+coefficient 0.03 held to 30% of training then linearly to 0 at 80%, learning rate floor 10%; otherwise the `hl_v2`
+config; `checkpoint_every` stays 50). They are not part of the earlier analysis, so this is the clean out-of-sample
+check. The protocol was fixed in advance: pool B with all four rules, default `stable3`, validation seeds
+70000..70199; the validation curves and choices were committed (`d5dd231`) before any of these checkpoints was
+rolled out on the test range 50000..50499 (the range the stabilisation work reserves for its own confirmation
+of these runs). Nothing was tuned on these runs.
+
+| seed | validation, final.pt | validation, B: stable3 pick | final.pt | best.pt | A: stable3 (saved ckpts) | **B: stable3** (saved + best.pt) | B: max_margin |
+|---|---|---|---|---|---|---|---|
+| 0 | 200/200 | 200/200 (@1220) | 100.0% [99.2-100.0] @1220 | 99.8% [98.9-100.0] @640 | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @1200 |
+| 1 | 200/200 | 200/200 (@1050) | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @900 | 100.0% [99.2-100.0] @1050 | 100.0% [99.2-100.0] @1050 | 100.0% [99.2-100.0] @1050 |
+| 2 | 200/200 | 200/200 (@1060) | 99.8% [98.9-100.0] @1220 | 100.0% [99.2-100.0] @1060 | 100.0% [99.2-100.0] @1050 | 100.0% [99.2-100.0] @1060 | 98.2% [96.6-99.1] @850 |
+| 3 | 200/200 | 200/200 (@700) | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @630 | 100.0% [99.2-100.0] @700 | 100.0% [99.2-100.0] @700 | 100.0% [99.2-100.0] @1100 |
+| 4 | 200/200 | 200/200 (@1220) | 99.6% [98.6-99.9] @1220 | 99.6% [98.6-99.9] @1220 | 99.6% [98.6-99.9] @1220 | 99.6% [98.6-99.9] @1220 | 99.8% [98.9-100.0] @1200 |
+| 5 | 200/200 | 200/200 (@1100) | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @1170 | 100.0% [99.2-100.0] @1100 | 100.0% [99.2-100.0] @1100 | 100.0% [99.2-100.0] @1050 |
+| 6 | 200/200 | 200/200 (@1100) | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @1220 | 99.8% [98.9-100.0] @1100 | 99.8% [98.9-100.0] @1100 | 100.0% [99.2-100.0] @1200 |
+| 7 | 199/200 | 200/200 (@1050) | 100.0% [99.2-100.0] @1220 | 100.0% [99.2-100.0] @1130 | 100.0% [99.2-100.0] @1050 | 100.0% [99.2-100.0] @1050 | 99.6% [98.6-99.9] @1200 |
+| 8 | 200/200 | 200/200 (@1220) | 99.6% [98.6-99.9] @1220 | 99.8% [98.9-100.0] @1110 | 99.6% [98.6-99.9] @1220 | 99.6% [98.6-99.9] @1220 | 99.8% [98.9-100.0] @950 |
+| 9 | 0/200 | 22/200 (@150) | 0.0% [0.0-0.8] @1220 | 12.0% [9.4-15.1] @120 | 10.4% [8.0-13.4] @150 | 10.4% [8.0-13.4] @150 | 10.4% [8.0-13.4] @150 |
+
+| method | mean | median | min | max | seeds >= 90% | seeds at 0% |
+|---|---|---|---|---|---|---|
+| final.pt | 89.9% | 100.0% | 0.0% | 100.0% | 9/10 | 1/10 |
+| best.pt | 91.1% | 100.0% | 12.0% | 100.0% | 9/10 | 0/10 |
+| A: best_val | 90.9% | 100.0% | 10.4% | 100.0% | 9/10 | 0/10 |
+| A: latest_near_best | 90.9% | 100.0% | 10.4% | 100.0% | 9/10 | 0/10 |
+| A: stable3 (saved ckpts) | 90.9% | 100.0% | 10.4% | 100.0% | 9/10 | 0/10 |
+| A: max_margin | 90.8% | 99.9% | 10.4% | 100.0% | 9/10 | 0/10 |
+| B: best_val | 90.9% | 100.0% | 10.4% | 100.0% | 9/10 | 0/10 |
+| B: latest_near_best | 90.9% | 100.0% | 10.4% | 100.0% | 9/10 | 0/10 |
+| **B: stable3** (saved + best.pt) | 90.9% | 100.0% | 10.4% | 100.0% | 9/10 | 0/10 |
+| B: max_margin | 90.8% | 99.9% | 10.4% | 100.0% | 9/10 | 0/10 |
+
+- `final.pt` of the stabilised config is already good: 9/10 seeds at 99.6-100%, one seed (s9) that never learned
+  (hover policy, 0%). B: `stable3` changes the nine healthy seeds by at most 0.2 pp in either direction (s2: 99.8% -> 100%, s6:
+  100% -> 99.8%, i.e. noise; `max_margin` costs s2 1.6 pp), so **once training is stable the selection step is close to a
+  no-op**; its value is in the unstable regime above and as a deployability check. On the dead seed it picks the
+  early partial policy (update 150, 10.4%) instead of the 0% `final.pt`: it cannot make s9 deployable (validation 11%
+  at best), and the validation number says so before test is touched.
+- The validation scores of the pick (200/200 or 199/200 on the nine healthy seeds, 22/200 on s9) agree with test within
+  noise.
+- `max_margin` again gives up a little on some seeds (s2: 98.2% @850) for no measured gain.
+- Seeds s10-s13 of this config were still training and are not included.
+
 ## Caveats
 
 - **Selection only helps if a good checkpoint exists, and exists on the candidate grid.** It does not fix an
@@ -344,9 +394,17 @@ uv run python scripts/selection_experiment.py test2 --results-dir $R --out exper
 uv run python scripts/selection_experiment.py report2 --results-dir $R --out experiments/selection --out-b experiments/selection_b
 ```
 
+```
+# stabilised runs (read-only results dir of the stabilisation worktree; pool B, validated first, tested second)
+S=~/projects/rocket-landing-rl-stab/experiments/results
+uv run python scripts/selection_experiment.py validate --include-best --results-dir $S --runs st_c_ed30lr_s{0,1,2,3,4,5,6,7,8,9} --out experiments/selection_st
+uv run python scripts/selection_experiment.py test-st --results-dir $S --runs st_c_ed30lr_s{0,1,2,3,4,5,6,7,8,9} --out experiments/selection_st
+uv run python scripts/selection_experiment.py report-st --results-dir $S --runs st_c_ed30lr_s{0,1,2,3,4,5,6,7,8,9} --out experiments/selection_st
+```
+
 Committed results: `experiments/selection/<run>/{validation_curve,selected,test_curve}.json`,
 `experiments/selection/{rules_validation,prune_check,summary}.json`, `experiments/selection_b/<run>/{validation_curve,
-selected,test2_curve}.json`, `experiments/selection_b/summary_test2.json`. The exported `selected.pt` files and the run
+selected,test2_curve}.json`, `experiments/selection_b/summary_test2.json`, `experiments/selection_st/<run>/{validation_curve,selected,test_curve}.json` and `experiments/selection_st/summary_st.json`. The exported `selected.pt` files and the run
 checkpoints are not committed (`*.pt` is ignored). Tests: `tests/test_selection.py` (rule logic on synthetic curves,
 disjointness assertions, `selected.json` schema, export loads via `PolicyController`, process-pool equivalence,
 incremental cache, CLI).
