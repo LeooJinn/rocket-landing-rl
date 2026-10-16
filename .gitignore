@@ -35,3 +35,24 @@ experiments/results/ppo_v1_tuned_s1/checkpoints/
 experiments/results/hl_v2_s2/*
 !experiments/results/hl_v2_s2/final.pt
 !experiments/results/hl_v2_s2/config.json
+
+# Training logs (stdout of nohup runs)
+logs/
+
+# Keep one small final checkpoint of the stabilisation confirmation run most representative of the
+# arm (st_c_ed30lr_s2: 99.8% final, every last-5 checkpoint >= 99.5%).
+!experiments/results/st_c_ed30lr_s2/
+experiments/results/st_c_ed30lr_s2/*
+!experiments/results/st_c_ed30lr_s2/final.pt
+!experiments/results/st_c_ed30lr_s2/config.json
+
+# Reward-v3 experiment: local training/eval logs (small result JSONs and one final.pt are committed).
+logs/rv3_*.log
+logs/queue_*.log
+logs/eval_*.log
+
+# Keep one small final checkpoint of the reward-v3 confirmation run most representative of the arm (rv3_v3a_s7).
+!experiments/results/rv3_v3a_s7/
+experiments/results/rv3_v3a_s7/*
+!experiments/results/rv3_v3a_s7/final.pt
+!experiments/results/rv3_v3a_s7/config.json

@@ -144,6 +144,16 @@ succeed under both versions, which is expected because v2 equals v1 except on cr
 so early trajectories are shared. v1 was the reward used for the numbers in this section; with fixed-scale
 normalisation and 10 seeds per arm v2 looked better (see [headline-results.md](headline-results.md)).
 
+### Reward v3 result
+
+Reward v3a/v3b (`docs/reward-design.md`) price the slow, fuel-hungry mode that the headline analysis
+found behind greedy-only collapses: a landing bonus of `40 * fuel_left` and a time penalty of
+0.03 per step (v3b adds -25 for an empty-tank crash). Pilot on seeds 10-12 picked v3a; on seeds 0-9
+(final checkpoint, 500 held-out episodes) its greedy policy landed 5000/5000 against 77.0% mean for
+`hl_v2` (paired, suggestive, p = 0.062), using 0.53 vs 0.71 of the tank and 362 vs 486 steps on the
+seeds where v2 lands; sampled-action success was not clearly better (p = 0.35). Full numbers and
+caveats: `docs/reward-v3-results.md`.
+
 ### Open issues
 
 - Seed sensitivity and late collapse (above). Candidate fixes not yet tried: entropy

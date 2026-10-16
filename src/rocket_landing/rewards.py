@@ -1,7 +1,7 @@
 """Versioned reward functions.
 
-Reward v1 is documented in docs/reward-design.md. Never change the semantics
-of an existing version in place: add a new version string and function.
+Rewards v1, v2 and v3 are documented in docs/reward-design.md. Never change the
+semantics of an existing version in place: add a new version string and function.
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ from typing import Callable
 
 from rocket_landing.state import Action, Outcome, RocketState
 
-REWARD_VERSIONS: tuple[str, ...] = ("v1", "v2")
+REWARD_VERSIONS: tuple[str, ...] = ("v1", "v2", "v3a", "v3b")
 
 
 @dataclass(frozen=True)
@@ -144,8 +144,59 @@ def _reward_v2(
     return terms
 
 
-_DISPATCH: dict[str, Callable[..., dict[str, float]]] = {"v1": _reward_v1, "v2": _reward_v2}
-_CONFIGS: dict[str, type[RewardV1Config]] = {"v1": RewardV1Config, "v2": RewardV2Config}
+@dataclass(frozen=True)
+class RewardV3Config(RewardV2Config):
+    """v2 weights plus the efficiency terms. Defaults define reward v3a.
+
+    ``time_penalty`` is raised from the v1/v2 value 0.01 to 0.03 (the cost of one
+    full main-engine step) and a landing earns ``landing_fuel_bonus`` times the
+    fuel fraction left in the tank at touchdown.
+    """
+
+    time_penalty: float = 0.03
+    landing_fuel_bonus: float = 40.0
+    # v3b only (0 in v3a): extra terminal penalty for crashing with an empty tank.
+    fuel_out_crash_penalty: float = 0.0
+
+
+@dataclass(frozen=True)
+class RewardV3BConfig(RewardV3Config):
+    """v3a plus a fuel-out crash penalty. Defaults define reward v3b."""
+
+    fuel_out_crash_penalty: float = 25.0
+
+
+def _reward_v3(
+    prev_state: RocketState,
+    state: RocketState,
+    action: Action,
+    outcome: Outcome,
+    cfg: RewardV3Config,
+) -> dict[str, float]:
+    terms = _reward_v2(prev_state, state, action, outcome, cfg)
+    terms["landing_fuel"] = (
+        cfg.landing_fuel_bonus * max(0.0, state.fuel) if outcome is Outcome.LANDED else 0.0
+    )
+    terms["fuel_out"] = (
+        -cfg.fuel_out_crash_penalty
+        if outcome is Outcome.CRASHED and state.fuel <= 0.0
+        else 0.0
+    )
+    return terms
+
+
+_DISPATCH: dict[str, Callable[..., dict[str, float]]] = {
+    "v1": _reward_v1,
+    "v2": _reward_v2,
+    "v3a": _reward_v3,
+    "v3b": _reward_v3,
+}
+_CONFIGS: dict[str, type[RewardV1Config]] = {
+    "v1": RewardV1Config,
+    "v2": RewardV2Config,
+    "v3a": RewardV3Config,
+    "v3b": RewardV3BConfig,
+}
 
 
 def compute_reward(
