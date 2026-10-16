@@ -2,6 +2,10 @@
 
 Code: `src/rocket_landing/evaluate.py`; tests: `tests/test_evaluate.py`.
 
+The results table below covers the earlier runs trained with the running observation normaliser
+(`v2_s*`, `r2_A_*`, `sweep_g999e03_s1`). The current headline evaluation (20 fixed-normalisation runs, same
+protocol and seeds) is in [headline-results.md](headline-results.md).
+
 ```
 uv run python -m rocket_landing.evaluate --run <run_dir|name> --checkpoint final|best|<ckpt id> \
     --episodes 500 [--seed-start 50000] [--stochastic]

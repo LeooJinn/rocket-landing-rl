@@ -1,5 +1,14 @@
 # Experiments
 
+> **Reading guide.** This file is chronological. It was written with the original running
+> observation normaliser (the code default at the time) and covers the first PPO policy, the
+> six-seed reward v1/v2 comparison and the run families. Later work supersedes parts of it:
+> fixed-scale normalisation ([normalisation-experiment.md](normalisation-experiment.md)) and the
+> 10-seed headline comparison ([headline-results.md](headline-results.md)), which is the current
+> best evidence. Run directories named below (`v2_s0`, `sweep_*`, `r2_*`, `kl_*`, ...) were kept
+> outside this repository; only `experiments/results/ppo_v1_tuned_s1/` and the `hl_v2_s2` final
+> checkpoint are committed. Tables are kept as recorded when those runs were made.
+
 ## Milestone 6: first PPO policy
 
 PPO is implemented from scratch in PyTorch (`src/rocket_landing/ppo.py`, `policy.py`,
@@ -132,7 +141,8 @@ the touchdown came to the safe limits, targeting attractor 1. With the chosen PP
 on seeds 0-5 it was not better than v1: validation success over the last 20% of training
 was 0.22, 0.91, 0.09, 0.00, 0.88, 0.00 (v1: 0.18, 0.91, 0.18, 0.00, 0.91, 0.00). Seeds 1 and 4
 succeed under both versions, which is expected because v2 equals v1 except on crash steps,
-so early trajectories are shared. v1 remains the reward used for the reported numbers.
+so early trajectories are shared. v1 was the reward used for the numbers in this section; with fixed-scale
+normalisation and 10 seeds per arm v2 looked better (see [headline-results.md](headline-results.md)).
 
 ### Open issues
 
@@ -143,7 +153,7 @@ so early trajectories are shared. v1 remains the reward used for the reported nu
   steps with a -50 penalty; the value function cannot see the timeout coming.
 - The learned policy is slow and fuel-hungry compared with the baseline; v1's fuel and
   time costs are small next to the terminal rewards, by design.
-- No plots yet (Matplotlib is not a dependency); curves above come from `metrics.jsonl` and
+- Plots were added later (see "Figures" below); the curves above come from `metrics.jsonl` and
   `eval.jsonl`.
 
 ---
@@ -154,16 +164,17 @@ PPO (from scratch, `src/rocket_landing/ppo.py`) on the 2D landing environment
 (`docs/environment.md`) with the reward versions in `docs/reward-design.md`.
 All numbers below come from the `metrics.jsonl` / `eval.jsonl` / `config.json` /
 `summary.json` files of the runs listed; nothing is estimated. Snapshot taken
-2026-10-15 (see "Status of runs"). Held-out evaluation numbers are NOT in this
-document yet (see the TODO section).
+2026-10-15 (see "Status of runs"). Held-out evaluation numbers are in
+[evaluation.md](evaluation.md) (summary under "Held-out evaluation" below).
 
 ## Setup
 
 - Algorithm: PPO with GAE, advantage normalisation, clipped value loss, annealed
   learning rate, 16 parallel envs x 256 steps per update (4096 env steps/update) unless
-  noted. Policy and value share an MLP 64-64 with tanh (4 discrete actions), observation
-  normalisation by running mean/std. Rewards are scaled by 0.01 for learning; logged
-  rewards are raw.
+  noted. Separate actor and critic MLPs, 64-64 tanh each (4 discrete actions), observation
+  normalisation by running mean/std (the code default when these runs were made; fixed
+  scales are the default since the headline experiment). Rewards are scaled by 0.01 for
+  learning; logged rewards are raw.
 - Seeding: `--seed S` seeds torch/numpy/Python and training env `i` with
   `1_000_000 + S*1000 + i`; seeds 0..99999 are never used for training.
 - Evaluation during training (`eval.jsonl`): every 10 updates (every 5 for `r2_B`, `r2_C`),
@@ -325,7 +336,8 @@ Headline: final greedy success averages 40.8% across 9 runs (0% to 100%), with
 4 of 9 runs never landing; `best.pt` checkpoints hold up on fresh seeds for the
 runs that learned at all.
 
-TODO: replace the "Status of runs" section after the `kl_*` runs finish.
+Note: the `kl_*` rows above come from the "Status of runs" snapshot and were not regenerated after those
+runs finished.
 
 ## Reproducing
 

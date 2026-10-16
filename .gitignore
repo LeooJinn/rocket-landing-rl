@@ -11,7 +11,8 @@ venv/
 .coverage
 htmlcov/
 
-# Generated experiment artifacts
+# Training stdout logs and generated experiment artifacts
+logs/
 experiments/results/*
 *.pt
 *.pth

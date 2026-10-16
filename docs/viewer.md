@@ -6,10 +6,13 @@ code; rolling out checkpoints needs the `torch` extra).
 
 ```
 uv sync --extra torch
-uv run python scripts/serve_viewer.py --results-dir ~/projects/rocket-landing-rl/experiments/results --port 8000
+uv run python scripts/serve_viewer.py --results-dir experiments/results --port 8000
 ```
 
-It binds to 127.0.0.1 only. Open http://127.0.0.1:8000/.
+It binds to 127.0.0.1 only. Open http://127.0.0.1:8000/. `experiments/results/` in this repository
+contains two runs: `ppo_v1_tuned_s1` (complete) and `hl_v2_s2` (final checkpoint only), so the viewer
+lists them and can roll out their `final` (and, for the first, `best`) checkpoints. Point `--results-dir`
+at any directory of runs written by `rocket_landing.train` to browse other runs.
 
 ## API
 
@@ -52,11 +55,15 @@ bounded and resets on restart. Reward version is read from the run's `config.jso
 ## Static demo (no server, e.g. GitHub Pages)
 
 `frontend/demo/` holds a pre-computed recording of one finished run, so the
-viewer works as a plain static site. Re-export (the one command):
+viewer works as a plain static site. The committed recording was exported from run `exp_fixed_s0` (reward v2, fixed-scale normalisation,
+seed 0; that run directory is not in this repository). Re-export from any run directory with:
 
 ```
-uv run python scripts/export_static_demo.py ~/projects/rocket-landing-rl-norm/experiments/results/exp_fixed_s0
+uv run python scripts/export_static_demo.py RUN_DIR [--out DIR]
 ```
+
+Without `--out` this overwrites `frontend/demo/`. For example, `RUN_DIR=experiments/results/hl_v2_s2`
+(final checkpoint only) exports 8 files, 0.20 MB, for 2 seeds.
 
 Options: `--out DIR` (default `frontend/demo`), `--seeds 10 --first-seed 20000`,
 `--fractions 0.1 0.4` (earlier checkpoints, as a share of the final update;

@@ -123,7 +123,10 @@ v2 makes crash terminal depend on impact softness, giving a gradient from "crash
 ### Result
 
 With the chosen PPO settings (gamma 0.999, ent_coef 0.03, 5M steps, seeds 0-5) v2 was not
-better than v1; see `docs/experiments.md`. v1 remains the reward used for reported results.
+better than v1 with the running observation normaliser; see [experiments.md](experiments.md). With
+fixed-scale normalisation and 10 seeds per arm, v2 had the higher mean held-out success (77.0% vs 30.0%),
+but the evidence is suggestive, not conclusive (permutation p = 0.07); see
+[headline-results.md](headline-results.md).
 
 ## Adding a new version
 
