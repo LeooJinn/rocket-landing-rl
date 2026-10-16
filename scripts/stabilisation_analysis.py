@@ -259,6 +259,80 @@ def markdown(res) -> str:
     return "\n".join(lines)
 
 
+def paired_summary(a, b):
+    """Paired comparison of per-seed success rates a (arm) vs b (reference)."""
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    d = a - b
+    only_a = int(((a >= 0.9) & (b < 0.9)).sum())
+    only_b = int(((a < 0.9) & (b >= 0.9)).sum())
+    return {"mean_diff": float(d.mean()), "bootstrap95_ci_mean_diff": boot_paired_ci(d),
+            "signflip_p_mean_diff": paired_signflip_p(d), "ge90_only_arm": only_a,
+            "ge90_only_ref": only_b, "mcnemar_exact_p_ge90": mcnemar_exact_p(only_a, only_b),
+            "n_higher": int((d > 1e-9).sum()), "n_lower": int((d < -1e-9).sum()),
+            "n_identical": int((np.abs(d) <= 1e-9).sum())}
+
+
+def arm_table(ev, results_dir=RESULTS):
+    """Per-seed rows + arm aggregates for one eval json (greedy, sampled, fuel, steps, last-5, training diag)."""
+    rows = []
+    for r in sorted(ev["runs"], key=lambda r: r["seed"]):
+        g = r["final"]["policies"]["greedy"]
+        st = r["final"]["policies"]["stochastic"]
+        rows.append({
+            "seed": r["seed"], "run": r["run"], "success": g["success"],
+            "crash": g["crash"]["count"], "oob": g["out_of_bounds"]["count"], "timeout": g["timeout"]["count"],
+            "sampled_success": st["success"]["rate"], "greedy_fuel": g["fuel_used"]["mean"],
+            "greedy_steps": g["episode_length"]["mean"], "robust": _rob(r),
+            "training_diag": training_diag(results_dir, r["run"])})
+    rates = [x["success"]["rate"] for x in rows]
+    agg = arm(rates)
+    agg["mean_sampled_success"] = float(np.mean([x["sampled_success"] for x in rows]))
+    agg["mean_greedy_fuel"] = float(np.mean([x["greedy_fuel"] for x in rows]))
+    agg["mean_greedy_steps"] = float(np.mean([x["greedy_steps"] for x in rows]))
+    agg["last5_spread_gt_0.2"] = sum(x["robust"]["spread_gt_0.2"] for x in rows)
+    agg["all_last5_ge_90"] = sum(min(x["robust"]["last5"]) >= 0.9 for x in rows)
+    agg["mean_last5_means"] = float(np.mean([x["robust"]["mean"] for x in rows]))
+    return {"rows": rows, "agg": agg}
+
+
+def arm_markdown(tab, n_ep=500) -> str:
+    lines = ["| seed | final greedy (Wilson 95% CI) | crash/OOB/timeout | sampled | greedy fuel / steps | last 5 ckpts % |",
+             "|---|---|---|---|---|---|"]
+    for x in tab["rows"]:
+        lo, hi = x["success"]["ci95"]
+        lines.append(f"| {x['seed']} | {100 * x['success']['rate']:.1f}% ({x['success']['count']}/{n_ep}) "
+                     f"{100 * lo:.1f}-{100 * hi:.1f}% | {x['crash']}/{x['oob']}/{x['timeout']} | "
+                     f"{100 * x['sampled_success']:.1f}% | {x['greedy_fuel']:.2f} / {x['greedy_steps']:.0f} | "
+                     + " / ".join(f"{100 * v:.0f}" for v in x["robust"]["last5"]) + " |")
+    return "\n".join(lines)
+
+
+def do_arms(arm_specs, ref, compare, out):
+    """arm_specs: ['name=path.json', ...]; ref: name of control arm; compare: ['a:b', ...] extra pairs."""
+    tabs = {}
+    for spec in arm_specs:
+        name, _, path = spec.partition("=")
+        tabs[name] = arm_table(json.loads(Path(path).read_text()))
+    res = {"arms": tabs, "comparisons": {}}
+    pairs = [(n, ref) for n in tabs if n != ref] + [tuple(c.split(":")) for c in compare]
+    for a, b in pairs:
+        ra = [x["success"]["rate"] for x in tabs[a]["rows"]]
+        rb = [x["success"]["rate"] for x in tabs[b]["rows"]]
+        assert [x["seed"] for x in tabs[a]["rows"]] == [x["seed"] for x in tabs[b]["rows"]]
+        c = paired_summary(ra, rb)
+        fa = [x["greedy_fuel"] for x in tabs[a]["rows"]]
+        fb = [x["greedy_fuel"] for x in tabs[b]["rows"]]
+        c["fuel_mean_diff"] = float(np.mean(np.array(fa) - np.array(fb)))
+        c["fuel_signflip_p"] = paired_signflip_p(np.array(fa) - np.array(fb))
+        res["comparisons"][f"{a}_vs_{b}"] = c
+    Path(out).write_text(json.dumps(res, indent=1) + "\n")
+    for name, t in tabs.items():
+        print(f"## {name}\n" + arm_markdown(t))
+        print(json.dumps(t["agg"]))
+    for k, c in res["comparisons"].items():
+        print(k, json.dumps(c))
+
+
 def do_plots(eval_path, baseline_path, out_dir, rep_path=None):
     import matplotlib
 
@@ -322,6 +396,11 @@ def main():
     pl.add_argument("--baseline", default="experiments/headline_eval.json")
     pl.add_argument("--rep", help="optional replication eval json (fresh seeds)")
     pl.add_argument("--out-dir", default="docs/figures")
+    ar = sub.add_parser("arms")
+    ar.add_argument("--arm", action="append", required=True, help="NAME=eval.json (repeat)")
+    ar.add_argument("--ref", required=True, help="name of the control arm")
+    ar.add_argument("--compare", action="append", default=[], help="extra exploratory pair A:B")
+    ar.add_argument("--out", required=True)
     pi = sub.add_parser("pilot")
     pi.add_argument("--files", nargs="+", required=True)
     pi.add_argument("--out", required=True)
@@ -333,6 +412,8 @@ def main():
         do_eval(a.prefix, a.seeds, a.episodes, a.seed_start, a.last_n, a.last_episodes, a.out, a.procs)
     elif a.cmd == "plots":
         do_plots(a.eval, a.baseline, a.out_dir, a.rep)
+    elif a.cmd == "arms":
+        do_arms(a.arm, a.ref, a.compare, a.out)
     elif a.cmd == "pilot":
         do_pilot(a.files, a.out)
     else:
