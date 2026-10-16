@@ -304,7 +304,12 @@ def cmd_test2(args) -> None:
         rc = sel.run_config(run_dir)
         seed_check = sel.assert_test_range_fresh(args.test2_start, sel.TEST_EPISODES, rc["train_seed"],
                                                  rc["num_envs"], rc["eval_seed_start"], rc["eval_episodes"])
-        paths = {n: p for _, n, p in sel.list_checkpoints(run_dir, include_best=True)}
+        # best.pt is always evaluated as the "best_pt" comparator, even when it is the same update as a
+        # saved checkpoint (then the pool dedups it away)
+        paths = {n: p for _, n, p in sel.list_checkpoints(run_dir)}
+        updates = {n: u for u, n, _ in sel.list_checkpoints(run_dir)}
+        paths["best"] = run_dir / "best.pt"
+        updates["best"] = sel.checkpoint_update(paths["best"])
         names = {"final", "best"}
         names |= {a["name"] for a in sa["alternatives"].values()} | {a["name"] for a in sb["alternatives"].values()}
         names = sorted(names)
@@ -314,10 +319,8 @@ def cmd_test2(args) -> None:
                "seed_check": seed_check,
                "selected_a_sha256": __import__("hashlib").sha256((out / run / "selected.json").read_bytes()).hexdigest(),
                "selected_b_sha256": __import__("hashlib").sha256((outb / run / "selected.json").read_bytes()).hexdigest(),
-               "checkpoints": [{"name": n, "update": next(c["update"] for c in sb["validation"]["curve"] if c["name"] == n)
-                                if any(c["name"] == n for c in sb["validation"]["curve"]) else
-                                next(c["update"] for c in sa["validation"]["curve"] if c["name"] == n),
-                                "outcomes": o["outcomes"], **sel.counts(o["outcomes"], o["fuel_used"])}
+               "checkpoints": [{"name": n, "update": updates[n], "outcomes": o["outcomes"],
+                                **sel.counts(o["outcomes"], o["fuel_used"])}
                                for n, o in zip(names, outs)]}
         cache.write_text(json.dumps(doc) + "\n")
         fin = next(c for c in doc["checkpoints"] if c["name"] == "final")
