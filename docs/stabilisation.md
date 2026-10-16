@@ -214,7 +214,8 @@ exploratory ones (combination vs st_c, combination vs v3a alone). All p-values a
 comparisons (x 2 tests) and n = 10 seeds per arm means only large differences (several seeds or tens of
 points) can be detected; a difference that is not larger than that is reported as within noise.
 
-ROUND2_RESULTS_PLACEHOLDER
+**Status: in progress.** The round-2 training runs were still going when this was committed, so no round-2
+held-out results exist yet. Results will be added here, following the plan above.
 
 ## Limitations
 

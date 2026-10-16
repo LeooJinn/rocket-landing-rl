@@ -113,11 +113,25 @@ checkpoints on seed ranges that `rocket_landing.evaluate.assert_heldout` checks 
 
 ![In-training evaluation success per seed, v1 (top) and v2 (bottom), with the held-out final as a black dot](docs/figures/headline_per_seed_curves.png)
 
-<!-- STABILISATION-RESULTS: filled in when the stabilise/ckpt-selection branches land -->
-## Stabilisation attempts (in progress)
+<!-- STABILISATION-RESULTS -->
+## Stabilisation attempts (round 1 done, round 2 in progress)
 
-Work on making training reliable across seeds, and on choosing a checkpoint without peeking at the
-held-out set, is not reported here yet.
+The headline runs leave some seeds failing, so three fixes were tried, each in its own branch and write-up.
+The diagnosis behind them ([docs/collapse-diagnosis.md](docs/collapse-diagnosis.md)): the late "collapses" are
+the greedy policy running out of fuel just above the ground, while the sampled policy mostly still lands, and
+nothing in reward v2 penalises a slow, fuel-hungry landing.
+
+| Fix | What it did on training seeds 0-9 (500 held-out episodes per seed, final checkpoint) | How far to trust it |
+|---|---|---|
+| Entropy decay plus a learning-rate floor ([docs/stabilisation.md](docs/stabilisation.md)) | 9 of 10 seeds at or above 99.6% (mean 89.9%, one seed at 0%), against 7 of 10 (77.0%) for the headline runs | Not significant (paired sign-flip p = 0.50). Most of the gain came from two seeds that were also used to pick the config. |
+| Fuel-aware reward `v3a` ([docs/reward-v3-results.md](docs/reward-v3-results.md)) | All 10 seeds landed 500 of 500 episodes, with less fuel and fewer steps than reward v2 | Suggestive: paired success p = 0.062 (five seeds better, none worse), fuel and steps p = 0.008. The variant was chosen on three pilot seeds. |
+| Validation-based checkpoint selection ([docs/checkpoint-selection.md](docs/checkpoint-selection.md)) | Choosing a checkpoint on separate validation seeds lifted the headline v2 runs from 77.0% to about 90% | Mostly two seeds, bootstrap interval touches zero. It cannot rescue runs that never learn, and it is nearly a no-op once training is stable. |
+
+**Round 2 (in progress):** the clean out-of-sample test trains four arms (v2 control, entropy schedule, `v3a`,
+and the combination) on ten fresh seeds, 10-19, with the analysis plan written before any held-out result.
+The training runs were still going when this was committed, so there are no round-2 numbers here yet; they
+will be added to [docs/stabilisation.md](docs/stabilisation.md) and this table. Early in-training logs of the
+entropy-schedule arm on the fresh seeds look mixed, so treat the round-1 gain from that fix as unproven.
 <!-- /STABILISATION-RESULTS -->
 
 ## Quickstart
@@ -320,7 +334,7 @@ A run from the same earlier set that ends with a good policy:
 - [x] Build the HTML/CSS/JavaScript replay viewer (live API mode and static recorded-demo mode).
 - [x] Compare reward-function versions and document the results. Done; the evidence is suggestive, not
   conclusive (10 seeds per arm, p = 0.07).
-- [ ] Make training reliable across seeds (open; see the stabilisation section above).
+- [ ] Make training reliable across seeds (open: three fixes tried on seeds 0-9, fresh-seed round 2 in progress; see the stabilisation section above).
 
 ## More documentation
 
