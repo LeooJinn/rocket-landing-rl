@@ -170,3 +170,12 @@ Representative checkpoint kept in the repo: `experiments/results/rv3_v3a_s7/fina
 seed 7 is closest to the arm medians (greedy 500/500; sampled 95.6% vs arm mean 95.1%; greedy fuel
 0.533 and 358 steps vs arm medians 0.537 and 363; last 5 checkpoints 100/100/100/100/99.5%). All other run directories stay
 untracked (`experiments/results/*` is gitignored).
+
+## Fresh-seed replication (added later)
+
+The ten-seed confirmation above used training seeds 0-9. A second, pre-registered round on ten fresh seeds (10-19)
+in [stabilisation.md](stabilisation.md) trained `v3a` again with the same config: 9 of 10 seeds at 90%+, mean
+97.7%, no seed at 0%, against 5 of 10 and 64.0% for the control recipe. Pooled over the 20 seeds `v3a` is at
+98.8% against 70.5% (post hoc, p = 0.004). The fresh-seed comparison alone is p = 0.047 and does not survive a
+correction for the three comparisons made in that round; the seeds 10-12 were also used for the v3a-versus-v3b
+pilot, so seeds 13-19 are the cleanest (v3a 96.7%, control 52.7%).

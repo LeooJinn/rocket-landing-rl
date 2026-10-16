@@ -6,10 +6,11 @@ A from-scratch PyTorch PPO agent that learns to land a simulated 2D rocket on a 
 (position, velocity, tilt, spin, fuel), picks one of four thrusters each step, and is trained with a
 shaped reward on a deterministic NumPy simulator. The repo also contains a hand-written heuristic
 controller as a baseline, a held-out evaluation protocol with confidence intervals, a browser replay
-viewer, and the experiment log of what went wrong along the way. With the better of two reward versions,
-7 of 10 training seeds end with a policy that matches the heuristic baseline (99.6% held-out success); the
-other 3 do not, and I have not yet made training reliable. The write-up below says which numbers are solid
-and which are not.
+viewer, and the experiment log of what went wrong along the way. With a fuel-aware reward (`v3a`), 19 of 20
+training seeds (two independent sets of ten) land at least 90% of 500 unseen starts per seed, against 12 of 20
+with the original reward, and about as often as the heuristic baseline (99.6%) on the seeds that learn. One
+seed in each set is still imperfect, and the evidence is strongest as a replicated effect, not a single
+significance test. The write-up below says which numbers are solid and which are not.
 
 **Live demo (recorded runs, no server needed): <https://jiaxiangjin.com/rocket-landing-rl/>**
 
@@ -52,7 +53,7 @@ How to read this:
   not conclusive.** Mean difference +47.0 percentage points, bootstrap 95% CI +7.0 to +80.0 (resampling
   seeds), exact permutation test p = 0.070. Seeds at or above 90%: 7/10 vs 3/10, Fisher exact p = 0.18.
   Per-seed outcomes are close to bimodal (about 0% or about 100%), so a 10-seed mean is very noisy.
-- **Training is not fully stable, even with fixed scales.** 2 of 10 v2 seeds and 7 of 10 v1 seeds end in a
+- **Training is not fully stable, even with fixed scales (original reward; the stabilisation section below shows the fuel-aware reward fixes most of it).** 2 of 10 v2 seeds and 7 of 10 v1 seeds end in a
   policy that crashes on every episode. Many runs swing between 0% and 100% from one saved checkpoint to
   the next: 6 of 10 v2 seeds and 4 of 10 v1 seeds have a spread above 20 percentage points across their last
   five checkpoints. For example v2 seed 8 scores 100% on four consecutive checkpoints and then 0% at the end.
@@ -118,24 +119,41 @@ checkpoints on seed ranges that `rocket_landing.evaluate.assert_heldout` checks 
 ![In-training evaluation success per seed, v1 (top) and v2 (bottom), with the held-out final as a black dot](docs/figures/headline_per_seed_curves.png)
 
 <!-- STABILISATION-RESULTS -->
-## Stabilisation attempts (round 1 done, round 2 in progress)
+## Stabilisation: what fixed training, and what did not
 
-The headline runs leave some seeds failing, so three fixes were tried, each in its own branch and write-up.
-The diagnosis behind them ([docs/collapse-diagnosis.md](docs/collapse-diagnosis.md)): the late "collapses" are
-the greedy policy running out of fuel just above the ground, while the sampled policy mostly still lands, and
-nothing in reward v2 penalises a slow, fuel-hungry landing.
+The headline runs leave some seeds failing, so three fixes were tried. The diagnosis behind them
+([docs/collapse-diagnosis.md](docs/collapse-diagnosis.md)): the late "collapses" are the greedy policy running
+out of fuel just above the ground, while the sampled policy mostly still lands, and nothing in reward v2
+penalises a slow, fuel-hungry landing.
 
-| Fix | What it did on training seeds 0-9 (500 held-out episodes per seed, final checkpoint) | How far to trust it |
-|---|---|---|
-| Entropy decay plus a learning-rate floor ([docs/stabilisation.md](docs/stabilisation.md)) | 9 of 10 seeds at or above 99.6% (mean 89.9%, one seed at 0%), against 7 of 10 (77.0%) for the headline runs | Not significant (paired sign-flip p = 0.50). Most of the gain came from two seeds that were also used to pick the config. |
-| Fuel-aware reward `v3a` ([docs/reward-v3-results.md](docs/reward-v3-results.md)) | All 10 seeds landed 500 of 500 episodes, with less fuel and fewer steps than reward v2 | Suggestive: paired success p = 0.062 (five seeds better, none worse), fuel and steps p = 0.008. The variant was chosen on three pilot seeds. |
-| Validation-based checkpoint selection ([docs/checkpoint-selection.md](docs/checkpoint-selection.md)) | Choosing a checkpoint on separate validation seeds lifted the headline v2 runs from 77.0% to about 90% | Mostly two seeds, bootstrap interval touches zero. It cannot rescue runs that never learn, and it is nearly a no-op once training is stable. |
+![Held-out success per seed on fresh training seeds 10-19: v2 control, entropy schedule, reward v3a, schedule plus v3a](docs/figures/round2_arms.png)
 
-**Round 2 (in progress):** the clean out-of-sample test trains four arms (v2 control, entropy schedule, `v3a`,
-and the combination) on ten fresh seeds, 10-19, with the analysis plan written before any held-out result.
-The training runs were still going when this was committed, so there are no round-2 numbers here yet; they
-will be added to [docs/stabilisation.md](docs/stabilisation.md) and this table. Early in-training logs of the
-entropy-schedule arm on the fresh seeds look mixed, so treat the round-1 gain from that fix as unproven.
+**The clean test (round 2): ten fresh training seeds, four arms, 500 held-out episodes per seed, final checkpoint,
+analysis written down before any result** ([docs/stabilisation.md](docs/stabilisation.md)):
+
+| Arm | Seeds at 90%+ | Mean held-out success | Seeds at 0% |
+|---|---|---|---|
+| v2 control | 5 of 10 | 64.0% | 3 |
+| Entropy decay plus a learning-rate floor | 4 of 10 | 48.3% | 5 |
+| **Fuel-aware reward `v3a`** | **9 of 10** | **97.7%** | **0** |
+| Both together | 5 of 10 | 50.2% | 4 |
+
+- **The reward change worked and replicated.** `v3a` (a bonus for fuel left at touchdown and a larger time
+  penalty) landed 500 of 500 episodes on every seed of the earlier ten-seed round too. Pooled over all 20
+  seeds it is at 98.8% against 70.5% (post hoc, sign-flip p = 0.004); on the 10 new seeds alone the paired
+  difference is +33.7 points with p = 0.047, which does not survive a correction for three comparisons. It also
+  uses less fuel (0.57 of the tank against 0.74). Details and the statistics are in
+  [docs/reward-v3-results.md](docs/reward-v3-results.md) and [docs/stabilisation.md](docs/stabilisation.md).
+- **The entropy schedule did not.** Its apparent round-1 gain (9 of 10 seeds) came from seeds used to pick it;
+  on fresh seeds it is no better than the control.
+- **Combining the two was worse than the reward alone**, for a reason I have not investigated.
+- **Checkpoint selection** ([docs/checkpoint-selection.md](docs/checkpoint-selection.md)): choosing a checkpoint
+  on separate validation seeds lifted the old v2 runs from 77.0% to about 90%, but it is nearly a no-op once
+  training is stable and cannot rescue seeds that never learn.
+
+Still imperfect: two of the ten new `v3a` seeds crash on some starts (83.6% and 93.0%), the last few checkpoints
+of several seeds are weaker than the final one, and the greedy policy is slower and burns more fuel than the
+heuristic (0.57 of the tank and 396 steps against 0.37 and 270).
 <!-- /STABILISATION-RESULTS -->
 
 ## Quickstart
@@ -296,7 +314,7 @@ A run from the same earlier set that ends with a good policy:
 
 ## Limitations and failure cases
 
-- **Training is seed-sensitive and not reliable.** Only 7 of 10 v2 seeds and 3 of 10 v1 seeds end at or
+- **Training with the original reward is seed-sensitive and not reliable (reward `v3a` largely fixes this, see the stabilisation section).** Only 7 of 10 v2 seeds and 3 of 10 v1 seeds end at or
   above 90% held-out success. The 9 seeds that finish below 50% (7 v1, 2 v2) crash on all 500 episodes, so
   they are degenerate policies, not slightly worse ones; v2 seed 4 sits in between (70.6%, 147 crashes in 500).
 - **The headline compares one checkpoint per seed.** Because runs swing between 0% and 100% across
@@ -332,13 +350,13 @@ A run from the same earlier set that ends with a good policy:
 - [x] Implement and test the reward function (v1 and v2).
 - [x] Add a baseline controller for validating the environment (99.6% held-out success).
 - [x] Train PyTorch PPO policies. PPO trains and reaches baseline-level success on some seeds, but it is
-  seed-sensitive (7/10 seeds at or above 90% with the best configuration; see Headline result).
+  seed-sensitive with the original reward (7/10 seeds at or above 90%); reward `v3a` reaches 19 of 20 seeds (see the stabilisation section).
 - [x] Add evaluation on held-out starting states ([docs/evaluation.md](docs/evaluation.md)).
 - [x] Record episode trajectories and metrics (`recording.py`, `metrics.jsonl`, `eval.jsonl`).
 - [x] Build the HTML/CSS/JavaScript replay viewer (live API mode and static recorded-demo mode).
 - [x] Compare reward-function versions and document the results. Done; the evidence is suggestive, not
   conclusive (10 seeds per arm, p = 0.07).
-- [ ] Make training reliable across seeds (open: three fixes tried on seeds 0-9, fresh-seed round 2 in progress; see the stabilisation section above).
+- [x] Make training reliable across seeds: mostly. Reward `v3a` puts 19 of 20 seeds at 90%+ on held-out starts (see the stabilisation section above); two of the ten fresh seeds are still imperfect.
 
 ## More documentation
 

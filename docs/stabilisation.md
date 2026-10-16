@@ -15,7 +15,8 @@ only just: one seed (9) still ends in a 0% hover-until-the-fuel-runs-out policy,
 over hl_v2 is **not statistically significant** (paired sign-flip p = 0.50, n = 10), and most of the
 gain on seeds 0-9 comes from the two seeds that were used to choose the config (see "What changed").
 The late greedy collapses of learned seeds are clearly reduced in the training logs (below). A
-second round on 10 fresh seeds (four arms) is in the section "Round 2".
+second round on 10 fresh seeds (four arms) is in the section "Round 2": it did **not** replicate this gain, while
+reward `v3a` did (table there).
 
 ## What was implemented (all backward compatible)
 
@@ -214,8 +215,66 @@ exploratory ones (combination vs st_c, combination vs v3a alone). All p-values a
 comparisons (x 2 tests) and n = 10 seeds per arm means only large differences (several seeds or tens of
 points) can be detected; a difference that is not larger than that is reported as within noise.
 
-**Status: in progress.** The round-2 training runs were still going when this was committed, so no round-2
-held-out results exist yet. Results will be added here, following the plan above.
+### Round 2 results (final checkpoint, greedy, 500 held-out episodes per seed, seeds 50000-50499)
+
+![Held-out success per seed on fresh training seeds 10-19, four arms](figures/round2_arms.png)
+
+| arm | seeds at 90%+ | seeds above 50% | seeds at 0% | mean | median | min |
+|---|---|---|---|---|---|---|
+| v2 control (`hlc_v2`) | 5 of 10 | 7 | 3 | 64.0% | 85.5% | 0.0% |
+| entropy schedule (`st_c_ed30lr`) | 4 of 10 | 5 | 5 | 48.3% | 41.7% | 0.0% |
+| **reward v3a (`hlc_v3a`)** | **9 of 10** | **10** | **0** | **97.7%** | **100%** | **83.6%** |
+| schedule + v3a (`stv3a`) | 5 of 10 | 5 | 4 | 50.2% | 51.2% | 0.0% |
+
+Per-seed tables with Wilson intervals, sampled-action success, fuel, steps and the last five checkpoints are in
+`experiments/r2_stats.json` (produced by `scripts/stabilisation_analysis.py arms`) and the four
+`experiments/r2_*.json` evaluation files; `scripts/round2_summary.py` produced the figure and the two post hoc
+analyses below. The training runs themselves are in `experiments/results/` (not committed).
+
+**Pre-registered paired comparisons against the control** (per-seed differences, n = 10; p-values are exact
+sign-flip tests, uncorrected for the three primary comparisons, so the Bonferroni threshold would be 0.017):
+
+| comparison | mean difference | bootstrap 95% interval | sign-flip p | seeds better / worse / tied | seeds at 90%+ (arm vs control), McNemar p |
+|---|---|---|---|---|---|
+| entropy schedule vs control | -15.7 points | -60.6 to +30.9 | 0.59 | 3 / 5 / 2 | 4 vs 5, p = 1.0 |
+| **v3a vs control** | **+33.7 points** | **+7.7 to +62.7** | **0.047** | **6 / 1 / 3** | **9 vs 5, p = 0.22** |
+| schedule + v3a vs control | -13.8 points | -58.1 to +33.1 | 0.65 | 5 / 4 / 1 | 5 vs 5, p = 1.0 |
+| exploratory: schedule + v3a vs v3a | -47.5 points | -78.7 to -15.9 | 0.051 | 2 / 7 / 1 | 5 vs 9, p = 0.22 |
+
+v3a also uses less fuel (greedy, mean fraction of the tank 0.57 against 0.74, p = 0.07) and fewer steps (396
+against 542), and its last five checkpoints are healthier (mean 90.2% against 59.7%; all five at 90%+ on 6 seeds
+against 2). Sampled-action success is 95.5% for v3a against 68.5% for the control.
+
+**What this means**
+
+1. **The round-1 gain from the entropy schedule did not replicate.** On seeds it was never tuned on, it is
+   below the control (48.3% against 64.0%), within noise either way. Round 1 had already warned that its gain
+   came from the two seeds used to choose the config; this confirms it. Its failures are the same
+   hover-until-the-fuel-runs-out mode as before (five seeds at 0%, all using the whole tank or crashing out of bounds).
+2. **Reward v3a replicated.** It landed 500 of 500 on every seed 0-9 in the earlier round and reaches 97.7% mean
+   on 10 new seeds with no seed at 0%. The new-seed comparison against the control is borderline on its own
+   (p = 0.047, not significant after correcting for three comparisons), but the effect has the same direction
+   and size as the first round.
+3. **Combining the two was worse than v3a alone** (50.2% against 97.7%, p = 0.051, exploratory). I did not
+   investigate why; a hypothesis (entropy going to zero leaves the policy with too little exploration to recover
+   from a fuel-hungry mode) is untested and should not be quoted as a finding.
+
+**Two analyses that were not pre-registered** (post hoc, labelled as such):
+
+- *Seeds not used to choose between reward variants.* The v3a-versus-v3b pilot used training seeds 10-12, which
+  are inside this round, so seeds 13-19 are the cleanest. There: control 52.7% (3 of 7 at 90%+), schedule
+  54.7% (3 of 7), v3a 96.7% (6 of 7), combination 57.4% (4 of 7). v3a against the control is +43.9 points
+  (bootstrap interval +9.6 to +83.4), but with only seven seeds the sign-flip test gives p = 0.125.
+- *Pooled over all 20 seeds* (seeds 0-9 compared with the earlier `hl_v2` runs, which used the same recipe, and
+  seeds 10-19 with the new control): v3a 98.8% mean against 70.5%, a difference of +28.3 points (bootstrap
+  interval +10.9 to +47.8, sign-flip p = 0.004, 11 seeds better, 1 worse); 19 of 20 seeds at 90%+ against 12 of
+  20 (McNemar p = 0.039).
+
+**Remaining weaknesses of v3a.** Seeds 17 (83.6%) and 18 (93.0%) still crash on some starts (seed 18 uses 0.91
+of the tank, close to the fuel cliff). Several seeds have a weak checkpoint among their last five (seeds 11, 13,
+17 and 18), so the final checkpoint is still partly a draw. Greedy v3a is slower and burns more fuel than the
+hand-written controller (0.57 of the tank and 396 steps, against 0.37 and 270), and its sampled-action version
+crashes about 4.5% of the time, the reverse of the earlier greedy-only failure.
 
 ## Limitations
 
