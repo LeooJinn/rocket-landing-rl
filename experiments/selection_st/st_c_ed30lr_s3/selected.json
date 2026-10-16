@@ -1,0 +1,433 @@
+{
+  "schema_version": 1,
+  "run": "st_c_ed30lr_s3",
+  "run_dir": "/Users/leojin/projects/rocket-landing-rl-stab/experiments/results/st_c_ed30lr_s3",
+  "rule": "stable3",
+  "pool": "saved+best",
+  "rule_params": {
+    "window": 3
+  },
+  "chosen": {
+    "name": "ckpt_00700",
+    "update": 700,
+    "successes": 200,
+    "n": 200,
+    "rate": 1.0,
+    "ci95": [
+      0.9811546736227335,
+      1.0
+    ],
+    "fuel_left_p10": 0.19989999999999997,
+    "path": "/Users/leojin/projects/rocket-landing-rl-stab/experiments/results/st_c_ed30lr_s3/checkpoints/ckpt_00700.pt",
+    "fuel_used_mean": 0.7685074999999999,
+    "crash": 0,
+    "out_of_bounds": 0,
+    "timeout": 0
+  },
+  "final": {
+    "name": "final",
+    "update": 1220,
+    "successes": 200,
+    "n": 200,
+    "rate": 1.0,
+    "ci95": [
+      0.9811546736227335,
+      1.0
+    ],
+    "fuel_left_p10": 0.406
+  },
+  "alternatives": {
+    "best_val": {
+      "name": "final",
+      "update": 1220,
+      "successes": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9811546736227335,
+        1.0
+      ],
+      "fuel_left_p10": 0.406
+    },
+    "latest_near_best": {
+      "name": "final",
+      "update": 1220,
+      "successes": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9811546736227335,
+        1.0
+      ],
+      "fuel_left_p10": 0.406
+    },
+    "stable3": {
+      "name": "ckpt_00700",
+      "update": 700,
+      "successes": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9811546736227335,
+        1.0
+      ],
+      "fuel_left_p10": 0.19989999999999997
+    },
+    "max_margin": {
+      "name": "ckpt_01100",
+      "update": 1100,
+      "successes": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9811546736227335,
+        1.0
+      ],
+      "fuel_left_p10": 0.4095
+    }
+  },
+  "validation": {
+    "seed_start": 70000,
+    "seed_end": 70199,
+    "episodes": 200,
+    "seed_check": {
+      "heldout": [
+        70000,
+        70199
+      ],
+      "train_env_seeds": [
+        1003000,
+        1003015
+      ],
+      "in_training_eval": [
+        20000,
+        20049
+      ],
+      "validation": [
+        70000,
+        70199
+      ],
+      "test": [
+        50000,
+        50499
+      ]
+    },
+    "n_checkpoints": 26,
+    "curve": [
+      {
+        "name": "ckpt_00050",
+        "update": 50,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.47895
+      },
+      {
+        "name": "ckpt_00100",
+        "update": 100,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00150",
+        "update": 150,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00200",
+        "update": 200,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00250",
+        "update": 250,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00300",
+        "update": 300,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00350",
+        "update": 350,
+        "successes": 1,
+        "n": 200,
+        "rate": 0.005,
+        "ci95": [
+          0.0008831687156009814,
+          0.02777370439789293
+        ],
+        "fuel_left_p10": 0.5012500000000001
+      },
+      {
+        "name": "ckpt_00400",
+        "update": 400,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00450",
+        "update": 450,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00500",
+        "update": 500,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00550",
+        "update": 550,
+        "successes": 0,
+        "n": 200,
+        "rate": 0.0,
+        "ci95": [
+          1.734723475976807e-18,
+          0.018845326377266575
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00600",
+        "update": 600,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.242
+      },
+      {
+        "name": "best",
+        "update": 630,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.21545000000000003
+      },
+      {
+        "name": "ckpt_00650",
+        "update": 650,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.2925
+      },
+      {
+        "name": "ckpt_00700",
+        "update": 700,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.19989999999999997
+      },
+      {
+        "name": "ckpt_00750",
+        "update": 750,
+        "successes": 165,
+        "n": 200,
+        "rate": 0.825,
+        "ci95": [
+          0.7663556885175099,
+          0.8713948493372666
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00800",
+        "update": 800,
+        "successes": 180,
+        "n": 200,
+        "rate": 0.9,
+        "ci95": [
+          0.8505941875672826,
+          0.9343295513309041
+        ],
+        "fuel_left_p10": 0.09899999999999998
+      },
+      {
+        "name": "ckpt_00850",
+        "update": 850,
+        "successes": 158,
+        "n": 200,
+        "rate": 0.79,
+        "ci95": [
+          0.7283538314009754,
+          0.8407158793002101
+        ],
+        "fuel_left_p10": 0.0
+      },
+      {
+        "name": "ckpt_00900",
+        "update": 900,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.2965
+      },
+      {
+        "name": "ckpt_00950",
+        "update": 950,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.03544999999999998
+      },
+      {
+        "name": "ckpt_01000",
+        "update": 1000,
+        "successes": 195,
+        "n": 200,
+        "rate": 0.975,
+        "ci95": [
+          0.942821659593358,
+          0.9892752803482386
+        ],
+        "fuel_left_p10": 0.33240000000000003
+      },
+      {
+        "name": "ckpt_01050",
+        "update": 1050,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.22740000000000005
+      },
+      {
+        "name": "ckpt_01100",
+        "update": 1100,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.4095
+      },
+      {
+        "name": "ckpt_01150",
+        "update": 1150,
+        "successes": 190,
+        "n": 200,
+        "rate": 0.95,
+        "ci95": [
+          0.9104218518612239,
+          0.972617354399236
+        ],
+        "fuel_left_p10": 0.48195
+      },
+      {
+        "name": "ckpt_01200",
+        "update": 1200,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.2629
+      },
+      {
+        "name": "final",
+        "update": 1220,
+        "successes": 200,
+        "n": 200,
+        "rate": 1.0,
+        "ci95": [
+          0.9811546736227335,
+          1.0
+        ],
+        "fuel_left_p10": 0.406
+      }
+    ]
+  },
+  "exported_checkpoint": "selected.pt",
+  "exported_sha256": "002996a3371efe4a9f66726da6c0ceb8a17aafda69f5af11b66bd927e136da81"
+}

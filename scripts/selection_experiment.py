@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 
 from rocket_landing import selection as sel
-from rocket_landing.evaluate import resolve_run_dir, wilson_interval
+from rocket_landing.evaluate import assert_heldout, resolve_run_dir, wilson_interval
 
 
 def _runs(args) -> list[str]:
@@ -375,9 +375,93 @@ def cmd_report2(args) -> None:
     print("\n".join(lines))
 
 
+# ------------------------------------------------------------- stabilised runs
+def _pool_a(curve: dict) -> dict:
+    """The saved-checkpoints-only view of a pool-B validation curve."""
+    return {**curve, "pool": "saved", "checkpoints": [c for c in curve["checkpoints"] if c["name"] != "best"]}
+
+
+def cmd_test_st(args) -> None:
+    """Primary test range (50000..50499, reserved for the confirmation runs) for final.pt, best.pt and every
+    rule's pick from pool A (saved) and pool B (saved + best.pt), chosen from validation before this runs."""
+    out = Path(args.out)
+    rd = Path(args.results_dir).expanduser()
+    for run in _runs(args):
+        cache = out / run / "test_curve.json"
+        if cache.exists():
+            print(f"{run}: test_curve.json exists, skipping", flush=True)
+            continue
+        sb_path = out / run / "selected.json"
+        sb = json.loads(sb_path.read_text())
+        assert sb["pool"] == "saved+best"
+        curve = json.loads((out / run / "validation_curve.json").read_text())
+        run_dir = resolve_run_dir(run, rd)
+        rc = sel.run_config(run_dir)
+        sel.assert_validation_disjoint(sel.VALIDATION_SEED_START, sel.VALIDATION_EPISODES, rc["train_seed"],
+                                       rc["num_envs"], rc["eval_seed_start"], rc["eval_episodes"])
+        seed_check = assert_heldout(sel.TEST_SEED_START, sel.TEST_EPISODES, rc["train_seed"], rc["num_envs"],
+                                        rc["eval_seed_start"], rc["eval_episodes"])
+        sa = sel.select(_pool_a(curve), sel.DEFAULT_RULE)
+        paths = {n: p for _, n, p in sel.list_checkpoints(run_dir)}
+        updates = {n: u for u, n, _ in sel.list_checkpoints(run_dir)}
+        paths["best"] = run_dir / "best.pt"
+        updates["best"] = sel.checkpoint_update(paths["best"])
+        names = {"final", "best"} | {a["name"] for a in sb["alternatives"].values()} \
+            | {a["name"] for a in sa["alternatives"].values()}
+        names = sorted(names)
+        outs = sel.evaluate_many([paths[n] for n in names], sel.TEST_SEED_START, sel.TEST_EPISODES,
+                                 rc["reward_version"], args.procs)
+        doc = {"run": run, "test_seed_start": sel.TEST_SEED_START, "episodes": sel.TEST_EPISODES,
+               "seed_check": seed_check,
+               "selected_json_sha256": __import__("hashlib").sha256(sb_path.read_bytes()).hexdigest(),
+               "pool_a_choices": {r: a["name"] for r, a in sa["alternatives"].items()},
+               "checkpoints": [{"name": n, "update": updates[n], "outcomes": o["outcomes"],
+                                **sel.counts(o["outcomes"], o["fuel_used"])} for n, o in zip(names, outs)]}
+        cache.write_text(json.dumps(doc) + "\n")
+        fin = next(c for c in doc["checkpoints"] if c["name"] == "final")
+        print(f"{run}: evaluated {len(names)} ckpts; final {fin['success']}/500", flush=True)
+
+
+def cmd_report_st(args) -> None:
+    out = Path(args.out)
+    methods = ["final", "best_pt"] + [f"A:{r}" for r in sel.RULES] + [f"B:{r}" for r in sel.RULES]
+    per_run = {}
+    for run in _runs(args):
+        sb = json.loads((out / run / "selected.json").read_text())
+        t = json.loads((out / run / "test_curve.json").read_text())
+        curve = json.loads((out / run / "validation_curve.json").read_text())
+        sa = sel.select(_pool_a(curve), sel.DEFAULT_RULE)
+        tc = {c["name"]: c for c in t["checkpoints"]}
+        m = {"final": {"ckpt": "final", "update": sb["final"]["update"], "val": sb["final"]["rate"],
+                       "test": tc["final"]["success"], "n": tc["final"]["n"]},
+             "best_pt": {"ckpt": "best.pt", "update": tc["best"]["update"], "val": None,
+                         "test": tc["best"]["success"], "n": tc["best"]["n"]}}
+        for r in sel.RULES:
+            for tag, s in (("A", sa), ("B", sb)):
+                a = s["alternatives"][r]
+                m[f"{tag}:{r}"] = {"ckpt": a["name"], "update": a["update"], "val": a["rate"],
+                                   "test": tc[a["name"]]["success"], "n": tc[a["name"]]["n"]}
+        per_run[run] = {"methods": m}
+    runs = sorted(per_run, key=_natural)
+    lines = ["| run | " + " | ".join(methods) + " |", "|---|" + "---|" * len(methods)]
+    for r in runs:
+        lines.append(f"| {r} | " + " | ".join(
+            f"{_ci(per_run[r]['methods'][m]['test'], per_run[r]['methods'][m]['n'])} @{per_run[r]['methods'][m]['update']}"
+            for m in methods) + " |")
+    agg = {m: _agg([per_run[r]["methods"][m]["test"] / per_run[r]["methods"][m]["n"] for r in runs]) for m in methods}
+    lines += ["", "| method | mean | median | min | max | runs >= 90% | runs >= 50% | runs at 0% |",
+              "|---|---|---|---|---|---|---|---|"]
+    for m in methods:
+        a = agg[m]
+        lines.append(f"| {m} | {a['mean']:.1%} | {a['median']:.1%} | {a['min']:.1%} | {a['max']:.1%} | "
+                     f"{a['n_ge_90']}/{a['n']} | {a['n_ge_50']}/{a['n']} | {a['n_zero']}/{a['n']} |")
+    (out / "summary_st.json").write_text(json.dumps({"per_run": per_run, "agg": agg}, indent=1) + "\n")
+    print("\n".join(lines))
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["validate", "rules", "test", "report", "verify-prune", "test2", "report2"])
+    ap.add_argument("phase", choices=["validate", "rules", "test", "report", "verify-prune", "test2", "report2", "test-st", "report-st"])
     ap.add_argument("--results-dir", default="experiments/results")
     ap.add_argument("--runs", nargs="+")
     ap.add_argument("--pattern", default="hl_v*_s*")
@@ -395,7 +479,8 @@ def main(argv=None) -> int:
     ap.add_argument("--headline-eval", default="experiments/headline_eval.json")
     args = ap.parse_args(argv)
     {"validate": cmd_validate, "rules": cmd_rules, "test": cmd_test, "report": cmd_report,
-     "verify-prune": cmd_verify_prune, "test2": cmd_test2, "report2": cmd_report2}[args.phase](args)
+     "verify-prune": cmd_verify_prune, "test2": cmd_test2, "report2": cmd_report2,
+     "test-st": cmd_test_st, "report-st": cmd_report_st}[args.phase](args)
     return 0
 
 
