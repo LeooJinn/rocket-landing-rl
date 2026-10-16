@@ -44,3 +44,14 @@ logs/
 experiments/results/st_c_ed30lr_s2/*
 !experiments/results/st_c_ed30lr_s2/final.pt
 !experiments/results/st_c_ed30lr_s2/config.json
+
+# Reward-v3 experiment: local training/eval logs (small result JSONs and one final.pt are committed).
+logs/rv3_*.log
+logs/queue_*.log
+logs/eval_*.log
+
+# Keep one small final checkpoint of the reward-v3 confirmation run most representative of the arm (rv3_v3a_s7).
+!experiments/results/rv3_v3a_s7/
+experiments/results/rv3_v3a_s7/*
+!experiments/results/rv3_v3a_s7/final.pt
+!experiments/results/rv3_v3a_s7/config.json
