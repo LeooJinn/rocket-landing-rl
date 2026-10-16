@@ -15,7 +15,7 @@ only just: one seed (9) still ends in a 0% hover-until-the-fuel-runs-out policy,
 over hl_v2 is **not statistically significant** (paired sign-flip p = 0.50, n = 10), and most of the
 gain on seeds 0-9 comes from the two seeds that were used to choose the config (see "What changed").
 The late greedy collapses of learned seeds are clearly reduced in the training logs (below). A
-replication on 10 fresh seeds is in the last section.
+second round on 10 fresh seeds (four arms) is in the section "Round 2".
 
 ## What was implemented (all backward compatible)
 
@@ -189,9 +189,32 @@ diagnostician's proposed safe targets (greedy fuel <= 0.6 and steps <= 450) on e
 4. The target ">= 9/10 seeds >= 90% with `final.pt`" is met on seeds 0-9 with 9/10 (exactly at the
    threshold; seed-level 95% interval 55%-99.7%).
 
-## Fresh-seed replication (seeds 10-19, not used for any choice)
+## Round 2: fresh seeds 10-19, four arms (analysis plan written before any held-out result)
 
-Seeds 10-19 of `st_c_ed30lr` plus a hl_v2 control on the same seeds are training at the time of this commit; results will be added here.
+Seeds 0-9 above were the first round (and seeds 6-8 doubled as pilot seeds). Round 2 is the clean
+out-of-sample test: training seeds 10-19, never used for any choice, and every arm uses the SAME 10 training
+seeds, so comparisons are paired by seed. Plan fixed here, before evaluating any of these runs on the
+held-out range (I had looked at the in-training logs of some of the `st_c_ed30lr` seeds 10-13 while they
+were running, nothing else):
+
+| arm | run names | config |
+|---|---|---|
+| control (hl_v2 recipe) | `hlc_v2_s{10..19}` | `ppo_final_v2.json` (reward v2, constant entropy, LR to 0) |
+| stabilised schedule | `st_c_ed30lr_s{10..19}` | `st_c_ed30lr.json` (reward v2 + entropy decay + LR floor) |
+| reward v3a alone | `hlc_v3a_s{10..19}` | `ppo_final_v3a.json` (from the reward-v3 branch: v2 + time penalty 0.03 + landing fuel bonus) |
+| combination | `stv3a_s{10..19}` | `st_c_v3a.json` = `st_c_ed30lr` schedule + reward v3a |
+
+All arms are reported, whichever is best. Evaluation: `final.pt`, greedy and sampled actions, 500 held-out
+episodes (seeds 50000-50499), mean fuel used and steps, last-5 checkpoints (200 episodes), per-seed Wilson
+CIs. Primary outcome: number of seeds with held-out final success >= 90%. Secondary: mean success across
+seeds, seeds > 50%, last-5 robustness, fuel, steps. Paired comparisons (per-seed success differences:
+bootstrap 95% CI of the mean difference and exact sign-flip test; McNemar exact test on the >= 90%
+indicator) of each of the three non-control arms against the control = 3 primary comparisons, plus 2
+exploratory ones (combination vs st_c, combination vs v3a alone). All p-values are uncorrected for these 5
+comparisons (x 2 tests) and n = 10 seeds per arm means only large differences (several seeds or tens of
+points) can be detected; a difference that is not larger than that is reported as within noise.
+
+ROUND2_RESULTS_PLACEHOLDER
 
 ## Limitations
 
