@@ -36,7 +36,7 @@ from rocket_landing.policy import (
     make_obs_normalizer,
     save_checkpoint,
 )
-from rocket_landing.ppo import PPOConfig, compute_gae, ppo_update
+from rocket_landing.ppo import PPOConfig, compute_gae, ent_coef_at, lr_at, ppo_update
 
 OBS_DIM = 7
 TRAIN_SEED_BASE = 1_000_000
@@ -62,12 +62,20 @@ DEFAULT_CONFIG: dict = {
         "num_minibatches": 8,
         "norm_adv": True,
         "target_kl": None,
+        # schedule options (defaults = constant entropy coef, LR linearly annealed to 0)
+        "ent_coef_final": None,
+        "ent_decay_start": 0.0,
+        "ent_decay_end": 1.0,
+        "lr_schedule": "linear",
+        "lr_final_frac": 0.0,
     },
     "policy": {"hidden_sizes": [64, 64], "activation": "tanh"},
     "checkpoint_every": 50,
     "eval_every": 10,
     "eval_episodes": 50,
     "eval_seed_start": 20000,
+    # also evaluate SAMPLED actions at each eval (extra ``stoch_*`` keys in eval.jsonl); off by default
+    "eval_stochastic": False,
     "torch_threads": 1,
 }
 
@@ -201,9 +209,8 @@ def train(config: dict, seed: int, run_dir: str | Path, device: str = "cpu") -> 
 
     try:
         for update in range(1, num_updates + 1):
-            lr = ppo_cfg.learning_rate
-            if ppo_cfg.anneal_lr:
-                lr = ppo_cfg.learning_rate * (1.0 - (update - 1) / num_updates)
+            lr = lr_at(ppo_cfg, update, num_updates)
+            ent_coef = ent_coef_at(ppo_cfg, update, num_updates)
             for g in optimizer.param_groups:
                 g["lr"] = lr
 
@@ -263,7 +270,7 @@ def train(config: dict, seed: int, run_dir: str | Path, device: str = "cpu") -> 
                 "advantages": adv.reshape(-1),
                 "returns": ret.reshape(-1),
             }
-            stats = ppo_update(model, optimizer, batch, ppo_cfg, shuffle_gen)
+            stats = ppo_update(model, optimizer, batch, ppo_cfg, shuffle_gen, ent_coef=ent_coef)
 
             cum_episodes += len(ep_out)
             record = {
@@ -279,6 +286,7 @@ def train(config: dict, seed: int, run_dir: str | Path, device: str = "cpu") -> 
                 "out_of_bounds_rate": _frac(ep_out, "out_of_bounds"),
                 "timeout_rate": _frac(ep_out, "timeout"),
                 "lr": lr,
+                "ent_coef": ent_coef,
                 **{k: float(v) for k, v in stats.items()},
                 "time_s": time.time() - t0,
             }
@@ -304,6 +312,18 @@ def train(config: dict, seed: int, run_dir: str | Path, device: str = "cpu") -> 
                     seed=int(cfg["eval_seed_start"]),
                     reward_version=version,
                 )
+                stoch = None
+                if cfg["eval_stochastic"]:
+                    # sampled actions on the SAME reset seeds; generator seeded for reproducibility
+                    stoch = evaluate(
+                        PolicyController(
+                            model, copy.deepcopy(obs_norm), device="cpu",
+                            deterministic=False, seed=int(cfg["eval_seed_start"]),
+                        ),
+                        int(cfg["eval_episodes"]),
+                        seed=int(cfg["eval_seed_start"]),
+                        reward_version=version,
+                    )
                 model.to(dev).train()
                 last_eval = {
                     "update": update,
@@ -316,12 +336,24 @@ def train(config: dict, seed: int, run_dir: str | Path, device: str = "cpu") -> 
                     "mean_fuel_used": s.mean_fuel_used,
                     "mean_steps": s.mean_steps,
                 }
+                if stoch is not None:
+                    last_eval.update(
+                        {
+                            "stoch_success_rate": stoch.success_rate,
+                            "stoch_crash_rate": stoch.crash_rate,
+                            "stoch_out_of_bounds_rate": stoch.out_of_bounds_rate,
+                            "stoch_timeout_rate": stoch.timeout_rate,
+                            "stoch_mean_reward": stoch.mean_reward,
+                        }
+                    )
                 _write_line(eval_f, last_eval)
                 key = (s.success_rate, s.mean_reward)
                 if best is None or key > best:
                     best, best_update = key, update
                     make_ckpt(run_dir / "best.pt", update)
                 line += f" | eval succ {s.success_rate:.2f} R {s.mean_reward:.1f}"
+                if stoch is not None:
+                    line += f" stoch {stoch.success_rate:.2f}"
 
             ck = int(cfg["checkpoint_every"])
             if ck and update % ck == 0:

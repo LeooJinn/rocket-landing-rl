@@ -34,3 +34,6 @@ experiments/results/ppo_v1_tuned_s1/checkpoints/
 experiments/results/hl_v2_s2/*
 !experiments/results/hl_v2_s2/final.pt
 !experiments/results/hl_v2_s2/config.json
+
+# Training logs (stdout of nohup runs)
+logs/
