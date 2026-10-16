@@ -1,0 +1,1 @@
+[{"finished":true,"global_step":4997120,"last_eval":{"crash_rate":0.0,"mean_reward":108.059,"out_of_bounds_rate":0.0,"success_rate":1.0,"timeout_rate":0.0,"update":1220},"mtime":0,"name":"exp_fixed_s0","reward_version":"v2","seed":0,"total_timesteps":5000000,"updates":1220}]

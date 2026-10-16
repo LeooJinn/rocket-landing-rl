@@ -48,3 +48,29 @@ current policy flying.
 Rolled-out episodes are cached in memory keyed by (run, checkpoint path, file
 mtime, seed), so a checkpoint that is rewritten is re-rolled; the cache is not
 bounded and resets on restart. Reward version is read from the run's `config.json` (default `v1`).
+
+## Static demo (no server, e.g. GitHub Pages)
+
+`frontend/demo/` holds a pre-computed recording of one finished run, so the
+viewer works as a plain static site. Re-export (the one command):
+
+```
+uv run python scripts/export_static_demo.py ~/projects/rocket-landing-rl-norm/experiments/results/exp_fixed_s0
+```
+
+Options: `--out DIR` (default `frontend/demo`), `--seeds 10 --first-seed 20000`,
+`--fractions 0.1 0.4` (earlier checkpoints, as a share of the final update;
+`final` is always exported). The export wipes and rewrites the output dir,
+is deterministic, and is about 3.2 MB for 10 seeds x 3 checkpoints + baseline
+(it compresses well under gzip). Files mirror the API: `runs.json`,
+`metrics_<run>.json` (train rows thinned to ~150), `checkpoints_<run>.json`,
+`episode_<run>__<ckpt>__<seed>.json`, `baseline_<seed>.json`, plus `manifest.json`.
+
+Serve it with any static server from `frontend/`, for example
+`cd frontend && python3 -m http.server`. All URLs are relative, so a sub-path
+works. The page uses the static data when opened with `?static=1`, or
+automatically when `/api/runs` is unreachable and `demo/manifest.json` exists
+(`?static=0` disables the fallback). In static mode the UI is labelled as a
+recorded run, the seed picker is limited to the exported seeds, the checkpoint
+list to the exported checkpoints, and "Replay training progress" plays the
+exported checkpoints in order (early crashes to landing). The live API mode is unchanged.
