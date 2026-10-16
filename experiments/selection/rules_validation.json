@@ -1,0 +1,27 @@
+{
+ "best_val": {
+  "selecting_half": 0.68225,
+  "other_half": 0.68225,
+  "n_runs": 20
+ },
+ "latest_near_best": {
+  "selecting_half": 0.675,
+  "other_half": 0.675,
+  "n_runs": 20
+ },
+ "stable3": {
+  "selecting_half": 0.68225,
+  "other_half": 0.68225,
+  "n_runs": 20
+ },
+ "max_margin": {
+  "selecting_half": 0.6735,
+  "other_half": 0.6735,
+  "n_runs": 20
+ },
+ "final": {
+  "selecting_half": 0.53325,
+  "other_half": 0.53325,
+  "n_runs": 20
+ }
+}
