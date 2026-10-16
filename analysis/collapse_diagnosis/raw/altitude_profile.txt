@@ -1,0 +1,60 @@
+hl_v2_s8@1200 T=0:
+   y[  0, 10): steps/ep   148 mean vy  -1.33 MAIN 0.54 NOOP 0.42 L/R 0.04
+   y[ 10, 30): steps/ep   226 mean vy  -1.77 MAIN 0.51 NOOP 0.18 L/R 0.32
+   y[ 30, 60): steps/ep   189 mean vy  -3.18 MAIN 0.51 NOOP 0.00 L/R 0.49
+   y[ 60,125): steps/ep   144 mean vy  -5.83 MAIN 0.51 NOOP 0.00 L/R 0.49
+hl_v2_s8@1200 T=1.0:
+   y[  0, 10): steps/ep   203 mean vy  -0.99 MAIN 0.50 NOOP 0.20 L/R 0.30
+   y[ 10, 30): steps/ep   198 mean vy  -2.03 MAIN 0.51 NOOP 0.13 L/R 0.36
+   y[ 30, 60): steps/ep   130 mean vy  -4.62 MAIN 0.53 NOOP 0.10 L/R 0.37
+   y[ 60,125): steps/ep   103 mean vy  -8.11 MAIN 0.48 NOOP 0.09 L/R 0.42
+hl_v2_s8@1150 T=0:
+   y[  0, 10): steps/ep   214 mean vy  -0.94 MAIN 0.50 NOOP 0.43 L/R 0.07
+   y[ 10, 30): steps/ep   205 mean vy  -1.96 MAIN 0.51 NOOP 0.13 L/R 0.36
+   y[ 30, 60): steps/ep   143 mean vy  -4.20 MAIN 0.52 NOOP 0.00 L/R 0.48
+   y[ 60,125): steps/ep   115 mean vy  -7.33 MAIN 0.49 NOOP 0.00 L/R 0.51
+hl_v2_s8@1150 T=1.0:
+   y[  0, 10): steps/ep   209 mean vy  -0.96 MAIN 0.50 NOOP 0.18 L/R 0.31
+   y[ 10, 30): steps/ep   158 mean vy  -2.54 MAIN 0.52 NOOP 0.12 L/R 0.36
+   y[ 30, 60): steps/ep    94 mean vy  -6.42 MAIN 0.54 NOOP 0.09 L/R 0.37
+   y[ 60,125): steps/ep    91 mean vy  -9.23 MAIN 0.47 NOOP 0.11 L/R 0.42
+hl_v2_s3@final T=0:
+   y[  0, 10): steps/ep   150 mean vy  -1.34 MAIN 0.52 NOOP 0.22 L/R 0.26
+   y[ 10, 30): steps/ep    72 mean vy  -5.65 MAIN 0.59 NOOP 0.19 L/R 0.22
+   y[ 30, 60): steps/ep    43 mean vy -13.92 MAIN 0.74 NOOP 0.15 L/R 0.11
+   y[ 60,125): steps/ep    53 mean vy -15.73 MAIN 0.23 NOOP 0.32 L/R 0.44
+hl_v2_s3@final T=1.0:
+   y[  0, 10): steps/ep   102 mean vy  -1.99 MAIN 0.54 NOOP 0.14 L/R 0.32
+   y[ 10, 30): steps/ep    43 mean vy  -9.47 MAIN 0.77 NOOP 0.06 L/R 0.18
+   y[ 30, 60): steps/ep    31 mean vy -19.67 MAIN 0.71 NOOP 0.08 L/R 0.21
+   y[ 60,125): steps/ep    52 mean vy -15.81 MAIN 0.17 NOOP 0.25 L/R 0.58
+hl_v2_s2@final T=0:
+   y[  0, 10): steps/ep   175 mean vy  -1.15 MAIN 0.51 NOOP 0.21 L/R 0.28
+   y[ 10, 30): steps/ep   115 mean vy  -3.48 MAIN 0.54 NOOP 0.05 L/R 0.41
+   y[ 30, 60): steps/ep    69 mean vy  -8.75 MAIN 0.58 NOOP 0.09 L/R 0.33
+   y[ 60,125): steps/ep    66 mean vy -12.69 MAIN 0.40 NOOP 0.28 L/R 0.32
+hl_v2_s2@final T=1.0:
+   y[  0, 10): steps/ep   120 mean vy  -1.68 MAIN 0.52 NOOP 0.13 L/R 0.36
+   y[ 10, 30): steps/ep    76 mean vy  -5.28 MAIN 0.60 NOOP 0.10 L/R 0.30
+   y[ 30, 60): steps/ep    46 mean vy -13.17 MAIN 0.64 NOOP 0.09 L/R 0.27
+   y[ 60,125): steps/ep    59 mean vy -14.08 MAIN 0.31 NOOP 0.22 L/R 0.47
+hl_v2_s7@1050 T=0:
+   y[  0, 10): steps/ep   161 mean vy  -1.25 MAIN 0.51 NOOP 0.00 L/R 0.49
+   y[ 10, 30): steps/ep   103 mean vy  -3.92 MAIN 0.54 NOOP 0.00 L/R 0.46
+   y[ 30, 60): steps/ep    72 mean vy  -8.33 MAIN 0.56 NOOP 0.00 L/R 0.44
+   y[ 60,125): steps/ep    71 mean vy -11.70 MAIN 0.42 NOOP 0.00 L/R 0.58
+hl_v2_s7@1050 T=1.0:
+   y[  0, 10): steps/ep   106 mean vy  -1.90 MAIN 0.53 NOOP 0.09 L/R 0.38
+   y[ 10, 30): steps/ep    56 mean vy  -7.22 MAIN 0.63 NOOP 0.06 L/R 0.31
+   y[ 30, 60): steps/ep    44 mean vy -13.50 MAIN 0.61 NOOP 0.08 L/R 0.31
+   y[ 60,125): steps/ep    62 mean vy -13.48 MAIN 0.33 NOOP 0.13 L/R 0.55
+hl_v2_s7@1100 T=0:
+   y[  0, 10): steps/ep   116 mean vy  -1.70 MAIN 0.57 NOOP 0.01 L/R 0.42
+   y[ 10, 30): steps/ep   234 mean vy  -1.71 MAIN 0.50 NOOP 0.00 L/R 0.50
+   y[ 30, 60): steps/ep   187 mean vy  -3.21 MAIN 0.51 NOOP 0.00 L/R 0.49
+   y[ 60,125): steps/ep   141 mean vy  -5.95 MAIN 0.50 NOOP 0.00 L/R 0.50
+hl_v2_s7@1100 T=1.0:
+   y[  0, 10): steps/ep   219 mean vy  -0.92 MAIN 0.50 NOOP 0.12 L/R 0.38
+   y[ 10, 30): steps/ep   180 mean vy  -2.23 MAIN 0.51 NOOP 0.11 L/R 0.38
+   y[ 30, 60): steps/ep   124 mean vy  -4.86 MAIN 0.53 NOOP 0.10 L/R 0.37
+   y[ 60,125): steps/ep   102 mean vy  -8.20 MAIN 0.48 NOOP 0.12 L/R 0.40

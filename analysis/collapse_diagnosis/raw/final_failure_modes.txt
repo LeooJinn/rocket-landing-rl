@@ -1,0 +1,21 @@
+final.pt greedy, 20 eps (seeds 50000..): landed/crashed/oob | episodes where fuel ran out | mean step fuel ran out | altitude (m) when fuel ran out: mean, median | mean touchdown vy
+hl_v1_s0  0/20/ 0 | out-of-fuel eps 20 | at step   785 | y   9.5 med  10.2 | vy  -13.3
+hl_v1_s1 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.7
+hl_v1_s2 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.7
+hl_v1_s3 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.9
+hl_v1_s4  0/20/ 0 | out-of-fuel eps 20 | at step   787 | y  17.7 med  17.4 | vy  -18.7
+hl_v1_s5  0/20/ 0 | out-of-fuel eps 20 | at step   785 | y  36.6 med  36.7 | vy  -26.8
+hl_v1_s6  0/20/ 0 | out-of-fuel eps 20 | at step   780 | y  33.6 med  33.8 | vy  -25.7
+hl_v1_s7  0/20/ 0 | out-of-fuel eps 20 | at step   788 | y  58.6 med  58.7 | vy  -34.0
+hl_v1_s8  0/20/ 0 | out-of-fuel eps 20 | at step   779 | y  46.9 med  46.3 | vy  -30.4
+hl_v1_s9  0/20/ 0 | out-of-fuel eps 20 | at step   779 | y  79.4 med  78.0 | vy  -39.5
+hl_v2_s0 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.8
+hl_v2_s1 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.7
+hl_v2_s2 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.7
+hl_v2_s3 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.7
+hl_v2_s4 15/ 5/ 0 | out-of-fuel eps  6 | at step   674 | y   0.3 med   0.2 | vy   -1.6
+hl_v2_s5 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.6
+hl_v2_s6  0/20/ 0 | out-of-fuel eps 20 | at step   786 | y  67.8 med  67.6 | vy  -36.5
+hl_v2_s7 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.8
+hl_v2_s8  0/20/ 0 | out-of-fuel eps 20 | at step   690 | y   4.2 med   4.0 | vy   -9.2
+hl_v2_s9 20/ 0/ 0 | out-of-fuel eps  0 | at step   nan | y   nan med   nan | vy   -0.5

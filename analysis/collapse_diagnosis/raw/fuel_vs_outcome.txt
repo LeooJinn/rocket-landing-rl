@@ -1,0 +1,37 @@
+total evals 2440
+all evals, success>=0.9                                        n= 503 fuel_used mean 0.743 p10 0.556 p50 0.751 | steps mean 516
+all evals, crash>=0.9                                          n=1455 fuel_used mean 0.971 p10 0.939 p50 1.000 | steps mean 792
+all evals, oob>=0.9                                            n= 151 fuel_used mean 0.500 p10 0.254 p50 0.449 | steps mean 344
+upd>=600, crash>=0.9 (any run)                                 n= 601 fuel_used mean 0.992 p10 0.997 p50 1.000 | steps mean 810
+upd>=600, crash>=0.9, run reached >=90% at some point          n= 245 fuel_used mean 0.989 p10 0.999 p50 1.000 | steps mean 771
+upd>=600, crash>=0.9, run NEVER reached 90%                    n= 356 fuel_used mean 0.994 p10 0.994 p50 1.000 | steps mean 837
+upd>=600, 0.1<succ<0.9                                         n= 148 fuel_used mean 0.905 p10 0.680 p50 0.971 | steps mean 648
+
+upd>=600 crash>=0.9 evals: fuel_used>=0.99: 558 / 601; 0.95-0.99: 24; <0.95: 19
+
+upd>=600 evals pooled: greedy success vs mean_fuel_used bin (excluding oob>=0.5)
+  fuel_used [0.00,0.40): n=   2  mean greedy success 0.50
+  fuel_used [0.40,0.50): n=  22  mean greedy success 0.95
+  fuel_used [0.50,0.60): n=  70  mean greedy success 0.94
+  fuel_used [0.60,0.70): n= 128  mean greedy success 0.95
+  fuel_used [0.70,0.80): n= 120  mean greedy success 0.90
+  fuel_used [0.80,0.90): n= 137  mean greedy success 0.89
+  fuel_used [0.90,0.95): n=  59  mean greedy success 0.81
+  fuel_used [0.95,0.99): n=  86  mean greedy success 0.48
+  fuel_used [0.99,1.01): n= 613  mean greedy success 0.03
+
+Per run: after the first >=90% eval, evals with success<20% and how many of them have fuel_used>=0.97
+  hl_v1_s1: first>=.9 @ 690, evals after: 54, collapsed(<20%): 1 (2%), of which fuel_used>=0.97: 1
+  hl_v1_s2: first>=.9 @ 870, evals after: 36, collapsed(<20%): 2 (6%), of which fuel_used>=0.97: 1
+  hl_v1_s3: first>=.9 @ 760, evals after: 47, collapsed(<20%): 14 (30%), of which fuel_used>=0.97: 14
+  hl_v1_s5: first>=.9 @ 620, evals after: 61, collapsed(<20%): 55 (90%), of which fuel_used>=0.97: 48
+  hl_v1_s8: first>=.9 @ 540, evals after: 69, collapsed(<20%): 59 (86%), of which fuel_used>=0.97: 53
+  hl_v2_s0: first>=.9 @ 570, evals after: 66, collapsed(<20%): 9 (14%), of which fuel_used>=0.97: 9
+  hl_v2_s1: first>=.9 @ 620, evals after: 61, collapsed(<20%): 9 (15%), of which fuel_used>=0.97: 9
+  hl_v2_s2: first>=.9 @ 600, evals after: 63, collapsed(<20%): 6 (10%), of which fuel_used>=0.97: 6
+  hl_v2_s3: first>=.9 @ 440, evals after: 79, collapsed(<20%): 2 (3%), of which fuel_used>=0.97: 2
+  hl_v2_s4: first>=.9 @ 520, evals after: 71, collapsed(<20%): 15 (21%), of which fuel_used>=0.97: 15
+  hl_v2_s5: first>=.9 @ 620, evals after: 61, collapsed(<20%): 9 (15%), of which fuel_used>=0.97: 9
+  hl_v2_s7: first>=.9 @ 480, evals after: 75, collapsed(<20%): 13 (17%), of which fuel_used>=0.97: 13
+  hl_v2_s8: first>=.9 @ 730, evals after: 50, collapsed(<20%): 11 (22%), of which fuel_used>=0.97: 11
+  hl_v2_s9: first>=.9 @ 790, evals after: 44, collapsed(<20%): 17 (39%), of which fuel_used>=0.97: 15

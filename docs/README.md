@@ -13,6 +13,7 @@ detail behind it. Every number in the README comes from one of the documents or 
 | [experiments.md](experiments.md) | Chronological log: first PPO policy, training curve, seed reliability, what was tried, the free-fall and hover failure modes, reward v1 vs v2 on six seeds, run families and figures, limitations. |
 | [normalisation-experiment.md](normalisation-experiment.md) | Running vs fixed observation scales on six seeds (27.6% to 95.0% mean held-out success), and the `clip_vloss` ablation. |
 | [headline-results.md](headline-results.md) | Current headline: reward v1 vs v2, fixed-scale normalisation, 10 seeds each, 500 held-out episodes per final checkpoint, statistics and limitations. |
+| [collapse-diagnosis.md](collapse-diagnosis.md) | Why the fixed-scale runs collapse late in training: the greedy policy runs out of fuel before touchdown, the sampled policy mostly does not, the argmax is nearly tied, and some seeds stall in a hover. Every claim is labelled confirmed or suspected; scripts and raw outputs in [../analysis/collapse_diagnosis/](../analysis/collapse_diagnosis/). |
 | [viewer.md](viewer.md) | The viewer backend API (`scripts/serve_viewer.py`), following a live training run, and the static (serverless) demo export. |
 
 ## Data behind the documents
@@ -23,6 +24,7 @@ detail behind it. Every number in the README comes from one of the documents or 
 | [../experiments/headline_eval.json](../experiments/headline_eval.json) | Raw per-run evaluation of the 20 headline runs ([headline-results.md](headline-results.md)). |
 | [../experiments/headline_stats.json](../experiments/headline_stats.json) | Aggregates, bootstrap and permutation statistics of the headline comparison. |
 | [../experiments/norm_experiment/norm_eval_A.json](../experiments/norm_experiment/norm_eval_A.json), [norm_eval_BC.json](../experiments/norm_experiment/norm_eval_BC.json) | Raw results of [normalisation-experiment.md](normalisation-experiment.md). |
+| [../analysis/collapse_diagnosis/raw/](../analysis/collapse_diagnosis/raw/) | Raw outputs (text and small JSON) of the scripts behind [collapse-diagnosis.md](collapse-diagnosis.md). |
 | [../experiments/configs/](../experiments/configs/) | Every training config referenced in the documents (`smoke.json` is a 3-second sanity config). |
 
 ## Figures

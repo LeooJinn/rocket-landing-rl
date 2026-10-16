@@ -79,7 +79,11 @@ Only partly. In v1 4 of 10 seeds and in v2 6 of 10 seeds have a spread (max - mi
 percentage points across the last five checkpoints (all of those are seeds that learned to land at some
 point). Examples: v2 s8 scores 100% on four consecutive checkpoints (1000-1150) then 0% at 1200 and at
 the final checkpoint; v2 s7 and v2 s9 alternate between 0% and 100%; v1 s3 goes 0 -> 100 -> 100 -> 54 -> 100.
-Seeds that never learned (v1 s4-s9, v2 s6) are 0% throughout. So the final-checkpoint number depends on
+Seeds v1 s4-s9 and v2 s6 are 0% on all five of those checkpoints, but they are not all "never learned":
+v1 s4, s6, s7 and v2 s6 never exceeded 50% on any in-training evaluation (50 episodes), v1 s9 peaked once
+at 86% (update 370), and v1 s5 and v1 s8 did learn to land (first in-training evaluation at or above 90%
+at updates 620 and 540) and then lost the policy for good ([collapse-diagnosis.md](collapse-diagnosis.md)).
+So the final-checkpoint number depends on
 where training stopped for seeds that are in the unstable regime; it is an unbiased single draw of "the
 checkpoint you would ship if you stopped at 5M steps", but not a stable property of the run. The
 headline mean is also noisy for that reason; with only one checkpoint per seed it cannot be separated
@@ -133,9 +137,12 @@ The 500 episodes per seed give tight per-seed CIs; the uncertainty is almost ent
 - One training run per seed; checkpoint-to-checkpoint variance is large, so the final-checkpoint number
   is a snapshot (see robustness section). The last-5 scoring uses 200 episodes, not 500.
 - Held-out episodes come from the same initial-state distribution as training (no shifted distribution).
-- Greedy policy only; the stochastic policy was not evaluated.
-- Collapsed policies were not diagnosed (e.g. whether the failure is a policy-entropy collapse or a value
-  divergence); only their outcome is reported.
+- Greedy policy only; the stochastic policy was not evaluated for the tables above (it was evaluated
+  afterwards for the diagnosis in [collapse-diagnosis.md](collapse-diagnosis.md)).
+- This document reports only the outcome of the collapsed policies. The mechanism is analysed in
+  [collapse-diagnosis.md](collapse-diagnosis.md): the greedy policy runs out of fuel before touchdown,
+  while the sampled policy of the same checkpoint mostly still lands. The numbers in this document are
+  unchanged by that analysis.
 - Wilson CIs treat the 500 episodes as independent for one fixed policy; they say nothing about seed variance.
 - Reproduction: `uv run python -m rocket_landing.train --config experiments/configs/ppo_final_v{1,2}.json
   --seed N --run-name hl_v{1,2}_sN`, then `scripts/headline_analysis.py eval|stats|plots`. Checkpoints are

@@ -1,0 +1,17 @@
+A) action-probability margin along each checkpoint's own greedy trajectories (20 eps)
+ckpt           steps/ep  mean_maxP  top1-top2<0.1  top1-top2<0.2  mean_entropy  P(MAIN) mean  MAIN share of fuel
+hl_v2_s8@1000      542    0.39      0.62          0.81         1.28          0.32        0.88
+hl_v2_s8@1150      676    0.40      0.58          0.79         1.28          0.32        0.89
+hl_v2_s8@1200      706    0.40      0.58          0.79         1.27          0.33        0.88
+hl_v2_s7@1050      407    0.41      0.58          0.79         1.27          0.34        0.84
+hl_v2_s7@1100      678    0.40      0.58          0.78         1.27          0.35        0.84
+hl_v2_s3@final     318    0.41      0.60          0.79         1.23          0.32        0.91
+hl_v2_s2@final     425    0.38      0.64          0.82         1.29          0.31        0.89
+hl_v2_s1@final     369    0.46      0.48          0.67         1.18          0.35        0.86
+
+B) policy change between neighbouring checkpoints, on states visited by the earlier checkpoint's greedy runs
+hl_v2_s8@1150 -> hl_v2_s8@1200: states 13517, argmax changed in 33.3%, mean KL(a||b) 0.0528, mean |dP(MAIN)| 0.130, mean P(MAIN) 0.321 -> 0.450
+hl_v2_s8@1100 -> hl_v2_s8@1150: states 10834, argmax changed in 45.9%, mean KL(a||b) 0.3328, mean |dP(MAIN)| 0.109, mean P(MAIN) 0.299 -> 0.404
+hl_v2_s8@1000 -> hl_v2_s8@1050: states 10848, argmax changed in 54.7%, mean KL(a||b) 0.1446, mean |dP(MAIN)| 0.173, mean P(MAIN) 0.316 -> 0.144
+hl_v2_s7@1050 -> hl_v2_s7@1100: states 8136, argmax changed in 47.2%, mean KL(a||b) 0.6197, mean |dP(MAIN)| 0.472, mean P(MAIN) 0.336 -> 0.808
+hl_v2_s7@1100 -> hl_v2_s7@1150: states 13558, argmax changed in 72.3%, mean KL(a||b) 0.3837, mean |dP(MAIN)| 0.257, mean P(MAIN) 0.345 -> 0.088

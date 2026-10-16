@@ -1,0 +1,7 @@
+hl_v2_s3@300     raw GAE adv std 0.0330 (norm_adv rescales to 1.0) | |adv|>0.05 on 11.8% steps | per-step scaled reward std 0.0004 | value std 0.116 | explained var 0.908 | episodes ended 0
+hl_v2_s3@600     raw GAE adv std 0.0119 (norm_adv rescales to 1.0) | |adv|>0.05 on 1.0% steps | per-step scaled reward std 0.0004 | value std 0.071 | explained var 0.970 | episodes ended 0
+hl_v2_s8@1000    raw GAE adv std 0.0068 (norm_adv rescales to 1.0) | |adv|>0.05 on 0.0% steps | per-step scaled reward std 0.0004 | value std 0.053 | explained var 0.985 | episodes ended 0
+hl_v2_s8@1150    raw GAE adv std 0.0047 (norm_adv rescales to 1.0) | |adv|>0.05 on 0.0% steps | per-step scaled reward std 0.0004 | value std 0.035 | explained var 0.982 | episodes ended 0
+hl_v2_s8@1200    raw GAE adv std 0.0041 (norm_adv rescales to 1.0) | |adv|>0.05 on 0.0% steps | per-step scaled reward std 0.0003 | value std 0.043 | explained var 0.991 | episodes ended 0
+hl_v2_s8@final   raw GAE adv std 0.0038 (norm_adv rescales to 1.0) | |adv|>0.05 on 0.0% steps | per-step scaled reward std 0.0003 | value std 0.046 | explained var 0.993 | episodes ended 0
+hl_v2_s6@final   raw GAE adv std 0.0007 (norm_adv rescales to 1.0) | |adv|>0.05 on 0.0% steps | per-step scaled reward std 0.0003 | value std 0.035 | explained var 1.000 | episodes ended 0

@@ -1,0 +1,10 @@
+hl_v2_s6@50      raw return  -110.7 | discounted scaled return (gamma=0.999) -0.548 | ep len   736 | landed 0/40
+hl_v2_s6@100     raw return   -42.7 | discounted scaled return (gamma=0.999) -0.311 | ep len   328 | landed 4/40
+hl_v2_s6@150     raw return  -117.6 | discounted scaled return (gamma=0.999) -0.591 | ep len   729 | landed 0/40
+hl_v2_s6@200     raw return  -112.0 | discounted scaled return (gamma=0.999) -0.545 | ep len   760 | landed 0/40
+hl_v2_s6@250     raw return  -118.6 | discounted scaled return (gamma=0.999) -0.548 | ep len   852 | landed 0/40
+hl_v2_s6@final   raw return  -114.2 | discounted scaled return (gamma=0.999) -0.522 | ep len   857 | landed 0/40
+hl_v2_s3@300     raw return   -94.8 | discounted scaled return (gamma=0.999) -0.476 | ep len   667 | landed 1/40
+hl_v2_s3@600     raw return   100.3 | discounted scaled return (gamma=0.999) +0.551 | ep len   608 | landed 40/40
+hl_v2_s3@final   raw return   100.6 | discounted scaled return (gamma=0.999) +0.804 | ep len   234 | landed 38/40
+hl_v2_s8@final   raw return    96.6 | discounted scaled return (gamma=0.999) +0.493 | ep len   662 | landed 39/40

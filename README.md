@@ -97,8 +97,11 @@ Many runs reach 100% evaluation success and later fall back to 0%. In an earlier
 four orders of magnitude after about 1.5M steps. Its final greedy policy landed 0.2% of 500 held-out episodes,
 yet sampling from the same policy landed 90.2%, and its `best.pt` landed 99.8%
 ([docs/evaluation.md](docs/evaluation.md)). So a collapse can be a greedy-policy failure rather than a lost
-skill. I have **not** established the cause of the collapses (entropy collapse vs value divergence vs
-something else).
+skill. That earlier run used the running normaliser and was not re-analysed. For the fixed-scale headline runs
+a later diagnosis ([docs/collapse-diagnosis.md](docs/collapse-diagnosis.md)) found that policy entropy stays
+near 1.0 nats and the value function stays accurate; the failing greedy policy simply runs out of fuel before
+touchdown, while the sampled policy of the same checkpoint mostly still lands. Why the policy drifts to a
+slow, fuel-hungry descent is only partly tested there.
 
 ![An earlier run that reaches 100% evaluation success and collapses to 0%](docs/figures/run_v2_s0.png)
 
@@ -245,6 +248,7 @@ src/rocket_landing/
 scripts/            evaluate_baseline, evaluate_policy, plot_training, serve_viewer,
                     export_static_demo, headline_analysis, eval_final_checkpoints, check_links
 frontend/           browser viewer (HTML/CSS/JS); demo/ holds the static recording
+analysis/           collapse_diagnosis/: scripts and raw outputs behind docs/collapse-diagnosis.md
 tests/              environment, rewards, PPO, policy, evaluation, plotting, export, link checker
 experiments/        configs/ (every training config), headline and normalisation raw results,
                     results/ (git-ignored except two reference runs)
@@ -281,7 +285,10 @@ A run from the same earlier set that ends with a good policy:
   consecutive checkpoints, the final-checkpoint mean also depends on where training happened to stop.
 - **The v1 vs v2 evidence is suggestive.** n = 10 per arm, permutation p = 0.07 for the mean difference, and
   p = 0.18 for the count of seeds at or above 90%. v1 got no hyperparameter retuning under fixed scales.
-- **The cause of late-training collapse is undiagnosed.** I report the outcome, not the mechanism.
+- **The root cause of late-training collapse is only partly understood.** The proximate mechanism is
+  established for the fixed-scale runs (the greedy policy runs out of fuel before touchdown; its argmax is
+  nearly tied in most states), but why training drifts there, and why some seeds stall in a hover, are
+  untested hypotheses ([docs/collapse-diagnosis.md](docs/collapse-diagnosis.md)).
 - **The RL policy matches the heuristic, it does not beat it.** The heuristic lands 99.6% on the held-out
   seeds. A good PPO policy lands about as often, touches down more gently, but is slower and burns more fuel.
   The heuristic rarely fails (2/500); the 5 failures of the earlier `ppo_v1_tuned_s1` final checkpoint (on

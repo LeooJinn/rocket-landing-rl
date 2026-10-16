@@ -1,0 +1,63 @@
+A) collapse prevalence by training stage (v2 learners, evals after first >=90% eval)
+  upd    1- 800 (lr 3.0e-04->1.0e-04): n=192 evals, collapsed  33 (17%)
+  upd  801- 900 (lr 1.0e-04->7.9e-05): n= 90 evals, collapsed  23 (26%)
+  upd  901-1000 (lr 7.9e-05->5.4e-05): n= 90 evals, collapsed  16 (18%)
+  upd 1001-1100 (lr 5.4e-05->3.0e-05): n= 90 evals, collapsed   5 (6%)
+  upd 1101-1221 (lr 3.0e-05->0.0e+00): n=108 evals, collapsed  14 (13%)
+
+B) does eval fuel_used predict a collapse at the NEXT eval? (eval i with success>=.9 -> eval i+1)
+  fuel_used in [0.00,0.60): n=  79, next eval collapsed(<20%): 5%, next eval <90%: 11%, 2nd-next collapsed 6%
+  fuel_used in [0.60,0.70): n= 109, next eval collapsed(<20%): 1%, next eval <90%: 5%, 2nd-next collapsed 8%
+  fuel_used in [0.70,0.80): n= 102, next eval collapsed(<20%): 4%, next eval <90%: 13%, 2nd-next collapsed 7%
+  fuel_used in [0.80,0.90): n= 116, next eval collapsed(<20%): 14%, next eval <90%: 25%, 2nd-next collapsed 10%
+  fuel_used in [0.90,0.95): n=  50, next eval collapsed(<20%): 2%, next eval <90%: 36%, 2nd-next collapsed 14%
+  fuel_used in [0.95,1.01): n=  21, next eval collapsed(<20%): 33%, next eval <90%: 43%, 2nd-next collapsed 29%
+
+C) collapse run lengths (consecutive 10-update evals with success<20%), v2 learners
+  hl_v2_s0: collapse run lengths [4, 1, 4]  (+ 0 still collapsed at end of run)
+  hl_v2_s1: collapse run lengths [1, 1, 4, 1, 2]  (+ 0 still collapsed at end of run)
+  hl_v2_s2: collapse run lengths [1, 2, 1, 1, 1]  (+ 0 still collapsed at end of run)
+  hl_v2_s3: collapse run lengths [1, 1]  (+ 0 still collapsed at end of run)
+  hl_v2_s4: collapse run lengths [1, 2, 2, 4, 1, 1, 4]  (+ 0 still collapsed at end of run)
+  hl_v2_s5: collapse run lengths [2, 2, 3, 1, 1]  (+ 0 still collapsed at end of run)
+  hl_v2_s7: collapse run lengths [1, 3, 3, 1, 4, 1]  (+ 0 still collapsed at end of run)
+  hl_v2_s8: collapse run lengths [2, 1, 1]  (+ 7 still collapsed at end of run)
+  hl_v2_s9: collapse run lengths [1, 7, 6, 2, 1]  (+ 0 still collapsed at end of run)
+
+D) persistence of collapse at lag k (v2 learners, pooled)
+  lag  10 upd: P(collapsed at t+lag | collapsed at t) = 0.54 (n=90); P(collapsed at t+lag | OK at t) = 0.09; base rate 0.16
+  lag  20 upd: P(collapsed at t+lag | collapsed at t) = 0.43 (n=89); P(collapsed at t+lag | OK at t) = 0.11; base rate 0.16
+  lag  30 upd: P(collapsed at t+lag | collapsed at t) = 0.33 (n=88); P(collapsed at t+lag | OK at t) = 0.13; base rate 0.16
+  lag  50 upd: P(collapsed at t+lag | collapsed at t) = 0.26 (n=85); P(collapsed at t+lag | OK at t) = 0.13; base rate 0.15
+  lag 100 upd: P(collapsed at t+lag | collapsed at t) = 0.22 (n=77); P(collapsed at t+lag | OK at t) = 0.13; base rate 0.14
+
+E) in-training greedy eval (50 eps) at the saved checkpoints 1000,1050,1100,1150,1200,1220
+  hl_v1_s1 [0.58, 1.0, 1.0, 1.0, 1.0, 1.0]
+  hl_v1_s2 [1.0, 0.98, 0.68, 1.0, 1.0, 1.0]
+  hl_v1_s3 [0.0, 1.0, 1.0, 0.7, 1.0, 1.0]
+  hl_v2_s0 [1.0, 0.72, 1.0, 1.0, 1.0, 1.0]
+  hl_v2_s1 [1.0, 1.0, 1.0, 0.92, 1.0, 1.0]
+  hl_v2_s2 [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  hl_v2_s3 [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  hl_v2_s4 [1.0, 1.0, 1.0, 0.0, 0.58, 0.74]
+  hl_v2_s5 [0.96, 0.64, 0.94, 0.96, 1.0, 1.0]
+  hl_v2_s7 [0.0, 1.0, 0.0, 1.0, 1.0, 1.0]
+  hl_v2_s8 [1.0, 1.0, 1.0, 1.0, 0.0, 0.0]
+  hl_v2_s9 [0.0, 1.0, 0.98, 0.92, 1.0, 1.0]
+
+F) per-run collapse fraction vs entropy / fuel use (descriptive, n=12)
+run       collapse_frac  mean_entropy(after learn)  entropy(last300)  greedy fuel_used(good evals)  train fuel_used
+hl_v2_s0  0.14           0.99                       0.98              0.75                         0.54
+hl_v2_s1  0.15           0.94                       0.91              0.63                         0.47
+hl_v2_s2  0.10           1.00                       1.00              0.75                         0.61
+hl_v2_s3  0.03           0.94                       0.90              0.65                         0.48
+hl_v2_s4  0.21           1.02                       1.01              0.81                         0.69
+hl_v2_s5  0.15           1.02                       1.03              0.74                         0.56
+hl_v2_s7  0.17           1.04                       1.03              0.80                         0.64
+hl_v2_s8  0.22           1.02                       1.02              0.76                         0.64
+hl_v2_s9  0.39           1.07                       1.06              0.83                         0.58
+hl_v1_s1  0.02           0.98                       0.96              0.78                         0.61
+hl_v1_s2  0.06           0.94                       0.93              0.66                         0.48
+hl_v1_s3  0.30           1.04                       1.06              0.84                         0.70
+Spearman (n=12): collapse_frac vs mean entropy after learning +0.81; vs entropy last 300 +0.83; vs greedy fuel_used +0.66; vs training fuel_used +0.54
+v2 only (n=9): vs entropy +0.77, vs greedy fuel +0.77, vs train fuel +0.60

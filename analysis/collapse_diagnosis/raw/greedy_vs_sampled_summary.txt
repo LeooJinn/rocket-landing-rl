@@ -1,0 +1,17 @@
+runs: ['hl_v2_s0', 'hl_v2_s1', 'hl_v2_s2', 'hl_v2_s3', 'hl_v2_s4', 'hl_v2_s5', 'hl_v2_s6', 'hl_v2_s7', 'hl_v2_s8', 'hl_v2_s9'] | checkpoints 1000..1200 + final, n = 60 (episodes per cell: 100)
+mean greedy 0.77  mean sampled 0.84
+greedy<0.2 & sampled>=0.8: 6
+greedy<0.5 & sampled>=0.8: 7
+sampled<0.2 & greedy>=0.8: 0
+greedy<0.8: 16  sampled<0.8: 11
+per run (min greedy, min sampled, mean greedy, mean sampled):
+  hl_v2_s0: 0.69 0.69 0.95 0.93
+  hl_v2_s1: 0.93 0.98 0.99 0.99
+  hl_v2_s2: 1.00 0.86 1.00 0.95
+  hl_v2_s3: 1.00 0.90 1.00 0.95
+  hl_v2_s4: 0.00 0.87 0.70 0.96
+  hl_v2_s5: 0.66 0.46 0.93 0.75
+  hl_v2_s6: 0.00 0.00 0.00 0.00
+  hl_v2_s7: 0.00 0.81 0.67 0.93
+  hl_v2_s8: 0.00 0.81 0.67 0.96
+  hl_v2_s9: 0.00 0.70 0.82 0.92
