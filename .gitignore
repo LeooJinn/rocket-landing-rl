@@ -37,3 +37,10 @@ experiments/results/hl_v2_s2/*
 
 # Training logs (stdout of nohup runs)
 logs/
+
+# Keep one small final checkpoint of the stabilisation confirmation run most representative of the
+# arm (st_c_ed30lr_s2: 99.8% final, every last-5 checkpoint >= 99.5%).
+!experiments/results/st_c_ed30lr_s2/
+experiments/results/st_c_ed30lr_s2/*
+!experiments/results/st_c_ed30lr_s2/final.pt
+!experiments/results/st_c_ed30lr_s2/config.json
