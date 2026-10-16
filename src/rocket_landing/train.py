@@ -47,7 +47,7 @@ DEFAULT_CONFIG: dict = {
     "num_steps": 256,
     "reward_version": "v1",
     "reward_scale": 0.01,
-    "obs_norm": "running",  # "running" (RunningMeanStd, updated in training) or "fixed" scales
+    "obs_norm": "fixed",  # "fixed" scales (default) or "running" (RunningMeanStd, updated in training)
     "ppo": {
         "learning_rate": 3e-4,
         "anneal_lr": True,

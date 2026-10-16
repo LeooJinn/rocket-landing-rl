@@ -38,7 +38,8 @@ def test_factory_and_default_config():
     assert isinstance(make_obs_normalizer("fixed"), FixedScaleNormalizer)
     with pytest.raises(ValueError):
         make_obs_normalizer("bogus")
-    assert resolve_config({})["obs_norm"] == "running"
+    assert resolve_config({})["obs_norm"] == "fixed"
+    assert resolve_config({"obs_norm": "running"})["obs_norm"] == "running"
 
 
 def test_fixed_checkpoint_round_trip_and_controller(tmp_path):

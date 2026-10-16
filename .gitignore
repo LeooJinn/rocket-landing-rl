@@ -28,3 +28,9 @@ experiments/results/*
 experiments/results/ppo_v1_tuned_s1/checkpoints/
 !experiments/results/ppo_v1_tuned_s1/best.pt
 !experiments/results/ppo_v1_tuned_s1/final.pt
+
+# Keep one small final checkpoint of the headline run most representative of the arm (hl_v2_s2).
+!experiments/results/hl_v2_s2/
+experiments/results/hl_v2_s2/*
+!experiments/results/hl_v2_s2/final.pt
+!experiments/results/hl_v2_s2/config.json
