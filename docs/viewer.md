@@ -81,3 +81,24 @@ automatically when `/api/runs` is unreachable and `demo/manifest.json` exists
 recorded run, the seed picker is limited to the exported seeds, the checkpoint
 list to the exported checkpoints, and "Replay training progress" plays the
 exported checkpoints in order (early crashes to landing). The live API mode is unchanged.
+
+## Publishing the static demo to GitHub Pages
+
+`frontend/` is a self-contained static site: with no `/api` it falls back to the recorded demo in
+`frontend/demo/`, using relative URLs only, so it works under the `/rocket-landing-rl/` sub-path that Pages uses.
+The workflow `.github/workflows/pages.yml` deploys `frontend/` on every push to `main` that touches it (or by
+hand from the Actions tab).
+
+One-time setup (a repository setting, so it is deliberate): Settings -> Pages -> Build and deployment ->
+Source: **GitHub Actions**. From the command line:
+
+```
+gh api -X POST repos/<owner>/<repo>/pages -f build_type=workflow
+```
+
+The site is then served at `https://<owner>.github.io/<repo>/`. To check it locally the way Pages serves it, put
+`frontend/` under a sub-path and serve the parent: `mkdir site && ln -s ../frontend site/rocket-landing-rl &&
+python3 -m http.server --directory site`, then open `http://localhost:8000/rocket-landing-rl/`.
+
+Refresh the demo data from a better run with `scripts/export_static_demo.py` (see above) and re-render the README
+animation with `scripts/render_demo_gif.py`.

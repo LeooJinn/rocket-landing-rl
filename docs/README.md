@@ -40,7 +40,7 @@ detail behind it. Every number in the README comes from one of the documents or 
 | [figures/v1_vs_v2.png](figures/v1_vs_v2.png) | Earlier six-seed v1 vs v2 comparison (running normaliser). | `scripts/plot_training.py` |
 | [figures/run_v2_s0.png](figures/run_v2_s0.png) | A run that reaches 100% evaluation success and collapses back to 0% (running normaliser). | `scripts/plot_training.py` |
 | [figures/run_v2_s1.png](figures/run_v2_s1.png) | A run that ends with a good policy (running normaliser). | `scripts/plot_training.py` |
-| [demo.gif](demo.gif) | Storyboard preview (7 frames) of the browser viewer in static-demo mode. A smoother recording is planned. | screen capture |
+| [demo.gif](demo.gif) | The same start (seed 20000) flown by three checkpoints of one training run, rendered offline from the recorded episodes: the early and middle checkpoints crash after running out of fuel, the final one lands. | `scripts/render_demo_gif.py` |
 
 ## Conventions
 

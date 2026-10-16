@@ -186,7 +186,7 @@ cd frontend && python3 -m http.server 8000     # open http://127.0.0.1:8000/?sta
 uv run python scripts/export_static_demo.py RUN_DIR --out DIR   # re-export from another run
 ```
 
-![Storyboard preview of the static demo (7 frames, not a real-time recording)](docs/demo.gif)
+![The same start flown by an early, a middle and the final checkpoint of one training run: two crashes after running out of fuel, then a landing](docs/demo.gif)
 
 ## How it works
 
