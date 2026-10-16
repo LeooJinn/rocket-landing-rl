@@ -11,6 +11,10 @@ viewer, and the experiment log of what went wrong along the way. With the better
 other 3 do not, and I have not yet made training reliable. The write-up below says which numbers are solid
 and which are not.
 
+**Live demo (recorded runs, no server needed): <https://jiaxiangjin.com/rocket-landing-rl/>**
+
+![The same start flown by an early, a middle and the final checkpoint of one training run: two crashes after running out of fuel, then a landing](docs/demo.gif)
+
 ## Headline result
 
 Reward v1 vs reward v2, same PPO settings, fixed-scale observation normalisation, 5M environment steps,
@@ -186,7 +190,7 @@ cd frontend && python3 -m http.server 8000     # open http://127.0.0.1:8000/?sta
 uv run python scripts/export_static_demo.py RUN_DIR --out DIR   # re-export from another run
 ```
 
-![The same start flown by an early, a middle and the final checkpoint of one training run: two crashes after running out of fuel, then a landing](docs/demo.gif)
+
 
 ## How it works
 
