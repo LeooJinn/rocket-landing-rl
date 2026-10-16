@@ -1,0 +1,83 @@
+{
+ "episodes": 100,
+ "seed_start": 50000,
+ "scenarios": {
+  "heuristic (fast, frugal)": {
+   "landed": 1.0,
+   "crashed": 0.0,
+   "steps": 272.82,
+   "fuel_used": 0.36762999999999096,
+   "return": {
+    "v2": 111.48371879214781,
+    "v3a": 131.32211879214816,
+    "v3b": 131.32211879214816
+   }
+  },
+  "heuristic descent_decel=0.5": {
+   "landed": 1.0,
+   "crashed": 0.0,
+   "steps": 369.35,
+   "fuel_used": 0.4893449999999882,
+   "return": {
+    "v2": 108.38836294131788,
+    "v3a": 121.4275629413183,
+    "v3b": 121.4275629413183
+   }
+  },
+  "heuristic v_max=4": {
+   "landed": 0.99,
+   "crashed": 0.01,
+   "steps": 480.35,
+   "fuel_used": 0.630024999999985,
+   "return": {
+    "v2": 104.54677366814347,
+    "v3a": 109.63177366814391,
+    "v3b": 109.63177366814391
+   }
+  },
+  "heuristic descent_decel=0.2 (slow)": {
+   "landed": 1.0,
+   "crashed": 0.0,
+   "steps": 547.25,
+   "fuel_used": 0.7147799999999833,
+   "return": {
+    "v2": 104.75119796725818,
+    "v3a": 105.21499796725868,
+    "v3b": 105.21499796725868
+   }
+  },
+  "heuristic descent_decel=0.1 (slowest)": {
+   "landed": 0.73,
+   "crashed": 0.27,
+   "steps": 717.63,
+   "fuel_used": 0.9263949999999818,
+   "return": {
+    "v2": 49.40139729963233,
+    "v3a": 37.992997299632655,
+    "v3b": 31.242997299632655
+   }
+  },
+  "hover clock (hold altitude until empty)": {
+   "landed": 0.0,
+   "crashed": 1.0,
+   "steps": 851.8,
+   "fuel_used": 0.9999999999999883,
+   "return": {
+    "v2": -113.70837945492649,
+    "v3a": -130.74437945492653,
+    "v3b": -155.74437945492653
+   }
+  },
+  "free fall (NOOP only)": {
+   "landed": 0.0,
+   "crashed": 1.0,
+   "steps": 82.2,
+   "fuel_used": 0.0,
+   "return": {
+    "v2": -96.5104575499148,
+    "v3a": -98.15445754991478,
+    "v3b": -98.15445754991478
+   }
+  }
+ }
+}

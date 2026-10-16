@@ -34,3 +34,8 @@ experiments/results/ppo_v1_tuned_s1/checkpoints/
 experiments/results/hl_v2_s2/*
 !experiments/results/hl_v2_s2/final.pt
 !experiments/results/hl_v2_s2/config.json
+
+# Reward-v3 experiment: local training/eval logs (small result JSONs and one final.pt are committed).
+logs/rv3_*.log
+logs/queue_*.log
+logs/eval_*.log
