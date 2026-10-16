@@ -39,3 +39,9 @@ experiments/results/hl_v2_s2/*
 logs/rv3_*.log
 logs/queue_*.log
 logs/eval_*.log
+
+# Keep one small final checkpoint of the reward-v3 confirmation run most representative of the arm (rv3_v3a_s7).
+!experiments/results/rv3_v3a_s7/
+experiments/results/rv3_v3a_s7/*
+!experiments/results/rv3_v3a_s7/final.pt
+!experiments/results/rv3_v3a_s7/config.json

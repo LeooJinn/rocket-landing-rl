@@ -194,10 +194,14 @@ def do_confirm(a) -> None:
     ]
     for label, policy, key in specs:
         g = getter(policy, key)
-        n_vals = np.array([g(new[s]) for s in seeds], float)
-        b_vals = np.array([g(base[s]) for s in seeds], float)
+        # Landed-episode metrics are undefined (None) for a run with no landings: such seeds
+        # are dropped from that metric's pairs (their number is reported as n_pairs).
+        used = [s for s in seeds if g(new[s]) is not None and g(base[s]) is not None]
+        n_vals = np.array([g(new[s]) for s in used], float)
+        b_vals = np.array([g(base[s]) for s in used], float)
         d = n_vals - b_vals
         out["metrics"][label] = {
+            "seeds_used": used, "n_pairs": len(used),
             "new": n_vals.tolist(), "base": b_vals.tolist(),
             "new_mean": float(n_vals.mean()), "base_mean": float(b_vals.mean()),
             "mean_diff": float(d.mean()), "paired_boot95": paired_boot_ci(d),
@@ -214,6 +218,16 @@ def do_confirm(a) -> None:
                 "n_lt_50": int((rates < 0.5).sum()), "n_zero": int((rates == 0).sum()),
             }
     for arm, runs in (("new", new), ("base", base)):
+        for policy in ("greedy", "sampled"):
+            out["arm_summary"][f"{arm}_{policy}_outcome_rates"] = {
+                k: float(np.mean([runs[s][policy][k]["rate"] for s in seeds]))
+                for k in ("landed", "crashed", "out_of_bounds", "timeout")
+            }
+        flat = [c["success"]["rate"] for s in seeds for c in runs[s]["last_ckpts"]]
+        out["arm_summary"][f"{arm}_last5_checkpoints"] = {
+            "n": len(flat), "n_ge_90": int(sum(x >= 0.9 for x in flat)),
+            "n_lt_50": int(sum(x < 0.5 for x in flat)),
+        }
         lr = [[c["success"]["rate"] for c in runs[s]["last_ckpts"]] for s in seeds]
         out["arm_summary"][f"{arm}_last5"] = {
             "mean_of_means": float(np.mean([np.mean(x) for x in lr])) if all(lr) else None,
@@ -223,7 +237,7 @@ def do_confirm(a) -> None:
         }
     Path(a.out).write_text(json.dumps(out, indent=1) + "\n")
     for k, v in out["metrics"].items():
-        print(f"{k:40s} new {v['new_mean']:.3f} base {v['base_mean']:.3f} diff {v['mean_diff']:+.3f} "
+        print(f"{k:40s} n={v['n_pairs']:2d} new {v['new_mean']:.3f} base {v['base_mean']:.3f} diff {v['mean_diff']:+.3f} "
               f"CI [{v['paired_boot95'][0]:+.3f},{v['paired_boot95'][1]:+.3f}] p={v['sign_flip_p']:.3f} "
               f"(better/worse/tied {v['seeds_new_better']}/{v['seeds_base_better']}/{v['seeds_tied']})")
     print(json.dumps(out["arm_summary"], indent=1))

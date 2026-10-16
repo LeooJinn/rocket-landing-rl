@@ -220,6 +220,15 @@ and therefore outcomes, steps and fuel are identical in every column:
 - v3b's penalty (25) makes an empty-tank crash at about 6 m/s as bad as a free-fall crash.
 - Returns are not comparable across reward versions; compare held-out outcomes, fuel and steps.
 
+### Result
+
+Pilot on seeds 10-12 (v3a, v3b, v2 control) chose v3a; confirmation on seeds 0-9 against the
+headline `hl_v2` runs: greedy held-out success 500/500 on all 10 seeds for v3a vs 7/10 healthy
+(two at 0%) for v2, paired difference +23 points but only suggestive (sign-flip p = 0.062, 5 seeds
+better, 5 tied at the ceiling); fuel used and episode length clearly lower (landed-only: 0.53 vs 0.71
+of the tank, 362 vs 486 steps); sampled-action success not clearly better (p = 0.35). Details,
+numbers and caveats: `docs/reward-v3-results.md`.
+
 ## Adding a new version
 
 1. Add a function `_reward_vN(prev_state, state, action, outcome, cfg)` returning the
