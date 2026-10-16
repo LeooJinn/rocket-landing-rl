@@ -38,7 +38,8 @@ HL_RESULTS = Path.home() / "projects/rocket-landing-rl-headline/experiments/resu
 
 
 def find_run(name: str) -> Path:
-    for base in (RESULTS, HL_RESULTS):
+    # hl_* runs live in the headline worktree (this worktree only keeps one committed final.pt).
+    for base in ((HL_RESULTS, RESULTS) if name.startswith("hl_") else (RESULTS, HL_RESULTS)):
         if (base / name / "config.json").exists():
             return base / name
     raise FileNotFoundError(name)
