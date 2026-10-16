@@ -47,7 +47,7 @@ def cmd_validate(args) -> None:
     out = Path(args.out)
     for run in _runs(args):
         sel.select_run(run, out / run, args.rule, procs=args.procs,
-                       results_dir=Path(args.results_dir).expanduser())
+                       results_dir=Path(args.results_dir).expanduser(), include_best=args.include_best)
         s = json.loads((out / run / "selected.json").read_text())
         alt = {r: a["name"] for r, a in s["alternatives"].items()}
         print(f"{run}: final val {s['final']['successes']}/{s['final']['n']}  "
@@ -100,7 +100,14 @@ def cmd_test(args) -> None:
             sel.VALIDATION_SEED_START, sel.VALIDATION_EPISODES, rc["train_seed"], rc["num_envs"],
             rc["eval_seed_start"], rc["eval_episodes"])
         ckpts = sel.list_checkpoints(run_dir)
-        entries = [(u, n, p) for u, n, p in ckpts]
+        # Compute saving: a checkpoint with 0/200 successes on VALIDATION is a fixed policy that cannot
+        # plausibly be good on test (Wilson upper bound 1.9%), so it is not rolled out on TEST unless it
+        # is final.pt. The oracle is therefore the best over the evaluated checkpoints. Recorded below.
+        s = json.loads(sel_path.read_text())
+        val0 = {c["name"] for c in s["validation"]["curve"] if c["successes"] == 0}
+        chosen = {a["name"] for a in s["alternatives"].values()} | {"final"}
+        skip = {n for n in val0 if n not in chosen} if args.prune_zero_val else set()
+        entries = [(u, n, p) for u, n, p in ckpts if n not in skip]
         best = run_dir / "best.pt"
         if best.exists():
             entries.append((sel.checkpoint_update(best), "best", best))
@@ -109,6 +116,7 @@ def cmd_test(args) -> None:
         doc = {
             "run": run, "test_seed_start": sel.TEST_SEED_START, "episodes": sel.TEST_EPISODES,
             "seed_check": seed_check,
+            "not_evaluated_zero_validation": sorted(skip),
             "selected_json_sha256": __import__("hashlib").sha256(sel_path.read_bytes()).hexdigest(),
             "checkpoints": [{"name": n, "update": u, "outcomes": o["outcomes"],
                              **sel.counts(o["outcomes"], o["fuel_used"])}
@@ -187,23 +195,204 @@ def cmd_report(args) -> None:
             lines.append(f"| {m} | {a['mean']:.1%} | {a['median']:.1%} | {a['min']:.1%} | {a['max']:.1%} | "
                          f"{a['n_ge_90']}/{a['n']} | {a['n_ge_50']}/{a['n']} | {a['n_zero']}/{a['n']} |")
         lines.append("")
+        # paired difference to final.pt (unit = training seed) with a seed-bootstrap CI
+        rng = np.random.default_rng(0)
+        lines += [f"Paired difference to final.pt, {arm} (percentage points, unit = training seed; "
+                  "bootstrap 95% CI over seeds, 20k resamples)", "",
+                  "| method | mean diff | 95% CI | seeds better | seeds worse | seeds equal (+-1pp) |",
+                  "|---|---|---|---|---|---|"]
+        fin = np.array([per_run[r]["methods"]["final"]["test"] / per_run[r]["methods"]["final"]["n"] for r in runs])
+        summary["arms"][arm]["paired_vs_final"] = {}
+        for m in ms:
+            if m == "final":
+                continue
+            x = np.array([per_run[r]["methods"][m]["test"] / per_run[r]["methods"][m]["n"] for r in runs])
+            d = (x - fin) * 100
+            boots = [d[rng.integers(0, len(d), len(d))].mean() for _ in range(20000)]
+            lo, hi = np.percentile(boots, [2.5, 97.5])
+            better, worse = int((d > 1).sum()), int((d < -1).sum())
+            summary["arms"][arm]["paired_vs_final"][m] = {
+                "mean_diff_pp": float(d.mean()), "ci95_pp": [float(lo), float(hi)],
+                "better": better, "worse": worse, "equal": len(d) - better - worse}
+            lines.append(f"| {m} | {d.mean():+.1f} | {lo:+.1f} to {hi:+.1f} | {better} | {worse} | {len(d) - better - worse} |")
+        lines.append("")
+    # validation -> test transfer of the chosen checkpoint (winner's curse check)
+    lines += ["### Validation vs test success of the checkpoint each rule chose", "",
+              "| rule | mean validation | mean test | mean (val - test) | max abs gap | runs with abs gap > 5pp |",
+              "|---|---|---|---|---|---|"]
+    summary["val_vs_test"] = {}
+    for m in sel.RULES:
+        v = np.array([per_run[r]["methods"][m]["val"] for r in per_run])
+        t = np.array([per_run[r]["methods"][m]["test"] / per_run[r]["methods"][m]["n"] for r in per_run])
+        g = v - t
+        summary["val_vs_test"][m] = {"mean_val": float(v.mean()), "mean_test": float(t.mean()),
+                                     "mean_gap": float(g.mean()), "max_abs_gap": float(np.abs(g).max()),
+                                     "n_gap_gt_5pp": int((np.abs(g) > 0.05).sum())}
+        lines.append(f"| {m} | {v.mean():.1%} | {t.mean():.1%} | {g.mean():+.1%} | {np.abs(g).max():.1%} | "
+                     f"{int((np.abs(g) > 0.05).sum())}/{len(g)} |")
+    lines.append("")
+    # cross-check against the earlier headline evaluation (same policy, same seeds => identical counts)
+    hp = Path(args.headline_eval)
+    if hp.exists():
+        h = json.loads(hp.read_text())
+        bad, checked = [], 0
+        for r in h["runs"]:
+            name = r["run"]
+            if name not in per_run:
+                continue
+            t = {c["name"]: c for c in json.loads((out / name / "test_curve.json").read_text())["checkpoints"]}
+            hc = r["final"]["policies"]["greedy"]["success"]["count"]
+            checked += 1
+            if t["final"]["success"] != hc:
+                bad.append((name, "final", t["final"]["success"], hc))
+            for lc in r["last_ckpts"]:
+                nm = lc["ckpt"].replace(".pt", "")
+                if nm in t:
+                    checked += 1
+                    mine = t[nm]["outcomes"][:200].count("L")
+                    if mine != lc["success"]["count"]:
+                        bad.append((name, nm, mine, lc["success"]["count"]))
+        summary["cross_check_vs_headline_eval"] = {"checked": checked, "mismatches": bad}
+        lines.append(f"Cross-check vs {hp}: {checked} (run, checkpoint) success counts compared "
+                     f"(final over 500 episodes, last-5 over the first 200), mismatches: {len(bad)} {bad}")
     Path(args.summary_out).write_text(json.dumps(summary, indent=1) + "\n")
+    print("\n".join(lines))
+
+
+# ------------------------------------------------------------- verify-prune
+def cmd_verify_prune(args) -> None:
+    """Roll out the checkpoints skipped by ``test --prune-zero-val`` on the first TEST episodes."""
+    out = Path(args.out)
+    rd = Path(args.results_dir).expanduser()
+    rows = []
+    for run in _runs(args):
+        t = json.loads((out / run / "test_curve.json").read_text())
+        skipped = t.get("not_evaluated_zero_validation", [])
+        if not skipped:
+            continue
+        run_dir = resolve_run_dir(run, rd)
+        rc = sel.run_config(run_dir)
+        paths = {n: p for _, n, p in sel.list_checkpoints(run_dir)}
+        outs = sel.evaluate_many([paths[n] for n in skipped], sel.TEST_SEED_START, args.prune_episodes,
+                                 rc["reward_version"], args.procs)
+        res = {n: o["outcomes"].count("L") for n, o in zip(skipped, outs)}
+        rows.append({"run": run, "episodes": args.prune_episodes, "successes": res})
+        print(f"{run}: {len(skipped)} skipped ckpts, max test successes {max(res.values())}/{args.prune_episodes}",
+              flush=True)
+    tot = sum(len(r["successes"]) for r in rows)
+    mx = max((v for r in rows for v in r["successes"].values()), default=0)
+    summary = {"n_checkpoints": tot, "episodes_each": args.prune_episodes, "max_successes": mx, "runs": rows}
+    (out / "prune_check.json").write_text(json.dumps(summary, indent=1) + "\n")
+    print(f"TOTAL {tot} skipped checkpoints, max successes on any: {mx}/{args.prune_episodes}")
+
+
+# ----------------------------------------------------------------------- test2
+def cmd_test2(args) -> None:
+    """Fresh-range confirmation of the post-hoc pool variant: final, best.pt, and the checkpoints every rule
+    picks from pool A (saved) and pool B (saved + best.pt), on seeds test2_start .. +499."""
+    out, outb = Path(args.out), Path(args.out_b)
+    rd = Path(args.results_dir).expanduser()
+    for run in _runs(args):
+        cache = outb / run / "test2_curve.json"
+        if cache.exists():
+            print(f"{run}: test2_curve.json exists, skipping", flush=True)
+            continue
+        sa = json.loads((out / run / "selected.json").read_text())
+        sb = json.loads((outb / run / "selected.json").read_text())
+        assert sb["pool"] == "saved+best"
+        run_dir = resolve_run_dir(run, rd)
+        rc = sel.run_config(run_dir)
+        seed_check = sel.assert_test_range_fresh(args.test2_start, sel.TEST_EPISODES, rc["train_seed"],
+                                                 rc["num_envs"], rc["eval_seed_start"], rc["eval_episodes"])
+        paths = {n: p for _, n, p in sel.list_checkpoints(run_dir, include_best=True)}
+        names = {"final", "best"}
+        names |= {a["name"] for a in sa["alternatives"].values()} | {a["name"] for a in sb["alternatives"].values()}
+        names = sorted(names)
+        outs = sel.evaluate_many([paths[n] for n in names], args.test2_start, sel.TEST_EPISODES,
+                                 rc["reward_version"], args.procs)
+        doc = {"run": run, "test_seed_start": args.test2_start, "episodes": sel.TEST_EPISODES,
+               "seed_check": seed_check,
+               "selected_a_sha256": __import__("hashlib").sha256((out / run / "selected.json").read_bytes()).hexdigest(),
+               "selected_b_sha256": __import__("hashlib").sha256((outb / run / "selected.json").read_bytes()).hexdigest(),
+               "checkpoints": [{"name": n, "update": next(c["update"] for c in sb["validation"]["curve"] if c["name"] == n)
+                                if any(c["name"] == n for c in sb["validation"]["curve"]) else
+                                next(c["update"] for c in sa["validation"]["curve"] if c["name"] == n),
+                                "outcomes": o["outcomes"], **sel.counts(o["outcomes"], o["fuel_used"])}
+                               for n, o in zip(names, outs)]}
+        cache.write_text(json.dumps(doc) + "\n")
+        fin = next(c for c in doc["checkpoints"] if c["name"] == "final")
+        print(f"{run}: evaluated {len(names)} ckpts on {args.test2_start}..; final {fin['success']}/500", flush=True)
+
+
+def cmd_report2(args) -> None:
+    out, outb = Path(args.out), Path(args.out_b)
+    methods = [f"A:{r}" for r in sel.RULES] + [f"B:{r}" for r in sel.RULES] + ["final", "best_pt"]
+    per_run: dict[str, dict] = {}
+    for run in _runs(args):
+        sa = json.loads((out / run / "selected.json").read_text())
+        sb = json.loads((outb / run / "selected.json").read_text())
+        t = json.loads((outb / run / "test2_curve.json").read_text())
+        tc = {c["name"]: c for c in t["checkpoints"]}
+        m = {}
+        for r in sel.RULES:
+            for tag, s in (("A", sa), ("B", sb)):
+                a = s["alternatives"][r]
+                m[f"{tag}:{r}"] = {"ckpt": a["name"], "update": a["update"], "val": a["rate"],
+                                   "test": tc[a["name"]]["success"], "n": tc[a["name"]]["n"]}
+        m["final"] = {"ckpt": "final", "update": sa["final"]["update"], "val": sa["final"]["rate"],
+                      "test": tc["final"]["success"], "n": tc["final"]["n"]}
+        m["best_pt"] = {"ckpt": "best.pt", "update": tc["best"]["update"], "val": None,
+                        "test": tc["best"]["success"], "n": tc["best"]["n"]}
+        per_run[run] = {"methods": m}
+    groups: dict[str, list[str]] = {}
+    for run in per_run:
+        groups.setdefault(run.rsplit("_s", 1)[0], []).append(run)
+    summary = {"test_seed_start": args.test2_start, "arms": {}, "per_run": per_run}
+    lines = []
+    for arm, runs in groups.items():
+        runs = sorted(runs, key=_natural)
+        lines += [f"### {arm}: FRESH test range {args.test2_start}..{args.test2_start + 499} (500 episodes), "
+                  "95% Wilson CI; A = pool of saved checkpoints, B = saved + best.pt", "",
+                  "| run | " + " | ".join(methods) + " |", "|---|" + "---|" * len(methods)]
+        for r in runs:
+            cells = [f"{_ci(per_run[r]['methods'][m]['test'], per_run[r]['methods'][m]['n'])} @{per_run[r]['methods'][m]['update']}"
+                     for m in methods]
+            lines.append(f"| {r} | " + " | ".join(cells) + " |")
+        summary["arms"][arm] = {m: _agg([per_run[r]["methods"][m]["test"] / per_run[r]["methods"][m]["n"]
+                                         for r in runs]) for m in methods}
+        lines += ["", f"Aggregate over {len(runs)} runs", "",
+                  "| method | mean | median | min | max | runs >= 90% | runs >= 50% | runs at 0% |",
+                  "|---|---|---|---|---|---|---|---|"]
+        for m in methods:
+            a = summary["arms"][arm][m]
+            lines.append(f"| {m} | {a['mean']:.1%} | {a['median']:.1%} | {a['min']:.1%} | {a['max']:.1%} | "
+                         f"{a['n_ge_90']}/{a['n']} | {a['n_ge_50']}/{a['n']} | {a['n_zero']}/{a['n']} |")
+        lines.append("")
+    (outb / "summary_test2.json").write_text(json.dumps(summary, indent=1) + "\n")
     print("\n".join(lines))
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["validate", "rules", "test", "report"])
+    ap.add_argument("phase", choices=["validate", "rules", "test", "report", "verify-prune", "test2", "report2"])
     ap.add_argument("--results-dir", default="experiments/results")
     ap.add_argument("--runs", nargs="+")
     ap.add_argument("--pattern", default="hl_v*_s*")
     ap.add_argument("--out", default="experiments/selection")
     ap.add_argument("--rule", default=sel.DEFAULT_RULE, choices=sorted(sel.RULES))
+    ap.add_argument("--include-best", action="store_true", help="validate: add best.pt to the candidate pool")
+    ap.add_argument("--out-b", default="experiments/selection_b", help="pool saved+best directory (test2/report2)")
+    ap.add_argument("--test2-start", type=int, default=sel.TEST2_SEED_START)
+    ap.add_argument("--prune-episodes", type=int, default=100, help="verify-prune: test episodes per checkpoint")
     ap.add_argument("--procs", type=int, default=3)
+    ap.add_argument("--prune-zero-val", action="store_true",
+                    help="test: skip checkpoints with 0 validation successes (unless final); saves compute")
     ap.add_argument("--rules-out", default="experiments/selection/rules_validation.json")
     ap.add_argument("--summary-out", default="experiments/selection/summary.json")
+    ap.add_argument("--headline-eval", default="experiments/headline_eval.json")
     args = ap.parse_args(argv)
-    {"validate": cmd_validate, "rules": cmd_rules, "test": cmd_test, "report": cmd_report}[args.phase](args)
+    {"validate": cmd_validate, "rules": cmd_rules, "test": cmd_test, "report": cmd_report,
+     "verify-prune": cmd_verify_prune, "test2": cmd_test2, "report2": cmd_report2}[args.phase](args)
     return 0
 
 

@@ -309,3 +309,61 @@ def test_cli(tmp_path, capsys):
     assert sel["rule"] == "latest_near_best"
     assert (out / "selected.pt").exists() and (out / "validation_curve.json").exists()
     assert not (d / "selected.json").exists()
+
+
+# ------------------------------------------------- best.pt in the candidate pool
+def test_list_checkpoints_include_best_adds_it_by_update_and_dedups(tmp_path):
+    d = make_run(tmp_path, n_ckpts=3)  # best.pt is update 75: between ckpt_00050 and ckpt_00100
+    lst = sl.list_checkpoints(d, include_best=True)
+    assert [(u, n) for u, n, _ in lst] == [(50, "ckpt_00050"), (75, "best"), (100, "ckpt_00100"),
+                                           (150, "ckpt_00150"), (999, "final")]
+    # a best.pt that is the same update as a saved checkpoint is not a second candidate
+    torch.manual_seed(5)
+    save_checkpoint(d / "best.pt", ActorCritic(hidden_sizes=(8,)), RunningMeanStd(), {}, extra={"update": 100})
+    assert "best" not in [n for _, n, _ in sl.list_checkpoints(d, include_best=True)]
+    (d / "best.pt").unlink()
+    assert [n for _, n, _ in sl.list_checkpoints(d, include_best=True)] == [n for _, n, _ in sl.list_checkpoints(d)]
+
+
+def test_validation_cache_is_incremental_when_best_is_added(tmp_path, monkeypatch):
+    d = make_run(tmp_path, n_ckpts=2)
+    out = tmp_path / "o"
+    a = sl.select_run(d, out, episodes=3, procs=1)
+    assert a["pool"] == "saved" and a["validation"]["n_checkpoints"] == 3
+    evaluated = []
+    real = sl.evaluate_many
+
+    def spy(paths, *args, **kw):
+        evaluated.extend(Path(p).name for p in paths)
+        return real(paths, *args, **kw)
+
+    monkeypatch.setattr(sl, "evaluate_many", spy)
+    b = sl.select_run(d, out, episodes=3, procs=1, include_best=True)
+    assert evaluated == ["best.pt"]  # only the new candidate was rolled out
+    assert b["pool"] == "saved+best" and b["validation"]["n_checkpoints"] == 4
+    names = [c["name"] for c in b["validation"]["curve"]]
+    assert names == ["ckpt_00050", "best", "ckpt_00100", "final"]  # sorted by update (best is 75)
+    # old rows are unchanged
+    old = {c["name"]: c for c in a["validation"]["curve"]}
+    for c in b["validation"]["curve"]:
+        if c["name"] in old:
+            assert c == old[c["name"]]
+    evaluated.clear()
+    sl.select_run(d, out, episodes=3, procs=1, include_best=True)
+    assert evaluated == []  # complete cache
+
+
+def test_fresh_test_range_assertion():
+    ok = (sl.TEST2_SEED_START, 500, 0, 16, 20_000, 50)
+    info = sl.assert_test_range_fresh(*ok)
+    assert info["test_range"] == [80_000, 80_499]
+    for bad_start in (sl.VALIDATION_SEED_START, sl.TEST_SEED_START, 20_010, 60_100, 50, 1_500):
+        with pytest.raises(AssertionError):
+            sl.assert_test_range_fresh(bad_start, 500 if bad_start != 20_010 else 100, 0, 16, 20_000, 50)
+    # validation and the two test ranges are pairwise disjoint
+    ranges = [(sl.VALIDATION_SEED_START, sl.VALIDATION_SEED_START + sl.VALIDATION_EPISODES),
+              (sl.TEST_SEED_START, sl.TEST_SEED_START + sl.TEST_EPISODES),
+              (sl.TEST2_SEED_START, sl.TEST2_SEED_START + sl.TEST_EPISODES)]
+    for i in range(3):
+        for j in range(i + 1, 3):
+            assert not sl._overlaps(ranges[i], ranges[j])

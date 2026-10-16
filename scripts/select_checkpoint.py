@@ -34,11 +34,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--seed-start", type=int, default=VALIDATION_SEED_START)
     ap.add_argument("--episodes", type=int, default=VALIDATION_EPISODES)
     ap.add_argument("--procs", type=int, default=3, help="evaluation worker processes (keep <= 3 on a shared box)")
+    ap.add_argument("--include-best", action="store_true",
+                    help="also consider best.pt (picked at 10-update granularity on the in-training eval "
+                         "seeds) as a candidate; it is re-validated on the validation seeds like the rest")
     ap.add_argument("--results-dir", type=Path, default=Path("experiments/results"))
     args = ap.parse_args(argv)
 
     sel = select_run(args.run, args.out_dir, args.rule, args.seed_start, args.episodes, args.procs,
-                     args.results_dir)
+                     args.results_dir, include_best=args.include_best)
     v = sel["validation"]
     print(f"{sel['run']}: validation seeds {v['seed_start']}..{v['seed_end']} ({v['episodes']} episodes), "
           f"{v['n_checkpoints']} checkpoints")

@@ -57,6 +57,7 @@ VALIDATION_SEED_START = 70_000
 VALIDATION_EPISODES = 200
 TEST_SEED_START = 50_000
 TEST_EPISODES = 500
+TEST2_SEED_START = 80_000  # fresh confirmation range for the post-hoc best.pt-in-pool variant
 BASELINE_TEST_SEEDS = (0, 100)  # heuristic baseline + earlier experiments' test seeds (half-open)
 BASELINE_TUNING_SEEDS = (1_000, 2_000)  # heuristic gain tuning "seeds 1000+" (docs/environment.md); reserved
 PILOT_SELECTION_SEEDS = (60_000, 60_300)  # used by the stabiliser's pilot runs to compare configs; reserved
@@ -68,6 +69,24 @@ OUTCOME_CODES = {"landed": "L", "crashed": "C", "out_of_bounds": "O", "timeout":
 def _overlaps(a: tuple[int, int], b: tuple[int, int]) -> bool:
     """Half-open ranges [a0, a1) and [b0, b1) intersect."""
     return a[0] < b[1] and b[0] < a[1]
+
+
+def assert_test_range_fresh(seed_start: int, episodes: int, train_seed: int, num_envs: int,
+                            eval_seed_start: int, eval_episodes: int) -> dict:
+    """A test range must be disjoint from training, in-training eval, validation, the primary test range
+    and the reserved baseline/pilot seeds."""
+    info = assert_heldout(seed_start, episodes, train_seed, num_envs, eval_seed_start, eval_episodes)
+    r = (seed_start, seed_start + episodes)
+    for name, other in (
+        ("validation", (VALIDATION_SEED_START, VALIDATION_SEED_START + VALIDATION_EPISODES)),
+        ("primary test", (TEST_SEED_START, TEST_SEED_START + TEST_EPISODES)),
+        ("baseline test seeds", BASELINE_TEST_SEEDS),
+        ("heuristic tuning seeds", BASELINE_TUNING_SEEDS),
+        ("pilot-selection seeds", PILOT_SELECTION_SEEDS),
+    ):
+        assert not _overlaps(r, other), f"test range {r[0]}..{r[1] - 1} overlaps {name}"
+    info["test_range"] = [r[0], r[1] - 1]
+    return info
 
 
 def assert_validation_disjoint(
@@ -201,11 +220,13 @@ def apply_rule(scores: Sequence[Score], rule: str) -> Score:
 
 
 # ---------------------------------------------------------------- checkpoints
-def list_checkpoints(run_dir: Path) -> list[tuple[int, str, Path]]:
+def list_checkpoints(run_dir: Path, include_best: bool = False) -> list[tuple[int, str, Path]]:
     """``(update, name, path)`` for every ``checkpoints/ckpt_*.pt`` and ``final.pt``, by update.
 
-    ``best.pt`` is NOT a candidate (it was already picked on the in-training eval seeds); compare to
-    it separately. ``final.pt``'s update is read from its payload.
+    ``final.pt``'s update is read from its payload. ``best.pt`` is a candidate only with
+    ``include_best=True``: it was picked on the in-training eval seeds (50 episodes, every 10 updates), so
+    it can sit between two saved checkpoints, and here it is re-validated on the independent validation
+    seeds like every other candidate. It is skipped when it is the same update as a saved checkpoint.
     """
     out: list[tuple[int, str, Path]] = []
     for p in sorted((run_dir / "checkpoints").glob("ckpt_*.pt")):
@@ -215,6 +236,11 @@ def list_checkpoints(run_dir: Path) -> list[tuple[int, str, Path]]:
     final = run_dir / "final.pt"
     if final.exists():
         out.append((checkpoint_update(final), "final", final))
+    best = run_dir / "best.pt"
+    if include_best and best.exists():
+        upd = checkpoint_update(best)
+        if upd not in {u for u, _, _ in out}:
+            out.append((upd, "best", best))
     if not out:
         raise FileNotFoundError(f"no checkpoints under {run_dir}")
     return sorted(out, key=lambda t: (t[0], t[1]))
@@ -313,41 +339,46 @@ def build_validation_curve(
     procs: int = 3,
     results_dir: Path = Path("experiments/results"),
     cache: Path | None = None,
+    include_best: bool = False,
 ) -> dict:
-    """Evaluate every checkpoint of ``run`` on the validation range (reusing ``cache`` if complete)."""
+    """Evaluate every candidate checkpoint of ``run`` on the validation range.
+
+    ``cache`` is read first and entries whose name, update, seed range and episode count match are
+    reused, so only missing candidates (e.g. ``best.pt`` when ``include_best`` is added later) are
+    evaluated; the cache file is rewritten with exactly the requested candidates.
+    """
     run_dir = resolve_run_dir(run, results_dir)
     rc = run_config(run_dir)
     seed_check = assert_validation_disjoint(
         seed_start, episodes, rc["train_seed"], rc["num_envs"], rc["eval_seed_start"], rc["eval_episodes"]
     )
-    ckpts = list_checkpoints(run_dir)
+    ckpts = list_checkpoints(run_dir, include_best)
+    old: dict[tuple[str, int], dict] = {}
     if cache is not None and cache.exists():
-        old = json.loads(cache.read_text())
-        same = (
-            old.get("seed_start") == seed_start
-            and old.get("episodes") == episodes
-            and [c["name"] for c in old["checkpoints"]] == [c[1] for c in ckpts]
-            and [c["update"] for c in old["checkpoints"]] == [c[0] for c in ckpts]
-        )
-        if same:
-            return old
-    outs = evaluate_many([c[2] for c in ckpts], seed_start, episodes, rc["reward_version"], procs)
+        prev = json.loads(cache.read_text())
+        if prev.get("seed_start") == seed_start and prev.get("episodes") == episodes:
+            old = {(c["name"], c["update"]): c for c in prev["checkpoints"]}
+    todo = [c for c in ckpts if (c[1], c[0]) not in old]
+    outs = evaluate_many([c[2] for c in todo], seed_start, episodes, rc["reward_version"], procs) if todo else []
+    fresh = {
+        (name, upd): {"name": name, "update": upd, "path": str(path), "outcomes": o["outcomes"],
+                      "fuel_used": o["fuel_used"], **counts(o["outcomes"], o["fuel_used"])}
+        for (upd, name, path), o in zip(todo, outs)
+    }
     curve = {
         "schema_version": SCHEMA_VERSION,
         "run": run_dir.name,
         "run_dir": str(run_dir),
         "reward_version": rc["reward_version"],
         "train_seed": rc["train_seed"],
+        "pool": "saved+best" if include_best else "saved",
         "seed_start": seed_start,
         "episodes": episodes,
         "seed_check": seed_check,
-        "checkpoints": [
-            {"name": name, "update": upd, "path": str(path), "outcomes": o["outcomes"],
-             "fuel_used": o["fuel_used"], **counts(o["outcomes"], o["fuel_used"])}
-            for (upd, name, path), o in zip(ckpts, outs)
-        ],
+        "checkpoints": [fresh.get((name, upd)) or {**old[(name, upd)], "path": str(path)}
+                        for (upd, name, path) in ckpts],
     }
-    if cache is not None:
+    if cache is not None and (todo or not cache.exists() or old):
         cache.parent.mkdir(parents=True, exist_ok=True)
         cache.write_text(json.dumps(curve) + "\n")
     return curve
@@ -382,6 +413,7 @@ def select(curve: dict, rule: str = DEFAULT_RULE) -> dict:
         "run": curve["run"],
         "run_dir": curve["run_dir"],
         "rule": rule,
+        "pool": curve.get("pool", "saved"),
         "rule_params": {"window": 3} if rule == "stable3" else {},
         "chosen": {
             **_score_json(chosen),
@@ -404,7 +436,7 @@ def select(curve: dict, rule: str = DEFAULT_RULE) -> dict:
     }
 
 
-SELECTED_KEYS = {"schema_version", "run", "run_dir", "rule", "rule_params", "chosen", "final",
+SELECTED_KEYS = {"schema_version", "run", "run_dir", "rule", "pool", "rule_params", "chosen", "final",
                  "alternatives", "validation"}
 
 
@@ -438,6 +470,7 @@ def select_run(
     episodes: int = VALIDATION_EPISODES,
     procs: int = 3,
     results_dir: Path = Path("experiments/results"),
+    include_best: bool = False,
 ) -> dict:
     """Full pipeline for one run: validate all checkpoints, select, write ``selected.json`` + ``selected.pt``.
 
@@ -450,7 +483,7 @@ def select_run(
         raise ValueError("out_dir must differ from the run directory (runs are read-only)")
     out_dir.mkdir(parents=True, exist_ok=True)
     curve = build_validation_curve(run, seed_start, episodes, procs, results_dir,
-                                   cache=out_dir / "validation_curve.json")
+                                   cache=out_dir / "validation_curve.json", include_best=include_best)
     sel = select(curve, rule)
     export = export_checkpoint(sel["chosen"]["path"], out_dir / "selected.pt", sel)
     sel["exported_checkpoint"] = export.name
